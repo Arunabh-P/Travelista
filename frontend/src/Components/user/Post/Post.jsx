@@ -22,12 +22,20 @@ function Post({
     ownerImage,
     ownerName,
     ownerId,
-    IsDelete = false,
+    isDelete = false,
     isAccount = false
 }) {
+
+    const [liked, setLiked] = useState(false)
+
+    const handleLike = () => {
+        setLiked(!liked)
+    }
     return (
         <div className="post">
-            <div className="postHeader"></div>
+            <div className="postHeader">
+                {isAccount ? <Button> <MoreVert /> </Button> : null}
+            </div>
             <img src={postImage} alt="Post" />
 
             <div className="postDetails">
@@ -50,8 +58,36 @@ function Post({
                 </Typography>
 
             </div>
+            <Button
+                style={{
+                    border: "none",
+                    backgroundColor: "white",
+                    cursor: "pointer",
+                    margin: "1vmax 2vmax",
+                }}
+            >
 
+                <Typography>5 likes</Typography>
+            </Button>
+            <div className="postFooter">
+
+                <Button onClick={handleLike}>
+                    {liked ? <Favorite /> : <FavoriteBorder />}
+                </Button>
+
+                <Button>
+                    <ChatBubbleOutline />
+                </Button>
+
+                {isDelete ? (
+                    <Button>
+                        <DeleteOutline />
+                    </Button>
+                ) : null}
+
+            </div>
         </div>
+
     )
 }
 
