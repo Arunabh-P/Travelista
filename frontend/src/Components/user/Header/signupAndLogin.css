@@ -1,0 +1,63 @@
+.navbar-brand{
+    font-size: medium;
+    font-weight: bold;
+}
+.logo{
+    font-size: xx-large;
+    font-weight: bold;
+
+}
+
+.loginsignInbtn{
+    font-weight: bold !important ;
+    font-size: medium !important;
+    padding: 2px !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    border-radius: 22px !important;
+    border:5px solid EDE8E8 !important;
+    -webkit-border-radius: 22px !important;
+    -moz-border-radius: 22px !important;
+    -ms-border-radius: 22px !important;
+    -o-border-radius: 22px !important;
+}
+.row{
+         --bs-gutter-x: 0rem;
+         
+
+}
+.regPageImg{
+    width: 500px;
+
+}
+.imageCol{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signInOutTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    font-weight: bold;
+}
+.signInOutButton{
+    color: black !important;
+    background-color: white !important;
+    font-size: 20px !important;
+    border: 1.5px solid !important;
+    border-color: black !important;
+    border-radius: 25px !important;
+    -webkit-border-radius: 25px !important;
+    -moz-border-radius: 25px !important;
+    -ms-border-radius: 25px !important;
+    -o-border-radius: 25px !important;
+}
+.inputRounded .MuiOutlinedInput-root{
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
