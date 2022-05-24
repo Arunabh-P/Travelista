@@ -35,13 +35,17 @@
   
   .postFooter > button {
     color: rgba(0, 0, 0, 0.767);
-    margin: 0 1vmax;
-    border-radius: 100%;
-    transition: all 0.3s;
+    padding: 10px;
+    cursor: pointer;
   }
   
   .postFooter > button:hover {
-    transform: translateY(-4px);
+    background-color: whitesmoke;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
   }
   
   .postFooter > button > svg {
@@ -68,6 +72,11 @@
   .commentForm > button {
     border-radius: 0%;
   }
+  .add-button{
+    background-color: black !important;
+    border-radius: 0px 25px 25px 0px !important;
+    
+  }
   
   @media screen and (max-width: 600px) {
     .post {
@@ -83,4 +92,4 @@
       font-size: 8vw;
     }
   }
-  
+ 

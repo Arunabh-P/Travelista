@@ -33,9 +33,9 @@ function Home() {
     console.log(userInfo);
     setName(info ? info.data.name : "user");
     if (userInfo) {
-      navigate("/");
+      navigate("/home1");
     } else {
-      navigate("/");
+      navigate("/home1");
     }
   }, [navigate]);
   return (
