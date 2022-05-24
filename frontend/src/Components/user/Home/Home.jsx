@@ -5,16 +5,17 @@ import Post from '../Post/Post'
 import "./Home.css"
 import profilePic from "../../../Images/profilePic.jpeg"
 import { getAllUsers, getFollowingPosts } from '../../../Actions/User'
-import Loader from '../Loader/Loader'
 import { Typography } from "@mui/material";
 import { useAlert } from "react-alert"
+import cover from "../../../Images/cover.jpg"
+import { Avatar } from '@mui/material'
 
 function Home() {
   const dispatch = useDispatch();
   const alert = useAlert();
 
 
-  const { loading, posts, error } = useSelector(state => state.postOfFollowing)
+  const { posts, error } = useSelector(state => state.postOfFollowing)
 
   const { users, loading: usersLoading } = useSelector(
     (state) => state.allUsers
@@ -43,10 +44,21 @@ function Home() {
     }
   }, [alert, error, message, likeError, dispatch]);
 
-  return loading === true || usersLoading === true ? (
-    <Loader />) : (
+  return (
+  
+    <div className='home container'>
+      <div className="firstOne">
+      <div className='sidebar  d-md-block'>
+       <div className='Sidebar_top'>
+         <img src={cover} alt="here cover image" />
+         <Avatar src={profilePic} className='sidebar_avatar'/>
+         <h2>Arunabh</h2>
+         <h4>Solo Traveler</h4>
+       </div>
+       
+     </div>
 
-    <div className='home'>
+      </div>
       <div className="homeleft">
 
         {
@@ -61,7 +73,7 @@ function Home() {
               ownerImage={post.owner.avatar.url}
               ownerName={post.owner.name}
               ownerId={post.owner._id}
-
+              width={'100%'}
             />
           )) : (
             <Typography variant='h6'>No posts yet</Typography>

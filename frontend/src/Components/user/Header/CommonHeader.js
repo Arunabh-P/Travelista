@@ -36,33 +36,33 @@ function Header() {
             navbarScroll
           ></Nav>
           <Nav>
-            <Link to="/" style={{ color: "black" }}  onClick={()=>setTab("/")}>
+            <Link to="/" style={{ color: "black" , paddingLeft:"22.5px" }}  onClick={()=>setTab("/")}>
         {tab === "/" ? <HomeIcon  /> : <HomeOutlinedIcon />}
 
               
             </Link>
-            <Link to="/Search" style={{ color: "black" }} onClick={()=>setTab("/search")} >
+            <Link to="/Search" style={{ color: "black" , paddingLeft:"22.5px"}} onClick={()=>setTab("/search")} >
         {tab === "/search" ? <PersonSearchIcon /> : <PersonSearchOutlinedIcon />}
 
               
             </Link>
-            <Link to="/messages" style={{ color: "black" }} onClick={()=>setTab("/messages")} >
+            <Link to="/messages" style={{ color: "black" , paddingLeft:"22.5px"}} onClick={()=>setTab("/messages")} >
         {tab === "/messages" ? <ChatIcon  /> : <ChatOutlinedIcon />}
 
               
             </Link>
-            <Link to="/notification" style={{ color: "black" }} onClick={()=>setTab("/notification")} >
+            <Link to="/notification" style={{ color: "black" , paddingLeft:"22.5px" }} onClick={()=>setTab("/notification")} >
         {tab === "/notification" ? <NotificationsIcon /> : <NotificationsNoneOutlinedIcon />}
 
               
             </Link>
-            <Link to="/userProfilePage" style={{ color: "black" }} onClick={()=>setTab("/userProfilePage")} >
-            {tab === "/userProfilePage" ? <AccountCircleIcon /> : <UserProfile />}
+            <Link to="/account" style={{ color: "black" , paddingLeft:"22.5px" }} onClick={()=>setTab("/account")} >
+            {tab === "/account" ? <AccountCircleIcon /> : <UserProfile />}
 
             
               
             </Link>
-            <Link to="/logout" style={{ color: "black" }} onClick={()=>setTab("/logout")} >
+            <Link to="/logout" style={{ color: "black" , paddingLeft:"22.5px" }} onClick={()=>setTab("/logout")} >
               <LogoutIcon />
             </Link>
           </Nav>

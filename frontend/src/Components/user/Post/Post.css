@@ -1,10 +1,10 @@
 .post {
-    width: 60%;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     padding: 0 1vmax 2vmax;
-    margin: 2vmax;
+    margin-bottom: 2vmax;
+    
   }
   
   .postHeader {

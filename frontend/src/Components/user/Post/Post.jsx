@@ -27,6 +27,7 @@ function Post({
     ownerId,
     isDelete = false,
     isAccount = false,
+    width,
 }) {
 
     const [liked, setLiked] = useState(false);
@@ -81,7 +82,7 @@ function Post({
 
 
     return (
-        <div className="post">
+        <div className="post" style={{width:width}}>
             <div className="postHeader">
                 {isAccount ? <Button> <MoreVert /> </Button> : null}
             </div>

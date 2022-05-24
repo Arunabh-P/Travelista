@@ -5,7 +5,7 @@ import Header from "./Components/user/Header/CommonHeader"
 import Home1 from "./Components/user/HomePage/Home";
 import Home from "./Components/user/Home/Home"
 import AdminHome from "./Components/admin/AdminHome";
-import UserProfilePage from "./Components/user/UserProfilePage/UserProfilePage"
+// import UserProfilePage from "./Components/user/UserProfilePage/UserProfilePage"
 
 import AdminLogin from "./Components/admin/AdminLogin";
 import Userupdate from "./Components/admin/Userupdate";
@@ -39,7 +39,7 @@ function App() {
         <Route path="/admin" element={<AdminHome />}></Route>
         <Route path="/edit/:id" element={<Userupdate />}></Route>
         <Route path="/adminlogin" element={<AdminLogin />}></Route>
-        <Route path="/userProfilePage" element={<UserProfilePage />}> </Route>
+        {/* <Route path="/userProfilePage" element={<UserProfilePage />}> </Route> */}
       </Routes>
     </Router>
   );

@@ -52,64 +52,62 @@ function Account() {
   return loading === true || userLoading === true ? (
     <Loader />
   ) : (
-    <>
-      <div className="fullBodyProfile">
-        <Container>
-          <div className='CoverPage  '>
-            <div className='CoverPage_top'>
-              <img src={cover} alt="*here cover image" />
-              <div className='coverTopSec'>
-                <Avatar radius="xl" src={user.avatar.url} className='CoverPage_avatar' style={{ width: "130px", height: "130px" }} />
+    <div className="fullBodyProfile">
+      <Container>
+        <div className='CoverPage  '>
+          <div className='CoverPage_top'>
+            <img src={cover} alt="*here cover image" />
+            <div className='coverTopSec'>
+              <Avatar radius="xl" src={user.avatar.url} className='CoverPage_avatar' style={{ width: "130px", height: "130px" }} />
+            </div>
+            <div className='d-md-flex justify-content-between'>
+              <div>
+                <h2 className='cover-profile-name'>{user.name}</h2>
+                <h4 className='cover-profile-cat'>Solo Traveler</h4>
               </div>
-              <div className='d-flex justify-content-between'>
-                <div>
-                  <h2 className='cover-profile-name'>{user.name}</h2>
-                  <h4 className='cover-profile-cat'>Solo Traveler</h4>
-                </div>
-                <div  >
-                  <Button>
-                    <Typography>Followers</Typography>
-                  </Button>
-
-                  <Typography className='text-center' >{user.followers.length}</Typography>
-
-                </div>
-
-                <div>
-                  <Button>
-                    <Typography>Following</Typography>
-                  </Button>
-                  <Typography  className='text-center'>{user.following.length}</Typography>
-                </div>
-
-                <div>
-                  <Button>
-                    <Typography>Posts</Typography>
-                  </Button>
-                  <Typography  className='text-center'>{user.posts.length}</Typography>
-                </div>
-                {/* <Button variant="contained">Logout</Button> */}
-
-                <Link to="/update/profile">Edit Profile</Link>
-
-                <Link to="/update/password">Change Profile</Link>
-                <Button
-                  variant="text"
-                  style={{ color: "red", margin: "2vmax" }}
-                >
-                  Delete My Profile
+              <div  >
+                <Button>
+                  <Typography>Followers</Typography>
                 </Button>
+
+                <Typography className='text-center' >{user.followers.length}</Typography>
+
               </div>
 
+              <div>
+                <Button>
+                  <Typography>Following</Typography>
+                </Button>
+                <Typography className='text-center'>{user.following.length}</Typography>
+              </div>
+
+              <div>
+                <Button>
+                  <Typography>Posts</Typography>
+                </Button>
+                <Typography className='text-center'>{user.posts.length}</Typography>
+              </div>
+              {/* <Button variant="contained">Logout</Button> */}
+
+              <Link to="/update/profile">Edit Profile</Link>
+
+              <Link to="/update/password">Change Password</Link>
+              <Button
+                variant="text"
+                style={{ color: "red", margin: "2vmax" }}
+              >
+                Delete My Profile
+              </Button>
             </div>
 
+          </div>
+          <div className='row'>
 
-            <div className='d-flex' cols={2} spacing="xs">
-              <div className='d-flex' >
-
-                {posts && posts.length > 0 ? (
-                  posts.map((post) => (
+              {posts && posts.length > 0 ? (
+                posts.map((post) => (
+                  <div className='col-12 col-md-6' >
                     <Post
+                    className="samplepost"
                       key={post._id}
                       postId={post._id}
                       caption={post.caption}
@@ -119,63 +117,21 @@ function Account() {
                       ownerImage={post.owner.avatar.url}
                       ownerName={post.owner.name}
                       ownerId={post.owner._id}
+                      width={'100%'}
                     />
-                  ))
-                ) : (
-                  <Typography variant="h6">You have not made any post</Typography>
-                )}
-              </div>
-            </div>
-
+                  </div>
+                ))
+              ) : (
+                <Typography variant="h6">You have not made any post</Typography>
+              )}
           </div>
-
-
-
-        </Container>
-      </div >
-
-
-
-
-
-      <div className="account">
-
-        <div className="accountright">
-          <div>
-            <Button>
-              <Typography>Followers</Typography>
-            </Button>
-            <Typography>{user.followers.length}</Typography>
-          </div>
-
-          <div>
-            <Button>
-              <Typography>Following</Typography>
-            </Button>
-            <Typography>{user.following.length}</Typography>
-          </div>
-
-          <div>
-            <Button>
-              <Typography>Posts</Typography>
-            </Button>
-            <Typography>{user.posts.length}</Typography>
-          </div>
-          <Button variant="contained">Logout</Button>
-
-          <Link to="/update/profile">Edit Profile</Link>
-          <Link to="/update/password">Change Profile</Link>
-          <Button
-            variant="text"
-            style={{ color: "red", margin: "2vmax" }}
-          >
-            Delete My Profile
-          </Button>
-
 
         </div>
-      </div>
-    </>
+
+
+
+      </Container>
+    </div >
   )
 }
 
