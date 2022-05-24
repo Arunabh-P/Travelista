@@ -327,6 +327,7 @@ exports.getAllUsers = async (req, res) => {
         });
     }
 };
+
 exports.commentOnPost = async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);
@@ -459,6 +460,31 @@ exports.resetPassword = async (req, res) => {
       res.status(200).json({
         success: true,
         message: "Password Updated",
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  };
+
+  exports.getMyPosts = async (req, res) => {
+    try {
+      const user = await User.findById(req.user._id);
+  
+      const posts = [];
+  
+      for (let i = 0; i < user.posts.length; i++) {
+        const post = await Post.findById(user.posts[i]).populate(
+          "likes comments.user owner"
+        );
+        posts.push(post);
+      }
+  
+      res.status(200).json({
+        success: true,
+        posts,
       });
     } catch (error) {
       res.status(500).json({

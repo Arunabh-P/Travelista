@@ -5,6 +5,7 @@
     height: 92vh;
   }
   
+  
   .accountleft {
     background-image: linear-gradient(to right, #fff5bc, #cec1ff);
   
@@ -82,4 +83,19 @@
       margin-top: 6vw;
     }
   }
-  
+  .CoverPage_avatar{
+    margin-bottom: 10px;
+    margin-left: 50px;
+    
+}
+.cover-profile-name{
+  padding-top: 5px;
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 50px;
+}
+.cover-profile-cat{
+  color: grey;
+    font-size: 18px;
+    margin-left: 50px;
+}
