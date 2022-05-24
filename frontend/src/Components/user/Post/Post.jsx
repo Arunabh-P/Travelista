@@ -75,12 +75,6 @@ function Post({
     }, [likes, user._id]);
 
 
-
-
-
-
-
-
     return (
         <div className="post" style={{width:width}}>
             <div className="postHeader">

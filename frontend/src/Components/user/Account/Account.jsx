@@ -12,6 +12,7 @@ import { Container } from "react-bootstrap"
 import cover from "../../../Images/cover.jpg"
 import profilePic from "../../../Images/profilePic.jpeg"
 import { SimpleGrid } from '@mantine/core';
+import { useAlert } from 'react-alert';
 
 
 
@@ -20,6 +21,7 @@ import { SimpleGrid } from '@mantine/core';
 function Account() {
 
   const dispatch = useDispatch()
+  const alert = useAlert()
   const { user, loading: userLoading } = useSelector((state) => state.user);
   const { loading, error, posts } = useSelector((state) => state.myPosts);
   const {
@@ -27,6 +29,10 @@ function Account() {
     message,
     loading: deleteLoading,
   } = useSelector((state) => state.like);
+
+  const [followersToggle, setFollowersToggle] = useState(false)
+  const [followingToggle, setFollowingToggle] = useState(false)
+
 
   useEffect(() => {
     dispatch(getMyPosts());
@@ -66,7 +72,7 @@ function Account() {
                 <h4 className='cover-profile-cat'>Solo Traveler</h4>
               </div>
               <div  >
-                <Button>
+                <Button onClick={() => setFollowersToggle(!followersToggle)}>
                   <Typography>Followers</Typography>
                 </Button>
 
@@ -75,7 +81,7 @@ function Account() {
               </div>
 
               <div>
-                <Button>
+                <Button onClick={() => setFollowingToggle(!followingToggle)}>
                   <Typography>Following</Typography>
                 </Button>
                 <Typography className='text-center'>{user.following.length}</Typography>
@@ -98,6 +104,51 @@ function Account() {
               >
                 Delete My Profile
               </Button>
+
+              <Dialog open={followersToggle} onClose={() => setFollowersToggle(!followersToggle)}>
+                <div className="DialogBox">
+                    <Typography variant="h4">Followers</Typography>
+
+                    {
+                      user && user.followers.length > 0 ? user.followers.map((follower)=>((
+                        <User
+                        key={follower._id}
+                        userId={follower._id}
+                        name={follower.name}
+                        avatar={follower.avatar.url}
+                    />
+                      ))
+                      ) : ( 
+                      <Typography> You have no followers</Typography>
+                      )}
+
+
+                </div>
+            </Dialog>
+
+            <Dialog open={followingToggle} onClose={() => setFollowingToggle(!followingToggle)}>
+                <div className="DialogBox">
+                    <Typography variant="h4">Following</Typography>
+
+                    {
+                      user && user.following.length > 0 ? user.following.map((follow)=>((
+                        <User
+                        key={follow._id}
+                        userId={follow._id}
+                        name={follow.name}
+                        avatar={follow.avatar.url}
+                    />
+                      ))
+                      ) : ( 
+                      <Typography> You're not following anyone</Typography>
+                      )}
+
+
+                </div>
+            </Dialog>
+
+
+
             </div>
 
           </div>
@@ -124,6 +175,10 @@ function Account() {
               ) : (
                 <Typography variant="h6">You have not made any post</Typography>
               )}
+
+
+
+              
           </div>
 
         </div>
