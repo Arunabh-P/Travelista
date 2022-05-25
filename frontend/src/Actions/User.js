@@ -107,3 +107,33 @@ export const getMyPosts = () => async (dispatch) => {
       });
     }
   };
+
+  export const logoutUser = (email,password) => async(dispatch) => {
+    try {
+        dispatch({
+            type:"LogoutUserRequest"
+        })
+
+        await axios.get("/api/v1/logout");
+
+        // const {data} = await axios.post(
+        //     "/api/v1/login",
+        //     {email,password},
+        //     {
+        //     headers:{
+        //         "Content-Type":"application/json"
+        //     }
+        // })
+
+        dispatch({
+            type:"LogoutUserSuccess",
+            // payload:data.user,
+        })
+        
+    } catch (error) {
+        dispatch({
+            type:"LogoutUserFailure",
+            payload:error.response.data.message,
+        })
+    }
+};

@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux"
 import {
   Navbar,
   Container,
@@ -16,11 +17,17 @@ import UserProfile from '@mui/icons-material/AccountCircleOutlined';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PersonSearchOutlinedIcon from '@mui/icons-material/PersonSearchOutlined';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
-
+import { logoutUser } from "../../../Actions/User"
+import "./Header.css"
 
 
 function Header() {
+  
+  const dispatch = useDispatch()
   const [tab, setTab] = useState(window.location.pathname)
+  const logoutHandler = () => {
+    dispatch(logoutUser());
+  }
   return (
 
     <Navbar expand="lg" className="sticky-top  w-100 bg-white  ">
@@ -36,35 +43,24 @@ function Header() {
             navbarScroll
           ></Nav>
           <Nav>
-            <Link to="/" style={{ color: "black" , paddingLeft:"22.5px" }}  onClick={()=>setTab("/")}>
-        {tab === "/" ? <HomeIcon  /> : <HomeOutlinedIcon />}
-
-              
+            <Link to="/" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/")}>
+              {tab === "/" ? <HomeIcon /> : <HomeOutlinedIcon />}
             </Link>
-            <Link to="/Search" style={{ color: "black" , paddingLeft:"22.5px"}} onClick={()=>setTab("/search")} >
-        {tab === "/search" ? <PersonSearchIcon /> : <PersonSearchOutlinedIcon />}
-
-              
+            <Link to="/Search" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/search")} >
+              {tab === "/search" ? <PersonSearchIcon /> : <PersonSearchOutlinedIcon />}
             </Link>
-            <Link to="/messages" style={{ color: "black" , paddingLeft:"22.5px"}} onClick={()=>setTab("/messages")} >
-        {tab === "/messages" ? <ChatIcon  /> : <ChatOutlinedIcon />}
-
-              
+            <Link to="/messages" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/messages")} >
+              {tab === "/messages" ? <ChatIcon /> : <ChatOutlinedIcon />}
             </Link>
-            <Link to="/notification" style={{ color: "black" , paddingLeft:"22.5px" }} onClick={()=>setTab("/notification")} >
-        {tab === "/notification" ? <NotificationsIcon /> : <NotificationsNoneOutlinedIcon />}
-
-              
+            <Link to="/notification" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/notification")} >
+              {tab === "/notification" ? <NotificationsIcon /> : <NotificationsNoneOutlinedIcon />}
             </Link>
-            <Link to="/account" style={{ color: "black" , paddingLeft:"22.5px" }} onClick={()=>setTab("/account")} >
-            {tab === "/account" ? <AccountCircleIcon /> : <UserProfile />}
-
-            
-              
+            <Link to="/account" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/account")} >
+              {tab === "/account" ? <AccountCircleIcon /> : <UserProfile />}
             </Link>
-            <Link to="/logout" style={{ color: "black" , paddingLeft:"22.5px" }} onClick={()=>setTab("/logout")} >
-              <LogoutIcon />
-            </Link>
+            <p style={{ paddingLeft: "22.5px", cursor: "pointer" }}>
+              <LogoutIcon onClick={(logoutHandler)} />
+            </p>
           </Nav>
         </Navbar.Collapse>
       </Container>

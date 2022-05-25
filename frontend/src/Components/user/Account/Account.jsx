@@ -119,7 +119,7 @@ function Account() {
                     />
                       ))
                       ) : ( 
-                      <Typography> You have no followers</Typography>
+                      <Typography style={{margin:"2vmax"}}> You have no followers</Typography>
                       )}
 
 
@@ -140,7 +140,7 @@ function Account() {
                     />
                       ))
                       ) : ( 
-                      <Typography> You're not following anyone</Typography>
+                      <Typography style={{margin:"2vmax"}}> You're not following anyone</Typography>
                       )}
 
 
