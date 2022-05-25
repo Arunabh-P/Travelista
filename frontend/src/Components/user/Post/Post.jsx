@@ -11,8 +11,8 @@ import { Link } from "react-router-dom";
 import "./Post.css"
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCommentOnPost, likePost } from "../../../Actions/Post"
-import { getFollowingPosts, getMyPosts } from "../../../Actions/User";
+import { addCommentOnPost, deletePost, likePost, updatePost } from "../../../Actions/Post"
+import { getFollowingPosts, getMyPosts, loadUser } from "../../../Actions/User";
 import User from "../User/User";
 import CommentCard from "../CommentCard/CommentCard";
 
@@ -35,6 +35,9 @@ function Post({
     const [commentValue, setCommentValue] = useState("");
     const [commentToggle, setCommentToggle] = useState(false);
 
+    const [captionValue, setCaptionValue] = useState(caption);
+    const [captionToggle, setCaptionToggle] = useState(false);
+
 
 
     const dispatch = useDispatch();
@@ -42,16 +45,14 @@ function Post({
 
     const handleLike = async () => {
         setLiked(!liked);
+
         await dispatch(likePost(postId));
 
         if (isAccount) {
             dispatch(getMyPosts())
         } else {
-
             dispatch(getFollowingPosts())
         }
-
-
     }
 
     const addCommentHandler = async (e) => {
@@ -61,9 +62,21 @@ function Post({
         if (isAccount) {
             dispatch(getMyPosts())
         } else {
-
             dispatch(getFollowingPosts())
         }
+    }
+
+    const updateCaptionHandler = (e) => {
+        e.preventDefault();
+        dispatch(updatePost(captionValue, postId))
+        dispatch(getMyPosts())
+
+    }
+
+    const deletePostHandler = async () => {
+        await dispatch(deletePost(postId));
+        dispatch(getMyPosts())
+        dispatch(loadUser())
     }
 
     useEffect(() => {
@@ -76,9 +89,13 @@ function Post({
 
 
     return (
-        <div className="post" style={{width:width}}>
+        <div className="post" style={{ width: width }}>
             <div className="postHeader">
-                {isAccount ? <Button> <MoreVert /> </Button> : null}
+                {isAccount ? (
+                    <Button onClick={() => setCaptionToggle(!captionToggle)}>
+                        <MoreVert />
+                    </Button>
+                ) : null}
             </div>
             <img src={postImage} alt="Post" />
 
@@ -126,7 +143,7 @@ function Post({
                 </Button>
 
                 {isDelete ? (
-                    <Button>
+                    <Button onClick={deletePostHandler}>
                         <DeleteOutline />
                     </Button>
                 ) : null}
@@ -160,8 +177,8 @@ function Post({
                             onChange={(e) => setCommentValue(e.target.value)}
                             placeholder="Comment Here..."
                             required
-                            
-                        
+
+
                         />
 
                         <Button className="add-button" type="submit" variant="contained"  >
@@ -188,6 +205,32 @@ function Post({
 
                 </div>
             </Dialog>
+
+            <Dialog
+                open={captionToggle}
+                onClose={() => setCaptionToggle(!captionToggle)}
+            >
+                <div className="DialogBox">
+                    <Typography variant="h4">Update caption</Typography>
+                    <form className="commentForm" onSubmit={updateCaptionHandler}>
+                        <input
+                            type="text"
+                            value={captionValue}
+                            onChange={(e) => setCaptionValue(e.target.value)}
+                            placeholder="Caption Here..."
+                            required
+
+
+                        />
+
+                        <Button className="add-button" type="submit" variant="contained"  >
+                            Update
+                        </Button>
+                    </form>
+
+                </div>
+            </Dialog>
+
         </div>
 
 

@@ -137,3 +137,60 @@ export const getMyPosts = () => async (dispatch) => {
         })
     }
 };
+
+
+export const registerUser = (name, email, password, avatar) => async(dispatch) => {
+    try {
+        dispatch({
+            type:"RegisterRequest"
+        })
+
+        const {data} = await axios.post(
+            "/api/v1/register",
+            {name, email, password, avatar},
+            {
+            headers:{
+                "Content-Type":"application/json"
+            }
+        })
+
+        dispatch({
+            type:"RegisterSuccess",
+            payload:data.user,
+        })
+        
+    } catch (error) {
+        dispatch({
+            type:"RegisterFailure",
+            payload:error.response.data.message,
+        })
+    }
+};
+
+export const updateProfileUser = (name, email, avatar) => async(dispatch) => {
+    try {
+        dispatch({
+            type:"updateProfileRequest"
+        })
+
+        const {data} = await axios.put(
+            "/api/v1/update/profile",
+            {name, email, avatar},
+            {
+            headers:{
+                "Content-Type":"application/json"
+            }
+        })
+
+        dispatch({
+            type:"updateProfileSuccess",
+            payload:data.message,
+        })
+        
+    } catch (error) {
+        dispatch({
+            type:"updateProfileFailure",
+            payload:error.response.data.message,
+        })
+    }
+};

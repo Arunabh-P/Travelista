@@ -16,7 +16,9 @@ function Home() {
   const alert = useAlert();
 
 
-  const { posts, error } = useSelector(state => state.postOfFollowing)
+  const { loading, posts, error } = useSelector(
+    (state) => state.postOfFollowing
+    );
 
   const { users, loading: usersLoading } = useSelector(
     (state) => state.allUsers
@@ -64,31 +66,26 @@ function Home() {
         <NewPost />
 
         {
-          posts && posts.length > 0 ? posts.map((post) => (
+          posts && posts.length > 0 ? (
+            posts.map((post) => (
+         
             <Post
-              key={post._id}
-              postId={post._id}
-              caption={post.caption}
-              postImage={post.image.url}
-              likes={post.likes}
-              comments={post.comments}
-              ownerImage={post.owner.avatar.url}
-              ownerName={post.owner.name}
-              ownerId={post.owner._id}
+            key={post._id}
+            postId={post._id}
+            caption={post.caption}
+            postImage={post.image.url}
+            likes={post.likes}
+            comments={post.comments}
+            ownerImage={post.owner.avatar.url}
+            ownerName={post.owner.name}
+            ownerId={post.owner._id}
               width={'100%'}
             />
-          )) : (
+          ))
+          )  : (
             <Typography variant='h6'>No posts yet</Typography>
           )
         }
-        <Post
-          postImage="https://images.pexels.com/photos/3278215/pexels-photo-3278215.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          ownerName={"Arunabh"}
-          caption={"This is my sample post"}
-        />
-
-
-
       </div>
       <div className="homeright">
         {users && users.length > 0 ? (

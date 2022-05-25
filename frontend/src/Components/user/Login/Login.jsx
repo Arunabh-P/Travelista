@@ -15,14 +15,24 @@ export default function Login() {
     const dispatch = useDispatch();
   const alert = useAlert();
 
-
+  const { error } = useSelector((state) => state.user);
+  const { message } = useSelector((state) => state.like);
 
     const loginHandler = (e) => {
         e.preventDefault();
     dispatch(loginUser(email, password));
-    alert.success("Logged In successfully")
 
     };
+    useEffect(() => {
+        if (error) {
+          alert.error(error);
+          dispatch({ type: "clearErrors" });
+        }
+        if (message) {
+          alert.success(message);
+          dispatch({ type: "clearMessage" });
+        }
+      }, [alert, error, dispatch, message]);
 
     return (
         <div className='login' style={{ backgroundImage: `url(${bg})` }}>
@@ -55,7 +65,7 @@ export default function Login() {
                         <button className='login-dataform-button' type='submit'>Log In</button>
 
 
-                        <small className='dont-have-acc'>Do not have account <Link to="/signup">Create HERE</Link></small>
+                        <small className='dont-have-acc'>Do not have account <Link to="/register">Create HERE</Link></small>
                     </div>
                 </form>
 

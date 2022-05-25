@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux"
-import { getMyPosts } from '../../../Actions/User';
+import { getMyPosts  } from '../../../Actions/User';
 import "./Account.css"
 import Loader from '../Loader/Loader';
 import Post from '../Post/Post';

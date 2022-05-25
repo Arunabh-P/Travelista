@@ -2,21 +2,27 @@ const User = require("../models/User")
 const Post = require("../models/Post")
 const { sendEmail } = require("../middlewares/sendEmail");
 const crypto = require("crypto");
+const cloudinary = require("cloudinary")
 
 exports.register = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password, avatar } = req.body;
         let user = await User.findOne({ email });
         if (user) {
             return res
                 .status(400)
                 .json({ success: false, message: "User already exists" });
         }
+
+        const myCloud = await cloudinary.v2.uploader.upload(avatar,{
+            folder:"avatars"
+        })
+
         user = await User.create({
             name,
             email,
             password,
-            avatar: { public_id: "sample_id", url: "sample_url" },
+            avatar: { public_id: myCloud.public_id , url: myCloud.secure_url },
         });
 
         const token = await user.generateToken()
@@ -192,7 +198,7 @@ exports.updateProfile = async (req, res) => {
     try {
         const user = await User.findById(req.user._id);
 
-        const { name, email } = req.body;
+        const { name, email, avatar } = req.body;
 
         if (name) {
             user.name = name;
@@ -200,8 +206,16 @@ exports.updateProfile = async (req, res) => {
         if (email) {
             user.email = email;
         }
+        if(avatar) {
+            await cloudinary.v2.uploader.destroy(user.avatar.public_id)
 
-        //user avatar todo
+            const myCloud = await cloudinary.v2.uploader.upload(avatar, {
+                folder:"avatars"
+            })
+            user.avatar.public_id = myCloud.public_id;
+            user.avatar.url = myCloud.secure_url;
+        }
+
 
 
 
