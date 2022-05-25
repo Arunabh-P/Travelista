@@ -12,7 +12,7 @@ import "./Post.css"
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addCommentOnPost, likePost } from "../../../Actions/Post"
-import { getFollowingPosts } from "../../../Actions/User";
+import { getFollowingPosts, getMyPosts } from "../../../Actions/User";
 import User from "../User/User";
 import CommentCard from "../CommentCard/CommentCard";
 
@@ -45,7 +45,7 @@ function Post({
         await dispatch(likePost(postId));
 
         if (isAccount) {
-            console.log(`bring back my post likes`);
+            dispatch(getMyPosts())
         } else {
 
             dispatch(getFollowingPosts())
@@ -59,7 +59,7 @@ function Post({
         await dispatch(addCommentOnPost(postId, commentValue))
 
         if (isAccount) {
-            console.log(`bring back my post likes`);
+            dispatch(getMyPosts())
         } else {
 
             dispatch(getFollowingPosts())

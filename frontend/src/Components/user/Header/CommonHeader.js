@@ -18,15 +18,18 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PersonSearchOutlinedIcon from '@mui/icons-material/PersonSearchOutlined';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import { logoutUser } from "../../../Actions/User"
-import "./Header.css"
+import { useAlert } from "react-alert"
 
 
 function Header() {
-  
+
   const dispatch = useDispatch()
+  const alert = useAlert();
+
   const [tab, setTab] = useState(window.location.pathname)
   const logoutHandler = () => {
     dispatch(logoutUser());
+    alert.success("Logged out successfully")
   }
   return (
 

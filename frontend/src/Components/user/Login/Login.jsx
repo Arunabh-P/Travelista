@@ -13,11 +13,15 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [showpass, setShowpass] = useState(false);
     const dispatch = useDispatch();
+  const alert = useAlert();
+
 
 
     const loginHandler = (e) => {
         e.preventDefault();
-        dispatch(loginUser(email, password));
+    dispatch(loginUser(email, password));
+    alert.success("Logged In successfully")
+
     };
 
     return (

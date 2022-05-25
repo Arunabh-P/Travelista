@@ -14,6 +14,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react"
 import { loadUser } from "./Actions/User";
 import Account from "./Components/user/Account/Account";
+import NewPost from "./Components/user/NewPost/NewPost";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,7 +40,10 @@ function App() {
         <Route path="/admin" element={<AdminHome />}></Route>
         <Route path="/edit/:id" element={<Userupdate />}></Route>
         <Route path="/adminlogin" element={<AdminLogin />}></Route>
-        {/* <Route path="/userProfilePage" element={<UserProfilePage />}> </Route> */}
+
+        <Route path="/newpost"
+        element={isAuthenticated ? <NewPost/> : <Login /> } 
+        />
       </Routes>
     </Router>
   );

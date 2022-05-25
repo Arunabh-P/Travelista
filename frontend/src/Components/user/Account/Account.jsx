@@ -10,13 +10,7 @@ import { Button, Dialog, Typography } from "@mui/material";
 import { Link } from 'react-router-dom';
 import { Container } from "react-bootstrap"
 import cover from "../../../Images/cover.jpg"
-import profilePic from "../../../Images/profilePic.jpeg"
-import { SimpleGrid } from '@mantine/core';
 import { useAlert } from 'react-alert';
-
-
-
-
 
 function Account() {
 
@@ -55,9 +49,7 @@ function Account() {
   }, [alert, error, message, likeError, dispatch]);
 
 
-  return loading === true || userLoading === true ? (
-    <Loader />
-  ) : (
+  return  (
     <div className="fullBodyProfile">
       <Container>
         <div className='CoverPage  '>
@@ -107,84 +99,74 @@ function Account() {
 
               <Dialog open={followersToggle} onClose={() => setFollowersToggle(!followersToggle)}>
                 <div className="DialogBox">
-                    <Typography variant="h4">Followers</Typography>
+                  <Typography variant="h4">Followers</Typography>
 
-                    {
-                      user && user.followers.length > 0 ? user.followers.map((follower)=>((
-                        <User
+                  {
+                    user && user.followers.length > 0 ? user.followers.map((follower) => ((
+                      <User
                         key={follower._id}
                         userId={follower._id}
                         name={follower.name}
                         avatar={follower.avatar.url}
-                    />
-                      ))
-                      ) : ( 
-                      <Typography style={{margin:"2vmax"}}> You have no followers</Typography>
-                      )}
+                      />
+                    ))
+                    ) : (
+                      <Typography style={{ margin: "2vmax" }}> You have no followers</Typography>
+                    )}
 
 
                 </div>
-            </Dialog>
+              </Dialog>
 
-            <Dialog open={followingToggle} onClose={() => setFollowingToggle(!followingToggle)}>
+              <Dialog open={followingToggle} onClose={() => setFollowingToggle(!followingToggle)}>
                 <div className="DialogBox">
-                    <Typography variant="h4">Following</Typography>
+                  <Typography variant="h4">Following</Typography>
 
-                    {
-                      user && user.following.length > 0 ? user.following.map((follow)=>((
-                        <User
+                  {
+                    user && user.following.length > 0 ? user.following.map((follow) => ((
+                      <User
                         key={follow._id}
                         userId={follow._id}
                         name={follow.name}
                         avatar={follow.avatar.url}
-                    />
-                      ))
-                      ) : ( 
-                      <Typography style={{margin:"2vmax"}}> You're not following anyone</Typography>
-                      )}
-
+                      />
+                    ))
+                    ) : (
+                      <Typography style={{ margin: "2vmax" }}> You're not following anyone</Typography>
+                    )}
 
                 </div>
-            </Dialog>
-
-
-
+              </Dialog>
             </div>
-
           </div>
           <div className='row'>
 
-              {posts && posts.length > 0 ? (
-                posts.map((post) => (
-                  <div className='col-12 col-md-6' >
-                    <Post
+            {posts && posts.length > 0 ? (
+              posts.map((post) => (
+                <div className='col-12 col-md-6' >
+                  <Post
                     className="samplepost"
-                      key={post._id}
-                      postId={post._id}
-                      caption={post.caption}
-                      postImage={post.image.url}
-                      likes={post.likes}
-                      comments={post.comments}
-                      ownerImage={post.owner.avatar.url}
-                      ownerName={post.owner.name}
-                      ownerId={post.owner._id}
-                      width={'100%'}
-                    />
-                  </div>
-                ))
-              ) : (
-                <Typography variant="h6">You have not made any post</Typography>
-              )}
+                    key={post._id}
+                    postId={post._id}
+                    caption={post.caption}
+                    postImage={post.image.url}
+                    likes={post.likes}
+                    comments={post.comments}
+                    ownerImage={post.owner.avatar.url}
+                    ownerName={post.owner.name}
+                    ownerId={post.owner._id}
+                    width={'100%'}
+                    isAccount={true}
+                    isDelete={true}
+                  />
+                </div>
+              ))
+            ) : (
+              <Typography variant="h6">You have not made any post</Typography>
+            )}
 
-
-
-              
           </div>
-
         </div>
-
-
-
       </Container>
     </div >
   )

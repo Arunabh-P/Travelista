@@ -9,6 +9,7 @@ import { Typography } from "@mui/material";
 import { useAlert } from "react-alert"
 import cover from "../../../Images/cover.jpg"
 import { Avatar } from '@mui/material'
+import NewPost from "../NewPost/NewPost"
 
 function Home() {
   const dispatch = useDispatch();
@@ -60,6 +61,7 @@ function Home() {
 
       </div>
       <div className="homeleft">
+        <NewPost />
 
         {
           posts && posts.length > 0 ? posts.map((post) => (
