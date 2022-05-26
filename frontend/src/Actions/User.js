@@ -146,6 +146,27 @@ export const getUserProfile = (id) => async (dispatch) => {
     }
   };
 
+
+  export const followAndUnFollowUser = (id) => async (dispatch) => {
+    try {
+      dispatch({
+        type: "followUserRequest",
+      });
+  
+      const { data } = await axios.get(`/api/v1/follow/${id}`);
+      dispatch({
+        type: "followUserSuccess",
+        payload: data.message,
+      });
+    } catch (error) {
+      dispatch({
+        type: "followUserFailure",
+        payload: error.response.data.message,
+      });
+    }
+  };
+
+
 export const logoutUser = (email, password) => async (dispatch) => {
     try {
         dispatch({

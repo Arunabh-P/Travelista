@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux"
-import {  getUserPosts, getUserProfile } from '../../../Actions/User';
+import { followAndUnFollowUser, getUserPosts, getUserProfile } from '../../../Actions/User';
 import Loader from '../Loader/Loader';
 import Post from '../Post/Post';
 import User from "../User/User"
@@ -17,13 +17,13 @@ function UserProfile() {
 
     const dispatch = useDispatch()
     const alert = useAlert()
-    const { user, loading: userLoading } = useSelector((state) => state.userProfile);
-    const { user : me} = useSelector((state)=>state.user)
+    const { user, loading: userLoading, error: userError } = useSelector((state) => state.userProfile);
+    const { user: me } = useSelector((state) => state.user)
     const { loading, error, posts } = useSelector((state) => state.userPosts);
     const {
-        error: likeError,
+        error: followError,
         message,
-        loading: deleteLoading,
+        loading: followLoading,
     } = useSelector((state) => state.like);
     const params = useParams();
 
@@ -32,17 +32,33 @@ function UserProfile() {
     const [following, setFollowing] = useState(false);
     const [myProfile, setMyProfile] = useState(false);
 
-    const followHandler = () => {
+    const followHandler = async () => {
         setFollowing(!following)
+        await dispatch(followAndUnFollowUser(user._id))
+        dispatch(getUserProfile(params.id));
+
     }
 
     useEffect(() => {
         dispatch(getUserPosts(params.id));
         dispatch(getUserProfile(params.id));
-        if(me._id === params.id){
+    }, [dispatch, params.id]);
+
+    useEffect(() => {
+        if (me._id === params.id) {
             setMyProfile(true)
         }
-    }, [dispatch, params.id, me._id]);
+        if (user) {
+            user.followers.forEach((item) => {
+                if (item._id === me._id) {
+                    setFollowing(true)
+                } else {
+                    setFollowing(false);
+                }
+            })
+        }
+    }, [user, me._id, params.id,])
+
 
     useEffect(() => {
         if (error) {
@@ -50,111 +66,116 @@ function UserProfile() {
             dispatch({ type: "clearErrors" });
         }
 
-        if (likeError) {
-            alert.error(likeError);
+        if (followError) {
+            alert.error(followError);
+            dispatch({ type: "clearErrors" });
+        }
+        if (userError) {
+            alert.error(userError);
             dispatch({ type: "clearErrors" });
         }
         if (message) {
             alert.success(message);
             dispatch({ type: "clearMessage" });
         }
-    }, [alert, error, message, likeError, dispatch]);
+    }, [alert, error, message, followError, userError, dispatch]);
 
     return (
         <div className="fullBodyProfileuser">
             <Container>
                 <div className='user-profile-page  '>
-                   
+
                     <div className='user-profile-page_top'>
-                    { user &&(
-                        <>
-                      
-                        <img src={cover} alt="*here cover image" />
-                        <div className='user-profile-pageTopSec'>
-                            <Avatar radius="xl" src={user.avatar.url} className='Cuser-profile-page_avatar' style={{ width: "130px", height: "130px" }} />
-                        </div>
-                        <div className='d-md-flex justify-content-between'>
-                            <div>
-                                <h2 className='user-profile-page-profile-name'>{user.name}</h2>
-                                <h4 className='user-profile-page-profile-cat'>Solo Traveler</h4>
-                            </div>
-                            <div  >
-                                <Button onClick={() => setFollowersToggle(!followersToggle)}>
-                                    <Typography>Followers</Typography>
-                                </Button>
+                        {user && (
+                            <>
 
-                                <Typography className='text-center' >{user.followers.length}</Typography>
-
-                            </div>
-
-                            <div>
-                                <Button onClick={() => setFollowingToggle(!followingToggle)}>
-                                    <Typography>Following</Typography>
-                                </Button>
-                                <Typography className='text-center'>{user.following.length}</Typography>
-                            </div>
-
-                            <div>
-                                <Button>
-                                    <Typography>Posts</Typography>
-                                </Button>
-                                <Typography className='text-center'>{user.posts.length}</Typography>
-                            </div>
-                            {
-                                myProfile ? null : (
-                                    <Button variant="contained"
-                                    style={{background:following ? "red" : "green"}}
-                                    onClick={followHandler}
-                                    >
-                                        {
-                                            following ? "Unfollow" : "Follow"
-                                        }
-                                    </Button>
-                                )
-                            }
-                            <Dialog open={followersToggle} onClose={() => setFollowersToggle(!followersToggle)}>
-                                <div className="DialogBox">
-                                    <Typography variant="h4">Followers</Typography>
-
-                                    {
-                                        user && user.followers.length > 0 ? user.followers.map((follower) => ((
-                                            <User
-                                                key={follower._id}
-                                                userId={follower._id}
-                                                name={follower.name}
-                                                avatar={follower.avatar.url}
-                                            />
-                                        ))
-                                        ) : (
-                                            <Typography style={{ margin: "2vmax" }}> You have no followers</Typography>
-                                        )}
-
-
+                                <img src={cover} alt="*here cover image" />
+                                <div className='user-profile-pageTopSec'>
+                                    <Avatar radius="xl" src={user.avatar.url} className='Cuser-profile-page_avatar' style={{ width: "130px", height: "130px" }} />
                                 </div>
-                            </Dialog>
+                                <div className='d-md-flex justify-content-between'>
+                                    <div>
+                                        <h2 className='user-profile-page-profile-name'>{user.name}</h2>
+                                        <h4 className='user-profile-page-profile-cat'>Solo Traveler</h4>
+                                    </div>
+                                    <div  >
+                                        <Button onClick={() => setFollowersToggle(!followersToggle)}>
+                                            <Typography>Followers</Typography>
+                                        </Button>
 
-                            <Dialog open={followingToggle} onClose={() => setFollowingToggle(!followingToggle)}>
-                                <div className="DialogBox">
-                                    <Typography variant="h4">Following</Typography>
+                                        <Typography className='text-center' >{user.followers.length}</Typography>
 
+                                    </div>
+
+                                    <div>
+                                        <Button onClick={() => setFollowingToggle(!followingToggle)}>
+                                            <Typography>Following</Typography>
+                                        </Button>
+                                        <Typography className='text-center'>{user.following.length}</Typography>
+                                    </div>
+
+                                    <div>
+                                        <Button>
+                                            <Typography>Posts</Typography>
+                                        </Button>
+                                        <Typography className='text-center'>{user.posts.length}</Typography>
+                                    </div>
                                     {
-                                        user && user.following.length > 0 ? user.following.map((follow) => ((
-                                            <User
-                                                key={follow._id}
-                                                userId={follow._id}
-                                                name={follow.name}
-                                                avatar={follow.avatar.url}
-                                            />
-                                        ))
-                                        ) : (
-                                            <Typography style={{ margin: "2vmax" }}> You're not following anyone</Typography>
-                                        )}
+                                        myProfile ? null : (
+                                            <Button variant="contained"
+                                                style={{ background: following ? "red" : "green" }}
+                                                onClick={followHandler}
+                                                disabled={followLoading}
+                                            >
+                                                {
+                                                    following ? "Unfollow" : "Follow"
+                                                }
+                                            </Button>
+                                        )
+                                    }
+                                    <Dialog open={followersToggle} onClose={() => setFollowersToggle(!followersToggle)}>
+                                        <div className="DialogBox">
+                                            <Typography variant="h4">Followers</Typography>
 
+                                            {
+                                                user && user.followers.length > 0 ? user.followers.map((follower) => ((
+                                                    <User
+                                                        key={follower._id}
+                                                        userId={follower._id}
+                                                        name={follower.name}
+                                                        avatar={follower.avatar.url}
+                                                    />
+                                                ))
+                                                ) : (
+                                                    <Typography style={{ margin: "2vmax" }}> You have no followers</Typography>
+                                                )}
+
+
+                                        </div>
+                                    </Dialog>
+
+                                    <Dialog open={followingToggle} onClose={() => setFollowingToggle(!followingToggle)}>
+                                        <div className="DialogBox">
+                                            <Typography variant="h4">Following</Typography>
+
+                                            {
+                                                user && user.following.length > 0 ? user.following.map((follow) => ((
+                                                    <User
+                                                        key={follow._id}
+                                                        userId={follow._id}
+                                                        name={follow.name}
+                                                        avatar={follow.avatar.url}
+                                                    />
+                                                ))
+                                                ) : (
+                                                    <Typography style={{ margin: "2vmax" }}> You're not following anyone</Typography>
+                                                )}
+
+                                        </div>
+                                    </Dialog>
                                 </div>
-                            </Dialog>
-                        </div>
                             </>
-                    )}
+                        )}
                     </div>
                     <div className='row'>
 
