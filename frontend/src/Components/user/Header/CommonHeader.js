@@ -49,7 +49,7 @@ function Header() {
             <Link to="/" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/")}>
               {tab === "/" ? <HomeIcon /> : <HomeOutlinedIcon />}
             </Link>
-            <Link to="/Search" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/search")} >
+            <Link to="/search" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/search")} >
               {tab === "/search" ? <PersonSearchIcon /> : <PersonSearchOutlinedIcon />}
             </Link>
             <Link to="/messages" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/messages")} >

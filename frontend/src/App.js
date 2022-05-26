@@ -21,6 +21,7 @@ import UpdatePassword from "./Components/user/UpdatePassword/UpdatePassword"
 import ForgotPassword from "./Components/user/ForgotPassword/ForgotPassword";
 import ResetPassword from "./Components/user/ResetPassword/ResetPassword";
 import UserProfile from "./Components/user/UserProfile/UserProfile";
+import Search from "./Components/user/Search/Search"
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -71,6 +72,8 @@ function App() {
 <Route path="/user/:id"
           element={isAuthenticated ? <UserProfile /> : <Login />}
         />
+
+        <Route path="/search" element={<Search />} />
 
       </Routes>
     </Router>
