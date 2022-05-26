@@ -5,7 +5,7 @@ import "./CommentCard.css";
 import { Delete } from "@mui/icons-material"
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCommentOnPost } from '../../../Actions/Post';
-import { getFollowingPosts } from '../../../Actions/User';
+import { getFollowingPosts, getMyPosts } from '../../../Actions/User';
 
 
 function CommentCard({
@@ -27,6 +27,8 @@ function CommentCard({
     dispatch(deleteCommentOnPost(postId, commentId));
 
     if (isAccount) {
+      dispatch(getMyPosts());
+
     } else {
       dispatch(getFollowingPosts());
     }

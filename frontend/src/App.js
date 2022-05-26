@@ -22,6 +22,7 @@ import ForgotPassword from "./Components/user/ForgotPassword/ForgotPassword";
 import ResetPassword from "./Components/user/ResetPassword/ResetPassword";
 import UserProfile from "./Components/user/UserProfile/UserProfile";
 import Search from "./Components/user/Search/Search"
+import NotFound from "./Components/user/NotFound/NotFound";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -74,6 +75,8 @@ function App() {
         />
 
         <Route path="/search" element={<Search />} />
+
+        <Route path="*" element={<NotFound />} />
 
       </Routes>
     </Router>
