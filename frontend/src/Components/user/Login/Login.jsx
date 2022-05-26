@@ -32,7 +32,7 @@ export default function Login() {
           alert.success(message);
           dispatch({ type: "clearMessage" });
         }
-      }, [alert, error, dispatch, message]);
+      }, [dispatch, alert, error, message]);
 
     return (
         <div className='login' style={{ backgroundImage: `url(${bg})` }}>
