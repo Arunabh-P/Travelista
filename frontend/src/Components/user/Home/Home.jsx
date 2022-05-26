@@ -99,11 +99,7 @@ function Home() {
           ))
         ) : (<Typography variant='h6' >No Users yet</Typography>
         )}
-        <User
-          userId={"user._id"}
-          name={"Arunabh"}
-          avatar={profilePic}
-        />
+       
 
       </div>
     </div>

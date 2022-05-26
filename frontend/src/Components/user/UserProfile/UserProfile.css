@@ -1,0 +1,68 @@
+.account {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    height: 92vh;
+}
+
+.user-profile-page_avatar {
+    margin-bottom: 10px;
+    margin-left: 50px;
+
+}
+
+.user-profile-page-profile-name {
+    padding-top: 5px;
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 50px;
+}
+
+.user-profile-page-profile-cat {
+    color: grey;
+    font-size: 18px;
+    margin-left: 50px;
+}
+
+.user-profile-page {
+    padding-top: 25px;
+
+}
+
+.samplepost {
+    width: 100% !important;
+}
+
+.user-profile-page_avatar {
+    margin-bottom: 10px;
+    margin-left: 50px;
+
+}
+
+.user-profile-page_top {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    background-color: white;
+    padding-bottom: 10px;
+    margin-bottom: 2vmax;
+
+
+
+}
+
+.user-profile-page_top>img {
+    margin-bottom: -62.5px;
+    width: 100%;
+    height: 250px;
+
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: cover;
+
+}
+
+.fullBodyProfileuser {
+    background-color: #f3f2ef;
+}

@@ -30,7 +30,7 @@ export default function Login() {
         }
         if (message) {
           alert.success(message);
-          dispatch({ type: "clearMessage" });
+          dispatch({ type: "clearMessage" }); 
         }
       }, [dispatch, alert, error, message]);
 

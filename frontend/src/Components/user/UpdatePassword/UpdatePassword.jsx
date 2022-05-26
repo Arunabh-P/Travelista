@@ -60,12 +60,12 @@ function UpdatePassword() {
               value={newPassword}
               type={showNewpassword ? "type" : "password"}
               onChange={(e) => setNewPassword(e.target.value)}
-              placeholder='Old Password'
+              placeholder='New Password'
             />
 
             <small className='update-password-show-pass' onClick={() => setShowNewpassword(!showNewpassword)}> {showNewpassword ? "Hide" : "Show"}</small>
 
-            <button className='update-password-dataform-button' disabled={loading} type='submit'>Change Pasword</button>
+            <button className='update-password-dataform-button' disabled={loading} type='submit'>Change Password</button>
 
           </div>
         </form>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux"
-import { getMyPosts  } from '../../../Actions/User';
+import { deleteMyProfile, getMyPosts, logoutUser  } from '../../../Actions/User';
 import "./Account.css"
 import Loader from '../Loader/Loader';
 import Post from '../Post/Post';
@@ -26,6 +26,11 @@ function Account() {
 
   const [followersToggle, setFollowersToggle] = useState(false)
   const [followingToggle, setFollowingToggle] = useState(false)
+
+  const deleteProfileHandler = async () => {
+    await dispatch(deleteMyProfile());
+    dispatch(logoutUser())
+  }
 
 
   useEffect(() => {
@@ -93,6 +98,8 @@ function Account() {
               <Button
                 variant="text"
                 style={{ color: "red", margin: "2vmax" }}
+                onClick={deleteProfileHandler}
+                disabled={deleteLoading}
               >
                 Delete My Profile
               </Button>

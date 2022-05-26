@@ -18,6 +18,9 @@ import NewPost from "./Components/user/NewPost/NewPost";
 import Register from "./Components/user/Register/Register"
 import UpdateProfile from "./Components/user/UpdateProfile/UpdateProfile"
 import UpdatePassword from "./Components/user/UpdatePassword/UpdatePassword"
+import ForgotPassword from "./Components/user/ForgotPassword/ForgotPassword";
+import ResetPassword from "./Components/user/ResetPassword/ResetPassword";
+import UserProfile from "./Components/user/UserProfile/UserProfile";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -55,6 +58,18 @@ function App() {
 
 <Route path="/update/password"
           element={isAuthenticated ? <UpdatePassword /> : <Login />}
+        />
+
+<Route path="/forgot/password"
+          element={isAuthenticated ? <UpdatePassword /> : <ForgotPassword />}
+        />
+
+<Route path="/password/reset/:token"
+          element={isAuthenticated ? <UpdatePassword /> : <ResetPassword />}
+        />
+
+<Route path="/user/:id"
+          element={isAuthenticated ? <UserProfile /> : <Login />}
         />
 
       </Routes>
