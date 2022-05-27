@@ -17,6 +17,11 @@ const postSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  /////
+  tripDate: {
+    type: Date,
+  },
+  ////
   likes: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -36,6 +41,36 @@ const postSchema = new mongoose.Schema({
       },
     },
   ],
+  ///////
+  host: [
+    {
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+      },
+      description: {
+        type: String,
+        required: true,
+      }
+
+    }
+  ],
+  buddy: [
+    {
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+      },
+      description: {
+        type: String,
+        required: true,
+      }
+
+    }
+  ]
+
+  ///////
+
 });
 
 module.exports = mongoose.model("Post", postSchema);

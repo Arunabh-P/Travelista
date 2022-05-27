@@ -15,6 +15,11 @@ exports.createPost = async (req, res) => {
                 url: myCloud.secure_url,
             },
             owner: req.user._id,
+            ////
+            tripDate: req.body.tripDate
+            ////
+            
+
         };
         const post = await Post.create(newPostData);
 

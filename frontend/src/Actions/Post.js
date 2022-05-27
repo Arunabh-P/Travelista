@@ -71,7 +71,7 @@ export const deleteCommentOnPost = (id, commentId) => async (dispatch) => {
     }
 }
 
-export const createNewPost = (caption, image) => async (dispatch) => {
+export const createNewPost = (caption, image, tripDate) => async (dispatch) => {
     try {
         dispatch({
             type: "newPostRequest",
@@ -79,6 +79,7 @@ export const createNewPost = (caption, image) => async (dispatch) => {
         const { data } = await axios.post(`/api/v1/post/upload`,{
             caption,
             image,
+            tripDate,
         },{
             headers: {
                 "Content-type" : "application/json",

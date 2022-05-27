@@ -23,6 +23,7 @@ function Post({
     likes = [],
     comments = [],
     ownerImage,
+    tripDate,
     ownerName,
     ownerId,
     isDelete = false,
@@ -115,8 +116,15 @@ function Post({
                     color="rgba(0, 0, 0, 0.582)"
                     style={{ alignSelf: "center" }}
                 >
-                    {caption}
+                    {caption} </Typography>
+                <Typography
+                    fontWeight={100}
+                    color="rgba(0, 0, 0, 0.582)"
+                    style={{ alignSelf: "center" }}
+                >
+                  #planed to trip on :   {tripDate}
                 </Typography>
+                
 
             </div>
             <Button

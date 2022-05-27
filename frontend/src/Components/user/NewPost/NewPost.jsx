@@ -5,14 +5,21 @@ import { useDispatch, useSelector } from "react-redux"
 import { createNewPost } from '../../../Actions/Post';
 import { useAlert } from "react-alert"
 import {loadUser} from "../../../Actions/User"
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 
 function NewPost() {
 
   const [image, setImage] = useState(null);
   const [caption,  setCaption] = useState("")
+  const [tripDate,  setTripDate] = useState("")
+
+
+  
   const dispatch = useDispatch()
   const alert = useAlert();
+
 
   const {loading,error, message} = useSelector((state) => state.like)
 
@@ -28,9 +35,10 @@ function NewPost() {
       }
     }
   }
+
   const submitHandler = async (e) => {
     e.preventDefault()
-    await dispatch(createNewPost(caption,image))
+    await dispatch(createNewPost(caption,image,tripDate))
     dispatch(loadUser());
 
 
@@ -64,6 +72,8 @@ function NewPost() {
       value={caption}
       onChange={(e) => setCaption(e.target.value)}
        />
+       <input type="date" value={tripDate} onChange={(e) => setTripDate(e.target.value)} />
+
     <Button disabled={loading} type="submit">Post</Button>
   </form>
 </div>

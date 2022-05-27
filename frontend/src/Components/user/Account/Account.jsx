@@ -156,6 +156,7 @@ function Account() {
                     key={post._id}
                     postId={post._id}
                     caption={post.caption}
+                    tripDate={post.tripDate}
                     postImage={post.image.url}
                     likes={post.likes}
                     comments={post.comments}
