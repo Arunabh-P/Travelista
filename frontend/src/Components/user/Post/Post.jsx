@@ -6,6 +6,8 @@ import {
     FavoriteBorder,
     ChatBubbleOutline,
     DeleteOutline,
+    ConnectWithoutContact,
+    VolunteerActivism
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import "./Post.css"
@@ -122,9 +124,9 @@ function Post({
                     color="rgba(0, 0, 0, 0.582)"
                     style={{ alignSelf: "center" }}
                 >
-                  #planed to trip on :   {tripDate}
+                    #planed to trip on :   {tripDate}
                 </Typography>
-                
+
 
             </div>
             <Button
@@ -149,6 +151,15 @@ function Post({
                 <Button onClick={() => setCommentToggle(!commentToggle)}>
                     <ChatBubbleOutline />
                 </Button>
+<Link to="/proposal">
+                <Button className="InputOptions">
+
+                    <VolunteerActivism />
+                    <Typography className="buttonText" >Proposal</Typography>
+                </Button>
+                </Link>
+
+
 
                 {isDelete ? (
                     <Button onClick={deletePostHandler}>

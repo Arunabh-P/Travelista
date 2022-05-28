@@ -5,6 +5,7 @@ import Header from "./Components/user/Header/CommonHeader"
 import Home1 from "./Components/user/HomePage/Home";
 import Home from "./Components/user/Home/Home"
 import AdminHome from "./Components/admin/AdminHome";
+import Proposal from "./Components/user/Proposal/Proposal"
 // import UserProfilePage from "./Components/user/UserProfilePage/UserProfilePage"
 
 import AdminLogin from "./Components/admin/AdminLogin";
@@ -75,6 +76,11 @@ function App() {
         />
 
         <Route path="/search" element={<Search />} />
+
+        <Route path="/proposal"
+          element={isAuthenticated ? <Proposal /> : <Login />}
+        />
+        
 
         <Route path="*" element={<NotFound />} />
 
