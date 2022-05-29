@@ -4,8 +4,8 @@ const cloudinary = require("cloudinary")
 exports.createPost = async (req, res) => {
     try {
 
-        const myCloud = await cloudinary.v2.uploader.upload(req.body.image,{
-            folder:"posts",
+        const myCloud = await cloudinary.v2.uploader.upload(req.body.image, {
+            folder: "posts",
         });
 
         const newPostData = {
@@ -18,7 +18,7 @@ exports.createPost = async (req, res) => {
             ////
             tripDate: req.body.tripDate
             ////
-            
+
 
         };
         const post = await Post.create(newPostData);
@@ -31,7 +31,7 @@ exports.createPost = async (req, res) => {
 
         res.status(201).json({
             success: true,
-            message:"Post created",
+            message: "Post created",
         })
 
 
@@ -145,7 +145,7 @@ exports.getPostOfFollowing = async (req, res) => {
 
         res.status(200).json({
             success: true,
-            posts:posts.reverse(),
+            posts: posts.reverse(),
         })
 
     } catch (error) {
@@ -241,3 +241,74 @@ exports.deleteComment = async (req, res) => {
         });
     }
 };
+
+exports.createBuddyRequest = async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
+        if (!post) {
+            return res.status(404).json({
+                success: false,
+                message: "Post not found",
+            });
+        } else {
+            post.buddy.push({
+                number: req.body.number,
+                place: req.body.place,
+                name: req.body.name,
+                
+                description: req.body.description,
+                owner: req.user._id,
+            });
+        }
+
+        await post.save();
+
+        res.status(201).json({
+            success: true,
+            message: "Buddy Request Done",
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        })
+
+    }
+};
+
+exports.createHostRequest = async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
+        if (!post) {
+            return res.status(404).json({
+                success: false,
+                message: "Post not found",
+            });
+        } else {
+            post.host.push({
+                name: req.body.name,
+                number: req.body.number,
+                place: req.body.place,
+                service: req.body.service,
+                description: req.body.description,
+                owner: req.user._id,
+            });
+        }
+
+        await post.save();
+
+        res.status(201).json({
+            success: true,
+            message: "Host Request Done",
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        })
+
+    }
+};
+

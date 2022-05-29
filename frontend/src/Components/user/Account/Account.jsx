@@ -66,7 +66,7 @@ function Account() {
             <div className='d-md-flex justify-content-between'>
               <div>
                 <h2 className='cover-profile-name'>{user.name}</h2>
-                <h4 className='cover-profile-cat'>Solo Traveler</h4>
+                <h4 className='cover-profile-cat'>{user.bio}</h4>
               </div>
               <div  >
                 <Button onClick={() => setFollowersToggle(!followersToggle)}>

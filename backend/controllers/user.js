@@ -198,13 +198,16 @@ exports.updateProfile = async (req, res) => {
     try {
         const user = await User.findById(req.user._id);
 
-        const { name, email, avatar } = req.body;
+        const { name, email, avatar, bio } = req.body;
 
         if (name) {
             user.name = name;
         }
         if (email) {
             user.email = email;
+        }
+        if (bio) {
+            user.bio = bio;
         }
         if (avatar) {
             await cloudinary.v2.uploader.destroy(user.avatar.public_id)
@@ -569,3 +572,6 @@ exports.getUserPosts = async (req, res) => {
         });
     }
 };
+
+
+

@@ -18,6 +18,9 @@ export default function UpdateProfile() {
 
     const [name, setName] = useState(user.name);
     const [email, setEmail] = useState(user.email);
+    const [bio, setBio] = useState(user.bio);
+
+    
     const [avatar, setAvatar] = useState("");
     const [avatarPrev, setAvatarPrev] = useState(user.avatar.url);
 
@@ -47,7 +50,7 @@ export default function UpdateProfile() {
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        await dispatch(updateProfileUser(name, email, avatar))
+        await dispatch(updateProfileUser(name, email, avatar, bio))
         dispatch(loadUser())
     }
 
@@ -78,6 +81,7 @@ export default function UpdateProfile() {
 
                         <Avatar className="update-avatar"
                             src={avatarPrev}
+                            value={avatarPrev}
                             alt="User"
                             sx={{ height: "5vmax", width: "5vmax" }}
                         />
@@ -95,6 +99,16 @@ export default function UpdateProfile() {
                             required
                         value={name}
                           onChange={(e) => setName(e.target.value)}
+
+
+                        />
+                        <input
+                            className='update-dataform-email'
+                            type="text"
+                            placeholder="Bio"
+                            required
+                        value={bio}
+                          onChange={(e) => setBio(e.target.value)}
 
 
                         />

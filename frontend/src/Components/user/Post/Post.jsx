@@ -151,7 +151,7 @@ function Post({
                 <Button onClick={() => setCommentToggle(!commentToggle)}>
                     <ChatBubbleOutline />
                 </Button>
-<Link to="/proposal">
+<Link to={`/proposal/${postId}`}>
                 <Button className="InputOptions">
 
                     <VolunteerActivism />

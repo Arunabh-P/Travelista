@@ -77,7 +77,7 @@ function App() {
 
         <Route path="/search" element={<Search />} />
 
-        <Route path="/proposal"
+        <Route path="/proposal/:id"
           element={isAuthenticated ? <Proposal /> : <Login />}
         />
         

@@ -14,19 +14,15 @@ import NewPost from "../NewPost/NewPost"
 function Home() {
   const dispatch = useDispatch();
   const alert = useAlert();
-
-
+  const { user, loading: userLoading } = useSelector((state) => state.user);
   const { loading, posts, error } = useSelector(
     (state) => state.postOfFollowing
-    );
+  );
 
   const { users, loading: usersLoading } = useSelector(
     (state) => state.allUsers
   )
-
   const { error: likeError, message } = useSelector((state) => state.like);
-
-
   useEffect(() => {
     dispatch(getFollowingPosts())
     dispatch(getAllUsers())
@@ -48,19 +44,33 @@ function Home() {
   }, [alert, error, message, likeError, dispatch]);
 
   return (
-  
+
     <div className='home container'>
       <div className="firstOne">
-      <div className='sidebar  d-md-block'>
-       <div className='Sidebar_top'>
-         <img src={cover} alt="here cover image" />
-         <Avatar src={profilePic} className='sidebar_avatar'/>
-         <h2>Arunabh</h2>
-         <h4>Solo Traveler</h4>
-       </div>
-       
-     </div>
-
+        <div className='sidebar  d-md-block'>
+          <div className='Sidebar_top'>
+            <img src={cover} alt="here cover image" />
+            <Avatar src={user.avatar.url} className='sidebar_avatar' />
+            <h2>{user.name}</h2>
+            <h4>{user.bio}</h4>
+          </div>
+        </div>
+        <div className='sidebar pt-5  d-md-block'>
+          <div className='new'>
+            {
+              user && user.followers.length > 0 ? user.followers.map((follower) => ((
+                <User
+                  key={follower._id}
+                  userId={follower._id}
+                  name={follower.name}
+                  avatar={follower.avatar.url}
+                />
+              ))
+              ) : (
+                <Typography style={{ margin: "2vmax" }}> You have no followers</Typography>
+              )}
+          </div>
+        </div>
       </div>
       <div className="homeleft">
         <NewPost />
@@ -68,21 +78,21 @@ function Home() {
         {
           posts && posts.length > 0 ? (
             posts.map((post) => (
-         
-            <Post
-            key={post._id}
-            postId={post._id}
-            caption={post.caption}
-            postImage={post.image.url}
-            likes={post.likes}
-            comments={post.comments}
-            ownerImage={post.owner.avatar.url}
-            ownerName={post.owner.name}
-            ownerId={post.owner._id}
-              width={'100%'}
-            />
-          ))
-          )  : (
+
+              <Post
+                key={post._id}
+                postId={post._id}
+                caption={post.caption}
+                postImage={post.image.url}
+                likes={post.likes}
+                comments={post.comments}
+                ownerImage={post.owner.avatar.url}
+                ownerName={post.owner.name}
+                ownerId={post.owner._id}
+                width={'100%'}
+              />
+            ))
+          ) : (
             <Typography variant='h6'>No posts yet</Typography>
           )
         }
@@ -99,7 +109,7 @@ function Home() {
           ))
         ) : (<Typography variant='h6' >No Users yet</Typography>
         )}
-       
+
 
       </div>
     </div>

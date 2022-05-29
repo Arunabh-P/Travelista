@@ -44,26 +44,54 @@ const postSchema = new mongoose.Schema({
   ///////
   host: [
     {
-      user: {
+      hosts: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
       },
+      name: {
+        type: String,
+      },
       description: {
         type: String,
-        required: true,
+      },
+      place: {
+        type:String,
+        
+      },
+      number: {
+        type:Number,
+      }
+      ,
+      service: {
+        type:String,
+        
       }
 
     }
   ],
   buddy: [
     {
-      user: {
+      buddys: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
       },
+      name: {
+        type: String,
+      },
       description: {
         type: String,
-        required: true,
+      },
+      gender: {
+        type:String,
+        
+      },
+      number: {
+        type:Number,
+      }
+      ,
+      place: {
+        type:String,
+        
       }
 
     }

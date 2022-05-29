@@ -150,6 +150,30 @@ export const likeReducer = createReducer(initialState, {
         state.loading = false;
         state.error = action.payload;
     },
+
+    buddyRequest: (state) => {
+        state.loading = true
+    },
+    buddySuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.payload;
+    },
+    buddyFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+    },
+
+    hostRequest: (state) => {
+        state.loading = true
+    },
+    hostSuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.payload;
+    },
+    hostFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+    },
     
 
 

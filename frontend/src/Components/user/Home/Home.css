@@ -50,9 +50,13 @@
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
-    height: fit-content;
+    height: 38rem;
   }
   
+  .homeright::-webkit-scrollbar{
+    display: none;
+  }
+
   .homeUser {
     display: flex;
     align-items: center;
@@ -82,4 +86,18 @@
       min-height: 90vh;
     }
   }
-  
+  .new{
+    padding: 2vmax;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 80px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    height: 26rem;
+  }

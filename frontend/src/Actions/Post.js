@@ -148,3 +148,60 @@ export const deletePost = ( id) => async (dispatch) => {
 
     }
 }
+
+
+export const postHostRequest = ({id, name,place,number,description,service}) => async (dispatch) => {
+    try {
+        dispatch({
+            type: "hostRequest"
+        })
+
+        const { data } = await axios.post(
+            `/api/v1/host/request/${id}`,
+            {  name,place,number,description, service },
+            {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+
+        dispatch({
+            type: "hostSuccess",
+            payload: data.message,
+        })
+
+    } catch (error) {
+        dispatch({
+            type: "hostFailure",
+            payload: error.response.data.message,
+        })
+    }
+};
+
+export const postBuddyRequest  = ({id, name,place,number,description}) => async (dispatch) => {
+    try {
+        dispatch({
+            type: "buddyRequest"
+        })
+
+        const { data } = await axios.post(
+            `/api/v1/buddy/request/${id}`,
+            {  name,place,number,description },
+            {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+
+        dispatch({
+            type: "buddySuccess",
+            payload: data.message,
+        })
+
+    } catch (error) {
+        dispatch({
+            type: "buddyFailure",
+            payload: error.response.data.message,
+        })
+    }
+};
