@@ -1,103 +1,20 @@
-.sidebar{
+.home-right {
   position: sticky;
-  width: 100%;
-  top:80px;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-  text-align: center;
-  height: fit-content;
-  
+  top: 80px;
+
+  height: 38rem;
+  /* width: 20%; */
 }
 
+.home-left {
+  position: sticky;
+  /* width: 20%; */
+}
 
-.home {
-    box-sizing: border-box;
-    display: flex;
-    /* grid-template-columns: 1fr 400px; */
-    height: 100vh;
-  }
-  .firstOne{
-    width: 20%;
-  }
-  .homeleft::-webkit-scrollbar{
-    display: none;
-  }
-  .homeleft {
-    width: 60%;
-    /* background-image: linear-gradient(to right, #fff5bc, #cec1ff); */
-  
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2vmax;
-    box-sizing: border-box;
-  }
-  .homeright {
-    width: 20%;
-    padding: 2vmax;
-    box-sizing: border-box;
-    overflow-y: auto;
-    position: sticky;
-    top: 80px;
-    background-color: white;
-    border-radius: 10px;
-    border: 1px solid lightgray;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-    height: 38rem;
-  }
-  
-  .homeright::-webkit-scrollbar{
-    display: none;
-  }
+.home-center {
+  /* width: 60%; */
+}
 
-  .homeUser {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: rgba(0, 0, 0, 0.507);
-    transition: all 0.5s;
-  }
-  .homeUser > img {
-    height: 3vmax;
-    width: 3vmax;
-    margin: 1vmax;
-    border-radius: 100%;
-    border: 3px solid rgb(255, 201, 201);
-  }
-  
-  .homeUser:hover {
-    transform: translateY(-10px);
-  }
-  
-  @media screen and (max-width: 600px) {
-    .home {
-      grid-template-columns: 2fr 1fr;
-    }
-  
-    .homeleft {
-      padding: 0;
-      min-height: 90vh;
-    }
-  }
-  .new{
-    padding: 2vmax;
-    box-sizing: border-box;
-    overflow-y: auto;
-    position: sticky;
-    top: 80px;
-    background-color: white;
-    border-radius: 10px;
-    border: 1px solid lightgray;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-    height: 26rem;
-  }
+.fullBodyHome {
+  background-color: #f3f2ef;
+}

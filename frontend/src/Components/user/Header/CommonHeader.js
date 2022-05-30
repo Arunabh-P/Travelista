@@ -19,6 +19,7 @@ import PersonSearchOutlinedIcon from '@mui/icons-material/PersonSearchOutlined';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import { logoutUser } from "../../../Actions/User"
 import { useAlert } from "react-alert"
+import "./CommonHeader.css"
 
 
 function Header() {
@@ -33,7 +34,7 @@ function Header() {
   }
   return (
 
-    <Navbar expand="lg" className="sticky-top  w-100 bg-white  ">
+    <Navbar expand="lg"  className=" sticky-top  w-100 bg-white  ">
       <Container >
         <Navbar.Brand href="#" style={{ fontSize: "30px" }}>
           <Link style={{ textDecoration: "none", color: "black" }} to={'/'}> Travelista</Link>
