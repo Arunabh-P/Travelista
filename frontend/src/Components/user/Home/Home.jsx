@@ -6,7 +6,7 @@ import UserCard from './HomeComponents/LeftSideComponents/UserCard'
 import {Col, Container, Row} from "react-bootstrap"
 function Home() {
   return (
-      <div className=" w-100 home-page" >
+      <div className=" w-100 home-page fullBodyHome" >
         <div className="container">
           <div className="row">
 

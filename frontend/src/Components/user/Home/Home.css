@@ -1,20 +1,19 @@
 .home-right {
   position: sticky;
-  top: 80px;
+  /* top: 84px; */
+  margin-top: 10px;
 
-  height: 38rem;
-  /* width: 20%; */
+  /* height: 34rem; */
 }
 
 .home-left {
   position: sticky;
-  /* width: 20%; */
 }
 
 .home-center {
-  /* width: 60%; */
+  margin-top: 10px;
 }
 
 .fullBodyHome {
-  background-color: #f3f2ef;
+  background-color: #edf0f5;
 }

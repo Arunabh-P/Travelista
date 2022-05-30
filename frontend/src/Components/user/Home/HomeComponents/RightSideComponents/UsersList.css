@@ -7,12 +7,12 @@
     top: 80px;
     background-color: white;
     border-radius: 10px;
-    border: 1px solid lightgray;
+    /* border: 1px solid lightgray; */
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
-    height: 38rem;
+    height: 39.48rem;
 }
 .users-list-to-show::-webkit-scrollbar, body::-webkit-scrollbar{
     display: none;
@@ -24,8 +24,4 @@
     margin: 1vmax;
     border-radius: 100%;
     border: 3px solid rgb(255, 201, 201);
-}
-
-.users-list-to-show:hover {
-    transform: translateY(-10px);
 }

@@ -104,9 +104,9 @@ export default function Proposal() {
         setValue(newValue);
     };
     return (
-        <div className="fullBodyProfile">
+        <div className="fullBodyProposal">
             <Container>
-                <div className='CoverPage  '>
+                <div className='proposal  '>
                     <Box
                         sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: 600, }}
                     >
