@@ -18,17 +18,17 @@ function UserCard() {
                 </div>
             </div>
             <div className='user-followers-list d-none d-md-block'>
-                {
-                    user && user.followers.length > 0 ? user.followers.map((follower) => ((
-                        <User
-                            key={follower._id}
-                            userId={follower._id}
-                            name={follower.name}
-                            avatar={follower.avatar.url}
-                        />
+            {
+                    user && user.following.length > 0 ? user.following.map((follow) => ((
+                      <User
+                        key={follow._id}
+                        userId={follow._id}
+                        name={follow.name}
+                        avatar={follow.avatar.url}
+                      />
                     ))
                     ) : (
-                        <Typography style={{ margin: "2vmax" }}> You have no followers</Typography>
+                      <Typography style={{ margin: "2vmax" }}> You're not following anyone</Typography>
                     )}
             </div>
         </div>

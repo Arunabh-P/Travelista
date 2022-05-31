@@ -81,17 +81,17 @@ function UserProfile() {
     }, [alert, error, message, followError, userError, dispatch]);
 
     return (
-        <div className="fullBodyProfileuser">
+        <div className="user-profile-full-body">
             <Container>
-                <div className='user-profile-page  '>
+                <div className='user-profile-page-inside'>
 
-                    <div className='user-profile-page_top'>
+                    <div className='user-profile-page-top-section'>
                         {user && (
                             <>
 
                                 <img src={cover} alt="*here cover image" />
                                 <div className='user-profile-pageTopSec'>
-                                    <Avatar radius="xl" src={user.avatar.url} className='Cuser-profile-page_avatar' style={{ width: "130px", height: "130px" }} />
+                                    <Avatar radius="xl" src={user.avatar.url} className='user-page-top-avatar' style={{ width: "130px", height: "130px" }} />
                                 </div>
                                 <div className='d-md-flex justify-content-between'>
                                     <div>
@@ -123,9 +123,10 @@ function UserProfile() {
                                     {
                                         myProfile ? null : (
                                             <Button variant="contained"
-                                                style={{ background: following ? "red" : "green" }}
+                                                style={{ background: following ? "red" : "green" ,marginRight:" 25px"}}
                                                 onClick={followHandler}
                                                 disabled={followLoading}
+                                                className="follow-button-in-user-profile"
                                             >
                                                 {
                                                     following ? "Unfollow" : "Follow"

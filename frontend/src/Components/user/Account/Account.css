@@ -5,11 +5,7 @@
     height: 92vh;
   }
   
-  .CoverPage_avatar{
-    margin-bottom: 10px;
-    margin-left: 50px;
-    
-}
+ 
 .cover-profile-name{
   padding-top: 5px;
     font-size: 25px;
@@ -56,6 +52,7 @@
 }
 .fullBodyProfile{
   background-color: #edf0f5;
+  min-height:100vh ;
 }
 .userProfile_main{
   padding-top: 20px;

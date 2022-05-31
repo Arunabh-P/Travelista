@@ -63,3 +63,6 @@
     -o-border-radius: 10px;
     height: 30.5rem;
 }
+.user-followers-list::-webkit-scrollbar, body::-webkit-scrollbar{
+    display: none;
+  }

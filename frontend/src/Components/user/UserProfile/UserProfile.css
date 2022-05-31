@@ -5,12 +5,6 @@
     height: 92vh;
 }
 
-.user-profile-page_avatar {
-    margin-bottom: 10px;
-    margin-left: 50px;
-
-}
-
 .user-profile-page-profile-name {
     padding-top: 5px;
     font-size: 25px;
@@ -24,45 +18,38 @@
     margin-left: 50px;
 }
 
-.user-profile-page {
-    padding-top: 25px;
 
-}
 
 .samplepost {
     width: 100% !important;
 }
 
-.user-profile-page_avatar {
-    margin-bottom: 10px;
-    margin-left: 50px;
+.user-profile-full-body {
+    background-color: #edf0f5;
+    min-height:100vh ;
+}
+.user-profile-page-inside {
+    padding-top: 25px;
 
 }
-
-.user-profile-page_top {
+.user-profile-page-top-section{
     display: flex;
     flex-direction: column;
-    border: 1px solid lightgrey;
+    /* border: 1px solid lightgrey; */
     border-radius: 10px;
     background-color: white;
     padding-bottom: 10px;
     margin-bottom: 2vmax;
-
-
-
 }
-
-.user-profile-page_top>img {
+.user-profile-page-top-section > img{
     margin-bottom: -62.5px;
-    width: 100%;
-    height: 250px;
-
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    object-fit: cover;
-
+  width: 100%;
+  height: 250px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  object-fit: cover;
 }
-
-.fullBodyProfileuser {
-    background-color: #f3f2ef;
+.user-page-top-avatar{
+    margin-bottom: 10px;
+    margin-left: 50px;
 }

@@ -6,8 +6,9 @@ import { useDispatch, useSelector } from "react-redux"
 import { getAllUsers, getFollowingPosts } from '../../../../../Actions/User'
 import { Typography } from "@mui/material";
 import { useAlert } from "react-alert"
+import Story from '../../../Story/Story'
 function CenterComponent() {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const alert = useAlert();
   const { user, loading: userLoading } = useSelector((state) => state.user);
   const { loading, posts, error } = useSelector(
@@ -39,32 +40,38 @@ function CenterComponent() {
   }, [alert, error, message, likeError, dispatch]);
   return (
     <>
-    {/* uploading new post */}
-    <NewPost />
+
+      {/* story */}
+
+      <Story />
 
 
-{/* followers Posts */}
-{
-  posts && posts.length > 0 ? (
-    posts.map((post) => (
+      {/* uploading new post */}
+      <NewPost />
 
-      <Post
-        key={post._id}
-        postId={post._id}
-        caption={post.caption}
-        postImage={post.image.url}
-        likes={post.likes}
-        comments={post.comments}
-        ownerImage={post.owner.avatar.url}
-        ownerName={post.owner.name}
-        ownerId={post.owner._id}
-        width={'100%'}
-      />
-    ))
-  ) : (
-    <Typography variant='h6'>No posts yet</Typography>
-  )
-}
+
+      {/* followers Posts */}
+      {
+        posts && posts.length > 0 ? (
+          posts.map((post) => (
+
+            <Post
+              key={post._id}
+              postId={post._id}
+              caption={post.caption}
+              postImage={post.image.url}
+              likes={post.likes}
+              comments={post.comments}
+              ownerImage={post.owner.avatar.url}
+              ownerName={post.owner.name}
+              ownerId={post.owner._id}
+              width={'100%'}
+            />
+          ))
+        ) : (
+          <Typography variant='h6'>No posts yet</Typography>
+        )
+      }
     </>
   )
 }
