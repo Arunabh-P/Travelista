@@ -5,7 +5,7 @@ import AddStory from './StoryComponents/AddStory';
 import FollowersStories from './StoryComponents/FollowersStories';
 function Story() {
     return (
-        <div className="row  my-3 all-stories-in-the-home-page mx-1"  style={{overflowX:"scroll"}}>
+        <div className="row mb-2 all-stories-in-the-home-page mx-1"  style={{overflowX:"scroll"}}>
 
             <div className="col-2 me-3 add-story-home p-0">
                 <AddStory />

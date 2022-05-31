@@ -12,6 +12,7 @@ import { Container } from "react-bootstrap"
 import cover from "../../../Images/cover.jpg"
 import { useAlert } from 'react-alert';
 
+
 function Account() {
 
   const dispatch = useDispatch()
@@ -70,7 +71,7 @@ function Account() {
               </div>
               <div  >
                 <Button onClick={() => setFollowersToggle(!followersToggle)}>
-                  <Typography>Followers</Typography>
+                  <Typography className="account-texts" >Followers</Typography>
                 </Button>
 
                 <Typography className='text-center' >{user.followers.length}</Typography>
@@ -79,22 +80,24 @@ function Account() {
 
               <div>
                 <Button onClick={() => setFollowingToggle(!followingToggle)}>
-                  <Typography>Following</Typography>
+                  <Typography className="account-texts">Following</Typography>
                 </Button>
                 <Typography className='text-center'>{user.following.length}</Typography>
               </div>
 
               <div>
                 <Button>
-                  <Typography>Posts</Typography>
+                  <Typography className="account-texts">Posts</Typography>
                 </Button>
                 <Typography className='text-center'>{user.posts.length}</Typography>
               </div>
               {/* <Button variant="contained">Logout</Button> */}
+              
+              <Link to="/proposals" className="account-texts">Proposals</Link>
 
-              <Link to="/update/profile">Edit Profile</Link>
+              <Link to="/update/profile" className="account-texts">Edit Profile</Link>
 
-              <Link to="/update/password">Change Password</Link>
+              <Link to="/update/password" className="account-texts">Change Password</Link>
               <Button
                 variant="text"
                 style={{ color: "red", margin: "2vmax" }}

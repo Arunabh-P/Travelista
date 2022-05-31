@@ -3,12 +3,17 @@
     border-radius: 5px;
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
     padding: 0 1vmax 2vmax;
-    margin-bottom: 2vmax;
+    margin-bottom: 10px;
     
   }
   .buttonText{
     text-transform: capitalize;
     font-weight: bold;
+    color:rgba(0, 0, 0, 0.767);
+    
+  }
+  .thumbs-up{
+    color:rgba(0, 0, 0, 0.767);
   }
   
   .postHeader {
@@ -96,5 +101,9 @@
     .postFooter > button > svg {
       font-size: 8vw;
     }
+  }
+  .proposal-button{
+    text-decoration: none;
+    
   }
  

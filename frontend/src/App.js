@@ -24,6 +24,7 @@ import ResetPassword from "./Components/user/ResetPassword/ResetPassword";
 import UserProfile from "./Components/user/UserProfile/UserProfile";
 import Search from "./Components/user/Search/Search"
 import NotFound from "./Components/user/NotFound/NotFound";
+import MyProposals from "./Components/MyProposals/MyProposals";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -79,6 +80,11 @@ function App() {
 
         <Route path="/proposal/:id"
           element={isAuthenticated ? <Proposal /> : <Login />}
+        />
+
+
+<Route path="/proposals"
+          element={isAuthenticated ? <MyProposals /> : <Login />}
         />
         
 

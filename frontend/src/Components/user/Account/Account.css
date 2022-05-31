@@ -1,3 +1,8 @@
+.account-texts{
+  color:rgba(0, 0, 0, 0.767);
+  font-weight: bold;
+  text-decoration: none;
+}
 .account {
     box-sizing: border-box;
     display: grid;

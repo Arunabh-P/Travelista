@@ -23,6 +23,8 @@
     border-radius: 10px;
     background-color: white;
     padding-bottom: 10px;
+    height: 9.5rem;
+
 }
 
 .user-card-top>img {
@@ -61,7 +63,7 @@
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
-    height: 30.5rem;
+    height: 29.5rem;
 }
 .user-followers-list::-webkit-scrollbar, body::-webkit-scrollbar{
     display: none;
