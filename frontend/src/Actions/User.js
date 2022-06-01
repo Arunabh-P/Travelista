@@ -69,6 +69,26 @@ export const getFollowingPosts = () => async (dispatch) => {
     }
 }
 
+export const getFollowingStories = () => async (dispatch) => {
+    try {
+        dispatch({
+            type: "storyOfFollowingRequest",
+        });
+        const { data } = await axios.get("/api/v1/stories");
+        dispatch({
+            type: "storyOfFollowingSuccess",
+            payload: data.stories,
+        })
+
+    } catch (error) {
+        dispatch({
+            type: "storyOfFollowingFailure",
+            payload: error.response.data.message,
+        })
+
+    }
+}
+
 export const getAllUsers = 
 (name = "") => 
 async (dispatch) => {

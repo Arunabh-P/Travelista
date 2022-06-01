@@ -1,24 +1,57 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./FollowersStories.css"
 import { Avatar } from "@nextui-org/react";
+import { useDispatch, useSelector } from "react-redux"
+import { Typography } from "@mui/material";
+import { getAllUsers, getFollowingStories } from '../../../../Actions/User';
+function FollowersStories() {
 
-function FollowersStories({ image, profilePic, title }) {
+    const dispatch = useDispatch()
+    const { loading, stories, error } = useSelector(
+        (state) => state.storyOfFollowing
+      );
+      const { users, loading: usersLoading } = useSelector(
+        (state) => state.allUsers
+      )
+    useEffect(() => {
+        dispatch(getFollowingStories());
+    dispatch(getAllUsers())
+
+    }, [dispatch]);
+
+console.log(stories,'--------------');
+    
     return (
-        <div className="story-list">
-            <div
-                style={{ backgroundImage: `url(${image})` }}
+        <>
+            {
+            stories && stories.length > 0 ? (
+                stories.map((story) => (
+        <div className="story-list ">
+           
+           
+                    <div
+                style={{ backgroundImage: `url(${story.image.url})` }}
                 className="followers-all-stories"
             >
                 <Avatar
                     size="lg"
                     className="story-follower-avatar"
-                    src={profilePic}
+                    src={story.owner.avatar.url}
                     color="gradient"
                     bordered
                 />
-                <h4 className="story-follower-name">{title}</h4>
+                <h4 className="story-follower-name">{story.owner.name}</h4>
             </div>
+
         </div>
+
+            ))
+        ) : (
+          <Typography variant='h6'>No stories yet</Typography>
+        )
+      }
+
+    </>
     )
 }
 

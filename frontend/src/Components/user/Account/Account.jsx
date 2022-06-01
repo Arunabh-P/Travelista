@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import { deleteMyProfile, getMyPosts, logoutUser  } from '../../../Actions/User';
 import "./Account.css"
-import Loader from '../Loader/Loader';
 import Post from '../Post/Post';
 import User from "../User/User"
 import { Avatar } from '@mantine/core';

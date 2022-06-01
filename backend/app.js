@@ -15,12 +15,14 @@ if (process.env.NODE_ENV !== "production") {
   //importing routes
   const post = require("./routes/post")
   const user = require("./routes/user")
+  const story = require("./routes/story")
 
 
   //using Route
 
   app.use("/api/v1", post)
   app.use("/api/v1", user)
+  app.use("/api/v1", story)
 
 
 module.exports = app;

@@ -2,7 +2,7 @@ import "./App.css";
 import Login from "./Components/user/Login/Login"
 // import Signup from "./Components/user/Register/SignUp";
 import Header from "./Components/user/Header/CommonHeader"
-import Home1 from "./Components/user/HomePage/Home";
+// import Home1 from "./Components/user/HomePage/Home";
 import Home from "./Components/user/Home/Home"
 import AdminHome from "./Components/admin/AdminHome";
 import Proposal from "./Components/user/Proposal/Proposal"
@@ -24,7 +24,7 @@ import ResetPassword from "./Components/user/ResetPassword/ResetPassword";
 import UserProfile from "./Components/user/UserProfile/UserProfile";
 import Search from "./Components/user/Search/Search"
 import NotFound from "./Components/user/NotFound/NotFound";
-import MyProposals from "./Components/MyProposals/MyProposals";
+import MyProposals from "./Components/user/MyProposals/MyProposals";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -41,7 +41,7 @@ function App() {
       {isAuthenticated && <Header />}
 
       <Routes>
-        <Route path="/home1" element={<Home1 />} />
+        {/* <Route path="/home1" element={<Home1 />} /> */}
 
         <Route path="/" element={isAuthenticated ? <Home /> : <Login />} />
         <Route path="/account" element={isAuthenticated ? <Account /> : <Login />} />

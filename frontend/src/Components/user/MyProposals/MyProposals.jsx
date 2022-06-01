@@ -1,6 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
-import { Avatar } from '@mantine/core';
+import React from 'react';
 import { Container } from "react-bootstrap"
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
