@@ -26,13 +26,13 @@ function UserCard() {
     if (hours > 0 && hours < 12) {
       setDate('Good Morning')
     }
-    else if (hours >= 12 && hours < 15) {
+    else if (hours >= 12 && hours < 16) {
       setDate('Good Afternoon')
-    }else if (hours >= 15 && hours < 19) {
+    }else if (hours >= 16 && hours < 21) {
       setDate('Good Evening')
     }
 
-    else if (hours >= 19 && hours < 24) {
+    else if (hours >= 21 && hours < 24) {
       setDate('Good Night')
     }
   }
