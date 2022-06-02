@@ -124,7 +124,7 @@ function Post({
                     color="rgba(0, 0, 0, 0.582)"
                     style={{ alignSelf: "center" }}
                 >
-                    #planed to trip on :   {tripDate}
+                     {tripDate}
                 </Typography>
 
 

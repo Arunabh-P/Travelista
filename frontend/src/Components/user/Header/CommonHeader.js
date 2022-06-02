@@ -70,7 +70,7 @@ function Header() {
       </Container>
     </Navbar>
 
-  );
+);
 }
 
 export default Header;

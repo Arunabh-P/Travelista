@@ -135,7 +135,8 @@ exports.followUser = async (req, res) => {
 
             res.status(200).json({
                 success: true,
-                message: "User Unfollowed"
+                message: "User Unfollowed",
+                // followed:false
             })
         } else {
             loggedInUser.following.push(userToFollow._id);
@@ -146,7 +147,8 @@ exports.followUser = async (req, res) => {
 
             res.status(200).json({
                 success: true,
-                message: "User Followed"
+                message: "User Followed",
+                // followed:true
             })
         }
 

@@ -35,6 +35,20 @@
     border-top-right-radius: 10px;
     object-fit: cover;
 }
+.widget-card {
+    margin-bottom: -20px;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: cover;
+}
+.wave-card{
+    height:60px;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: cover;
+}
 
 .user-card-avatar {
     margin-bottom: 10px;

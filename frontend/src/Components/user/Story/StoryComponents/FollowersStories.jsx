@@ -33,6 +33,7 @@ console.log(stories,'--------------');
                 style={{ backgroundImage: `url(${story.image.url})` }}
                 className="followers-all-stories"
             >
+                <div className="avatar-img">
                 <Avatar
                     size="lg"
                     className="story-follower-avatar"
@@ -40,6 +41,7 @@ console.log(stories,'--------------');
                     color="gradient"
                     bordered
                 />
+                </div>
                 <h4 className="story-follower-name">{story.owner.name}</h4>
             </div>
 

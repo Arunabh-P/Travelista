@@ -13,7 +13,7 @@ function UsersList() {
   return (
 
     <div className='users-list-to-show'>
-
+<h4>Connect with travelista family</h4>
       {users && users.length > 0 ? (
         users.map((user) => (
           <User
