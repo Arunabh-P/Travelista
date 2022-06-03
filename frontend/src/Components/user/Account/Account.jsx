@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux"
-import { deleteMyProfile, getMyPosts, logoutUser  } from '../../../Actions/User';
+import { deleteMyProfile, getMyPosts, loadUser, logoutUser, updateCoverImage } from '../../../Actions/User';
 import "./Account.css"
 import Post from '../Post/Post';
 import User from "../User/User"
@@ -10,7 +10,10 @@ import { Link } from 'react-router-dom';
 import { Container } from "react-bootstrap"
 import cover from "../../../Images/cover.jpg"
 import { useAlert } from 'react-alert';
-
+import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
+import { FormControl } from "react-bootstrap";
+import CropImage from "../../user/CoverPicCroper/CropImage"
+import SaveIcon from '@mui/icons-material/Save';
 
 function Account() {
 
@@ -26,6 +29,11 @@ function Account() {
 
   const [followersToggle, setFollowersToggle] = useState(false)
   const [followingToggle, setFollowingToggle] = useState(false)
+  const [showCropper, setShowCropper] = useState(false);
+  const [cropImage, setCropImage] = useState(false);
+  const [image, setImage] = useState(null);
+
+  
 
   const deleteProfileHandler = async () => {
     await dispatch(deleteMyProfile());
@@ -53,13 +61,88 @@ function Account() {
     }
   }, [alert, error, message, likeError, dispatch]);
 
+  const saveCoverImage = async (e)=>{
+    e.preventDefault()
+    await dispatch(updateCoverImage(image))
+    dispatch(loadUser())
 
-  return  (
+  }
+
+
+  return (
     <div className="fullBodyProfile">
       <Container>
         <div className='CoverPage  '>
-          <div className='CoverPage_top'>
-            <img src={cover} alt="*here cover image" />
+          <div className=' bg-white my-2 rounded'>
+            {user.coverImage ? <div className="text-end" style={{ backgroundImage: `url(${image ? image : user.coverImage.url})`, height: "15rem", width: "100%", borderRadius: "5px 5px 0px 0px", backgroundSize: "cover", backgroundRepeat: "no-repeat", marginBottom: "-4.5rem" }}>
+            <FormControl
+              className="crop_image d-none"
+              id="upload_image"
+              type="file"
+              name="crop_image"
+              onChange={(e) => {
+                setCropImage(e.target.files[0]);
+                setShowCropper(true);
+              }}
+              accept=".jpg,.jpeg,.png,"
+            />
+            <label for="upload_image">
+              
+            {image ? <span class="profilepic__icon mt-5 mx-2 text-white" onClick={saveCoverImage}>
+              <SaveIcon/>
+            </span>   : <span class="profilepic__icon mt-5 mx-2 text-white" >
+              <AddAPhotoIcon />
+            </span> } 
+
+          </label>
+          {showCropper && (
+            <CropImage
+              src={cropImage}
+              imageCallback={(image) => {
+                setImage(image);
+                setShowCropper(false);
+              }}
+              closeHander={() => {
+                setShowCropper(false);
+              }}
+            />
+          )}
+            </div> :
+            <div className="text-end" style={{ backgroundImage: `url(${image ? image : cover})`, height: "15rem", width: "100%", borderRadius: "5px 5px 0px 0px", backgroundSize: "cover", backgroundRepeat: "no-repeat", marginBottom: "-4.5rem" }}>
+            <FormControl
+              className="crop_image d-none"
+              id="upload_image"
+              type="file"
+              name="crop_image"
+              onChange={(e) => {
+                setCropImage(e.target.files[0]);
+                setShowCropper(true);
+              }}
+              accept=".jpg,.jpeg,.png,"
+            />
+            <label for="upload_image">
+              
+            {image ? <span class="profilepic__icon mt-5 mx-2 text-white" onClick={saveCoverImage}>
+              <SaveIcon/>
+            </span>   : <span class="profilepic__icon mt-5 mx-2 text-white" >
+              <AddAPhotoIcon />
+            </span> } 
+
+          </label>
+          {showCropper && (
+            <CropImage
+              src={cropImage}
+              imageCallback={(image) => {
+                setImage(image);
+                setShowCropper(false);
+              }}
+              closeHander={() => {
+                setShowCropper(false);
+              }}
+            />
+          )}
+            </div> }
+            
             <div className='coverTopSec'>
               <Avatar radius="xl" src={user.avatar.url} className='CoverPage_avatar' style={{ width: "130px", height: "130px" }} />
             </div>
@@ -91,7 +174,7 @@ function Account() {
                 <Typography className='text-center'>{user.posts.length}</Typography>
               </div>
               {/* <Button variant="contained">Logout</Button> */}
-              
+
               <Link to="/proposals" className="account-texts">Proposals</Link>
 
               <Link to="/update/profile" className="account-texts">Edit Profile</Link>

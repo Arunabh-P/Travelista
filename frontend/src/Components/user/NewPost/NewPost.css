@@ -10,6 +10,21 @@
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
     margin-bottom: 10px;
   }
+  .add-a-new-post{
+    background-color: white;
+    width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1vmax;
+      box-sizing: border-box;
+      border-radius: 5px;
+      /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
+      margin-bottom: 10px;
+  }
+  .add-new-post-button{
+    color: black;
+  }
   
   .newPostForm {
     background-color: white;

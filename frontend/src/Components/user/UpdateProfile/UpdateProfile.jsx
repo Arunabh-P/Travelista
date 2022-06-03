@@ -32,29 +32,9 @@ export default function UpdateProfile() {
   const [showCropper, setShowCropper] = useState(false);
   const [cropImage, setCropImage] = useState(false);
   const [image, setImage] = useState(null);
-console.log(image);
 
   const dispatch = useDispatch()
   const alert = useAlert();
- const navigate = useNavigate()
-
-
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-
-    const Reader = new FileReader();
-    Reader.readAsDataURL(file);
-
-    Reader.onload = () => {
-      if (Reader.readyState === 2) {
-        setAvatarPrev(Reader.result)
-
-        setAvatar(Reader.result)
-      }
-    }
-  }
-
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -91,7 +71,6 @@ console.log(image);
               id="upload_image"
               type="file"
               name="crop_image"
-              required
               onChange={(e) => {
                 setCropImage(e.target.files[0]);
                 setShowCropper(true);
@@ -109,12 +88,6 @@ console.log(image);
             </span>
 
           </label>
-
-          {/* <input className="update-image-button"
-              type="file" accept="image/*"
-              onChange={handleImageChange}
-
-            /> */}
           {showCropper && (
             <CropImage
               src={cropImage}

@@ -5,7 +5,9 @@ import bg from "../../../Images/bg2.jpg";
 import "./Register.css"
 import { Avatar, Typography, Button, IconButton, Input } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux"
-import {registerUser} from "../../../Actions/User"
+import { registerUser } from "../../../Actions/User"
+import CropImage from "../ProfilePicCropper/CropImage";
+import { FormControl } from "react-bootstrap";
 
 export default function Register() {
 
@@ -13,12 +15,13 @@ export default function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [avatar, setAvatar] = useState("");
+    const [showCropper, setShowCropper] = useState(false);
+    const [cropImage, setCropImage] = useState(false);
 
+    const dispatch = useDispatch()
+    const alert = useAlert();
 
-  const dispatch = useDispatch()
-  const alert = useAlert();
-
-  const {loading, error} =useSelector((state) => state.user)
+    const { loading, error } = useSelector((state) => state.user)
 
 
 
@@ -43,10 +46,10 @@ export default function Register() {
 
     useEffect(() => {
         if (error) {
-          alert.error(error);
-          dispatch({ type: "clearErrors" });
+            alert.error(error);
+            dispatch({ type: "clearErrors" });
         }
-      }, [dispatch, error, alert]);
+    }, [dispatch, error, alert]);
 
 
     return (
@@ -57,25 +60,54 @@ export default function Register() {
                 <form onSubmit={submitHandler} >
                     <div className='register-dataform'>
 
+                        <FormControl
+                            className="crop_image d-none"
+                            id="upload_image"
+                            type="file"
+                            name="crop_image"
+                            required
+                            onChange={(e) => {
+                                setCropImage(e.target.files[0]);
+                                setShowCropper(true);
+                            }}
+                            accept=".jpg,.jpeg,.png,"
+                        />
+<label for="upload_image">
+              <span class="profilepic__icon">
                         <Avatar className="reg-avatar"
                             src={avatar}
                             alt="User"
                             sx={{ height: "5vmax", width: "5vmax" }}
                         />
+                         </span>
 
-                        <input className="register-image-button" 
-                        type="file" accept="image/*"
-                        onChange={handleImageChange}
-                        
-                        />
+</label>
+{showCropper && (
+            <CropImage
+              src={cropImage}
+              imageCallback={(avatar) => {
+                setAvatar(avatar);
+                setShowCropper(false);
+              }}
+              closeHander={() => {
+                setShowCropper(false);
+              }}
+            />
+          )}
+
+                        {/* <input className="register-image-button"
+                            type="file" accept="image/*"
+                            onChange={handleImageChange}
+
+                        /> */}
 
                         <input
                             className='register-dataform-email'
                             type="text"
                             placeholder="Name"
                             required
-                        value={name}
-                          onChange={(e) => setName(e.target.value)}
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
 
 
                         />
@@ -84,8 +116,8 @@ export default function Register() {
                             type="email"
                             placeholder="Email"
                             required
-                        value={email}
-                          onChange={(e) => setEmail(e.target.value)}
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
 
 
                         />
@@ -96,8 +128,8 @@ export default function Register() {
                             name="password"
 
                             placeholder='Password'
-                          value={password} 
-                          onChange={(e) => setPassword(e.target.value)}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
 
                         />
 

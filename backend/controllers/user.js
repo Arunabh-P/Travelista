@@ -200,7 +200,7 @@ exports.updateProfile = async (req, res) => {
     try {
         const user = await User.findById(req.user._id);
 
-        const { name, email, avatar, bio } = req.body;
+        const { name, email, avatar, bio, coverImage} = req.body;
 
         if (name) {
             user.name = name;
@@ -219,6 +219,24 @@ exports.updateProfile = async (req, res) => {
             })
             user.avatar.public_id = myCloud.public_id;
             user.avatar.url = myCloud.secure_url;
+        }
+        if (coverImage && user.coverImage !=="") {
+            
+            // await cloudinary.v2.uploader.destroy(user.coverImage.public_id)
+
+        
+            const myCloud = await cloudinary.v2.uploader.upload(coverImage, {
+                folder: "coverImages"
+            })
+            user.coverImage.public_id = myCloud.public_id;
+            user.coverImage.url = myCloud.secure_url;
+
+        }else{
+            const myCloud = await cloudinary.v2.uploader.upload(coverImage, {
+                folder: "coverImages"
+            })
+            user.coverImage.public_id = myCloud.public_id;
+            user.coverImage.url = myCloud.secure_url;
         }
 
 

@@ -248,7 +248,7 @@ export const registerUser = (name, email, password, avatar) => async (dispatch) 
     }
 };
 
-export const updateProfileUser = (name, email, avatar,bio) => async (dispatch) => {
+export const updateProfileUser = (name, email, avatar,bio,coverImage) => async (dispatch) => {
     try {
         dispatch({
             type: "updateProfileRequest"
@@ -256,7 +256,35 @@ export const updateProfileUser = (name, email, avatar,bio) => async (dispatch) =
 
         const { data } = await axios.put(
             "/api/v1/update/profile",
-            { name, email, avatar, bio},
+            { name, email, avatar, bio,coverImage},
+            {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+
+        dispatch({
+            type: "updateProfileSuccess",
+            payload: data.message,
+        })
+
+    } catch (error) {
+        dispatch({
+            type: "updateProfileFailure",
+            payload: error.response.data.message,
+        })
+    }
+};
+
+export const updateCoverImage = (coverImage) => async (dispatch) => {
+    try {
+        dispatch({
+            type: "updateProfileRequest"
+        })
+
+        const { data } = await axios.put(
+            "/api/v1/update/profile",
+            { coverImage},
             {
                 headers: {
                     "Content-Type": "application/json"

@@ -45,16 +45,16 @@ function UserCard() {
     <div className='user-card-for-side '>
       <div className='user-card'>
         <div className='user-card-top'>
-          <img src={cover} alt="here cover image" />
+          <img src={user.coverImage ?  user.coverImage.url : cover} alt="here cover image" />
           <Avatar src={user.avatar.url} className='user-card-avatar' />
-          <h2>{user.name}</h2>
-          <h4>{user.bio}</h4>
+          <h2 style={{ textTransform: "capitalize"}}>{user.name}</h2>
+          <h4 style={{ textTransform: "capitalize"}}>{user.bio}</h4>
         </div>
       </div>
 
       <div className='user-followers-list d-none d-md-block'>
         <img src={widget} className="pt-3 widget-card" alt="here cover image" />
-        <h3 className="pt-3">Hi {user.name},</h3>
+        <h3 className="pt-3">Hi <span style={{ textTransform: "capitalize"}}>{user.name},</span></h3>
         <h4>{date}!</h4>
         <img src={wave} className="pt-3  wave-card" alt="here cover image" />
 
