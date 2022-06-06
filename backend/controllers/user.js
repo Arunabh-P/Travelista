@@ -231,13 +231,14 @@ exports.updateProfile = async (req, res) => {
             user.coverImage.public_id = myCloud.public_id;
             user.coverImage.url = myCloud.secure_url;
 
-        }else{
-            const myCloud = await cloudinary.v2.uploader.upload(coverImage, {
-                folder: "coverImages"
-            })
-            user.coverImage.public_id = myCloud.public_id;
-            user.coverImage.url = myCloud.secure_url;
         }
+        // else{
+        //     const myCloud = await cloudinary.v2.uploader.upload(coverImage, {
+        //         folder: "coverImages"
+        //     })
+        //     user.coverImage.public_id = myCloud.public_id;
+        //     user.coverImage.url = myCloud.secure_url;
+        // }
 
 
 

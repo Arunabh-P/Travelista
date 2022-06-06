@@ -33,7 +33,7 @@ function Account() {
   const [cropImage, setCropImage] = useState(false);
   const [image, setImage] = useState(null);
 
-  
+
 
   const deleteProfileHandler = async () => {
     await dispatch(deleteMyProfile());
@@ -61,7 +61,7 @@ function Account() {
     }
   }, [alert, error, message, likeError, dispatch]);
 
-  const saveCoverImage = async (e)=>{
+  const saveCoverImage = async (e) => {
     e.preventDefault()
     await dispatch(updateCoverImage(image))
     dispatch(loadUser())
@@ -75,74 +75,74 @@ function Account() {
         <div className='CoverPage  '>
           <div className=' bg-white my-2 rounded'>
             {user.coverImage ? <div className="text-end" style={{ backgroundImage: `url(${image ? image : user.coverImage.url})`, height: "15rem", width: "100%", borderRadius: "5px 5px 0px 0px", backgroundSize: "cover", backgroundRepeat: "no-repeat", marginBottom: "-4.5rem" }}>
-            <FormControl
-              className="crop_image d-none"
-              id="upload_image"
-              type="file"
-              name="crop_image"
-              onChange={(e) => {
-                setCropImage(e.target.files[0]);
-                setShowCropper(true);
-              }}
-              accept=".jpg,.jpeg,.png,"
-            />
-            <label for="upload_image">
-              
-            {image ? <span class="profilepic__icon mt-5 mx-2 text-white" onClick={saveCoverImage}>
-              <SaveIcon/>
-            </span>   : <span class="profilepic__icon mt-5 mx-2 text-white" >
-              <AddAPhotoIcon />
-            </span> } 
+              <FormControl
+                className="crop_image d-none"
+                id="upload_image"
+                type="file"
+                name="crop_image"
+                onChange={(e) => {
+                  setCropImage(e.target.files[0]);
+                  setShowCropper(true);
+                }}
+                accept=".jpg,.jpeg,.png,"
+              />
+              <label for="upload_image">
 
-          </label>
-          {showCropper && (
-            <CropImage
-              src={cropImage}
-              imageCallback={(image) => {
-                setImage(image);
-                setShowCropper(false);
-              }}
-              closeHander={() => {
-                setShowCropper(false);
-              }}
-            />
-          )}
+                {image ? <span class="profilepic__icon mt-5 mx-2 text-white" onClick={saveCoverImage}>
+                  <SaveIcon />
+                </span> : <span class="profilepic__icon mt-5 mx-2 text-white" >
+                  <AddAPhotoIcon />
+                </span>}
+
+              </label>
+              {showCropper && (
+                <CropImage
+                  src={cropImage}
+                  imageCallback={(image) => {
+                    setImage(image);
+                    setShowCropper(false);
+                  }}
+                  closeHander={() => {
+                    setShowCropper(false);
+                  }}
+                />
+              )}
             </div> :
-            <div className="text-end" style={{ backgroundImage: `url(${image ? image : cover})`, height: "15rem", width: "100%", borderRadius: "5px 5px 0px 0px", backgroundSize: "cover", backgroundRepeat: "no-repeat", marginBottom: "-4.5rem" }}>
-            <FormControl
-              className="crop_image d-none"
-              id="upload_image"
-              type="file"
-              name="crop_image"
-              onChange={(e) => {
-                setCropImage(e.target.files[0]);
-                setShowCropper(true);
-              }}
-              accept=".jpg,.jpeg,.png,"
-            />
-            <label for="upload_image">
-              
-            {image ? <span class="profilepic__icon mt-5 mx-2 text-white" onClick={saveCoverImage}>
-              <SaveIcon/>
-            </span>   : <span class="profilepic__icon mt-5 mx-2 text-white" >
-              <AddAPhotoIcon />
-            </span> } 
+              <div className="text-end" style={{ backgroundImage: `url(${image ? image : cover})`, height: "15rem", width: "100%", borderRadius: "5px 5px 0px 0px", backgroundSize: "cover", backgroundRepeat: "no-repeat", marginBottom: "-4.5rem" }}>
+                <FormControl
+                  className="crop_image d-none"
+                  id="upload_image"
+                  type="file"
+                  name="crop_image"
+                  onChange={(e) => {
+                    setCropImage(e.target.files[0]);
+                    setShowCropper(true);
+                  }}
+                  accept=".jpg,.jpeg,.png,"
+                />
+                <label for="upload_image">
 
-          </label>
-          {showCropper && (
-            <CropImage
-              src={cropImage}
-              imageCallback={(image) => {
-                setImage(image);
-                setShowCropper(false);
-              }}
-              closeHander={() => {
-                setShowCropper(false);
-              }}
-            />
-          )}
-            </div> }
-            
+                  {image ? <span class="icons-in-cover-pic mt-5 mx-2 text-white" onClick={saveCoverImage}>
+                    <SaveIcon />
+                  </span> : <span class="icons-in-cover-pic mt-5 mx-2 text-white" >
+                    <AddAPhotoIcon />
+                  </span>}
+
+                </label>
+                {showCropper && (
+                  <CropImage
+                    src={cropImage}
+                    imageCallback={(image) => {
+                      setImage(image);
+                      setShowCropper(false);
+                    }}
+                    closeHander={() => {
+                      setShowCropper(false);
+                    }}
+                  />
+                )}
+              </div>}
+
             <div className='coverTopSec'>
               <Avatar radius="xl" src={user.avatar.url} className='CoverPage_avatar' style={{ width: "130px", height: "130px" }} />
             </div>
@@ -175,11 +175,11 @@ function Account() {
               </div>
               {/* <Button variant="contained">Logout</Button> */}
 
-              <Link to="/proposals" className="account-texts">Proposals</Link>
+              {/* <Link to="/proposals" className="account-texts">Proposals</Link>
 
               <Link to="/update/profile" className="account-texts">Edit Profile</Link>
 
-              <Link to="/update/password" className="account-texts">Change Password</Link>
+              <Link to="/update/password" className="account-texts">Change Password</Link> */}
               <Button
                 variant="text"
                 style={{ color: "red", margin: "2vmax" }}

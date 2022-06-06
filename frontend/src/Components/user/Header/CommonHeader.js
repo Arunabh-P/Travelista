@@ -20,6 +20,7 @@ import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import { logoutUser } from "../../../Actions/User"
 import { useAlert } from "react-alert"
 import "./CommonHeader.css"
+import { NavDropdown } from "react-bootstrap"
 
 
 function Header() {
@@ -34,7 +35,7 @@ function Header() {
   }
   return (
 
-    <Navbar expand="lg"  className=" sticky-top  w-100 bg-white  ">
+    <Navbar expand="lg" className=" sticky-top  w-100 bg-white  ">
       <Container >
         <Navbar.Brand href="#" style={{ fontSize: "30px" }}>
           <Link style={{ textDecoration: "none", color: "black" }} to={'/'}> Travelista</Link>
@@ -53,15 +54,37 @@ function Header() {
             <Link to="/search" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/search")} >
               {tab === "/search" ? <PersonSearchIcon /> : <PersonSearchOutlinedIcon />}
             </Link>
-            <Link to="/messages" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/messages")} >
-              {tab === "/messages" ? <ChatIcon /> : <ChatOutlinedIcon />}
+            <Link to="/messenger" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/messenger")} >
+              {tab === "/messenger" ? <ChatIcon /> : <ChatOutlinedIcon />}
             </Link>
             <Link to="/notification" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/notification")} >
               {tab === "/notification" ? <NotificationsIcon /> : <NotificationsNoneOutlinedIcon />}
             </Link>
-            <Link to="/account" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/account")} >
+
+            <NavDropdown style={{ color: "black", paddingLeft: "22.5px" }} title={<UserProfile style={{color: "black"}} />} id="basic-nav-dropdown">
+
+              <NavDropdown.Item >
+                <Link to="/account" className="account-texts" >Account</Link>
+              </NavDropdown.Item>
+
+              <NavDropdown.Item>
+                <Link to="/proposals" className="account-texts">Proposals</Link>
+              </NavDropdown.Item>
+
+              <NavDropdown.Divider />
+
+              <NavDropdown.Item>
+                <Link to="/update/password" className="account-texts">Change Password</Link>
+              </NavDropdown.Item>
+
+              <NavDropdown.Item>
+                <Link to="/update/profile" className="account-texts">Edit Profile</Link>
+              </NavDropdown.Item>
+
+            </NavDropdown>
+            {/* <Link to="/account" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/account")} >
               {tab === "/account" ? <AccountCircleIcon /> : <UserProfile />}
-            </Link>
+            </Link> */}
             <p style={{ paddingLeft: "22.5px", cursor: "pointer" }}>
               <LogoutIcon onClick={(logoutHandler)} />
             </p>
@@ -70,7 +93,7 @@ function Header() {
       </Container>
     </Navbar>
 
-);
+  );
 }
 
 export default Header;

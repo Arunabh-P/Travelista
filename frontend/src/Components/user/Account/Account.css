@@ -42,3 +42,10 @@
 .userProfile_main{
   padding-top: 20px;
 }
+.icons-in-cover-pic{
+  cursor: pointer;
+}
+.profilepic__icon{
+  cursor: pointer;
+
+}

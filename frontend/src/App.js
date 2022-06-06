@@ -6,8 +6,9 @@ import Header from "./Components/user/Header/CommonHeader"
 import Home from "./Components/user/Home/Home"
 import AdminHome from "./Components/admin/AdminHome";
 import Proposal from "./Components/user/Proposal/Proposal"
+import ProposalForm from "./Components/user/Proposal/ProposalForm"
 // import UserProfilePage from "./Components/user/UserProfilePage/UserProfilePage"
-
+import Messenger from "./Components/user/Messenger/Messenger";
 import AdminLogin from "./Components/admin/AdminLogin";
 import Userupdate from "./Components/admin/Userupdate";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -60,33 +61,41 @@ function App() {
           element={isAuthenticated ? <UpdateProfile /> : <Login />}
         />
 
-<Route path="/update/password"
+<Route path="/messenger"
+          element={isAuthenticated ? <Messenger /> : <Login />}
+        />
+
+        <Route path="/update/password"
           element={isAuthenticated ? <UpdatePassword /> : <Login />}
         />
 
-<Route path="/forgot/password"
+        <Route path="/forgot/password"
           element={isAuthenticated ? <UpdatePassword /> : <ForgotPassword />}
         />
 
-<Route path="/password/reset/:token"
+        <Route path="/password/reset/:token"
           element={isAuthenticated ? <UpdatePassword /> : <ResetPassword />}
         />
 
-<Route path="/user/:id"
+        <Route path="/user/:id"
           element={isAuthenticated ? <UserProfile /> : <Login />}
         />
 
         <Route path="/search" element={<Search />} />
 
-        <Route path="/proposal/:id"
+        {/* <Route path="/proposal/:id"
           element={isAuthenticated ? <Proposal /> : <Login />}
+        /> */}
+
+        <Route path="/proposal/:id"
+          element={isAuthenticated ? <ProposalForm /> : <Login />}
         />
 
 
-<Route path="/proposals"
+        <Route path="/proposals"
           element={isAuthenticated ? <MyProposals /> : <Login />}
         />
-        
+
 
         <Route path="*" element={<NotFound />} />
 

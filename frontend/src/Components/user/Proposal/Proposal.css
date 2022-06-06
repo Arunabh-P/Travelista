@@ -1,14 +1,4 @@
 
-.proposal{
-  padding-top: 25px;
-  
-}
-
-.fullBodyProposal{
-  background-color: #edf0f5;
-  height: 100vh;
-}
-
 .buddy-form-div{
   display: flex;
   flex-direction: column;
@@ -20,4 +10,32 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 margin: auto;
+}
+.proposal-dataform-button{
+  padding: .8rem;
+  margin-top: 1rem;
+  border-radius:2.5px;
+
+  outline: none;
+  border: none; 
+}
+
+.its-my-data{
+  border: 1px solid black;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 0 1vmax 2vmax;
+  margin-bottom: 10px;
+}
+
+.fixed{
+  position: fixed;
+}
+
+.bg-color{
+  background-color: #edf0f5;
+}
+
+.img-max-height{
+  max-height: 80vh;
 }

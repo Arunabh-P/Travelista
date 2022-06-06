@@ -16,6 +16,8 @@ if (process.env.NODE_ENV !== "production") {
   const post = require("./routes/post")
   const user = require("./routes/user")
   const story = require("./routes/story")
+  const message = require("./routes/messages")
+  const conversation = require("./routes/conversations")
 
 
   //using Route
@@ -23,6 +25,11 @@ if (process.env.NODE_ENV !== "production") {
   app.use("/api/v1", post)
   app.use("/api/v1", user)
   app.use("/api/v1", story)
+  app.use("/api/v1", message)
+  app.use("/api/v1", conversation)
+  console.log(conversation,"aaaaaaaaaaaaaaaaaaaaaaaa");
+
+
 
 
 module.exports = app;
