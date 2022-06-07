@@ -13,7 +13,7 @@ const store = configureStore({
         userProfile : userProfileReducer,
         userPosts : userPostsReducer,
         addStory : addStoryReducer,
-        storyOfFollowing :storyOfFollowingReducer
+        storyOfFollowing :storyOfFollowingReducer,
     } 
 });
 

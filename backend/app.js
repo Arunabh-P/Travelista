@@ -27,7 +27,7 @@ if (process.env.NODE_ENV !== "production") {
   app.use("/api/v1", story)
   app.use("/api/v1", message)
   app.use("/api/v1", conversation)
-  console.log(conversation,"aaaaaaaaaaaaaaaaaaaaaaaa");
+  console.log(conversation);
 
 
 

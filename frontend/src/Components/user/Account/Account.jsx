@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch, useSelector } 
+from "react-redux"
 import { deleteMyProfile, getMyPosts, loadUser, logoutUser, updateCoverImage } from '../../../Actions/User';
 import "./Account.css"
 import Post from '../Post/Post';
