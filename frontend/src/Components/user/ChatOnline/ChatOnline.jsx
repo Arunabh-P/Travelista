@@ -1,24 +1,51 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import "./ChatOnline.css"
 import profilePic from "../../../Images/profilePic.jpeg"
+import axios from "axios"
 
-function ChatOnline() {
+
+function ChatOnline({onlineUsers, currentId, setCurrentChat }) {
+  const[friends, setFriends]=useState([]);
+  const[onlineFriends, setOnlineFriends]=useState([]);
+
+  useEffect(()=>{
+    const getFriends = async () => {
+      const { data } = await axios.get(`/api/v1/user/${currentId}`)
+      setFriends(data.user.following);
+
+    }
+    getFriends()
+  },[currentId])
+  console.log(friends,"dddddddddddddddddddddddddd");
+
+  useEffect(()=>{
+    setOnlineFriends(friends.filter((f)=>onlineUsers && onlineUsers.includes(f._id)));
+  },[friends,onlineUsers])
+
+// console.log(onlineUsers,"haiiiiiiiiiiiiiiiiiiiiiiiii");
   return (
     <div className="chatOnline">
+      {onlineFriends.map((o)=>(
         <div className="chatOnlineFriend" >
         <div className="chatOnlineImgContainer">
         <img
               className="chatOnlineImg"
-              src="https://images.pexels.com/photos/3686769/pexels-photo-3686769.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              src={o?.avatar.url}
               alt=""
             />
             <div className="chatOnlineBadge"></div>
         </div>
-        <span className="chatOnlineName">Ayisha</span>
+        <span className="chatOnlineName">{o?.name}</span>
     </div>
+    ))}
     </div>
 
   )
 }
+
+
+
+
+
 
 export default ChatOnline

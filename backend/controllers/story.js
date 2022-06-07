@@ -22,10 +22,10 @@ exports.createStory = async (req, res) => {
         const user = await User.findById(req.user._id);
 
         // user.stories.unshift(story._id);
-        console.log("-----------");
+        // console.log("-----------");
 
         await user.save();
-        console.log(user, story);
+        // console.log(user, story);
         res.status(201).json({
             success: true,
             message: "Story created",
@@ -53,7 +53,7 @@ exports.getStoryOfFollowing = async (req, res) => {
         .populate("owner")
 
         ////////////
-        console.log(stories);
+        // console.log(stories);
 
         res.status(200).json({
             success: true,

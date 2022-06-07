@@ -5,18 +5,48 @@ import Message from '../Message/Message'
 import "./Messenger.css"
 import { useDispatch, useSelector } from "react-redux"
 import axios from "axios"
-function Messenger() {
-    const dispatch = useDispatch()
+import { io } from "socket.io-client"
 
+function Messenger() {
     const [converstions, setConverstions] = useState([])
     const [currentChat, setCurrentChat] = useState(null)
     const [messages, setMessages] = useState([])
     const [newMessage, setNewMessage] = useState("")
+    const [arrivalMessage, setArrivalMessage] = useState(null)
+    const [onlineUsers, setOnlineUsers] = useState(null)
+
+
+    const socket = useRef(io("ws://localhost:8900"))
     const scrollRef = useRef()
 
 
     const { user, loading: userLoading } = useSelector((state) => state.user);
 
+    useEffect(() => {
+        socket.current = io("ws://localhost:8900");
+        socket.current.on("getMessage", (data) => {
+            setArrivalMessage({
+                sender: data.senderId,
+                text: data.text,
+                createdAt: Date.now()
+            });
+        });
+    }, []);
+
+    useEffect(() => {
+        arrivalMessage && 
+        currentChat?.members.includes(arrivalMessage.sender) &&
+        setMessages((prev) => [...prev,arrivalMessage])
+    }, [arrivalMessage, currentChat])
+
+    useEffect(() => {
+        socket.current.emit("addUser", user._id)
+        socket.current.on("getUsers", (users) => {
+        setOnlineUsers(
+            user.following.filter((f)=>users.some((u)=>u.userId===f)))
+        })
+    }, [user.following])
+    console.log(user.following,"voooooom");
 
     useEffect(() => {
         const getConversations = async () => {
@@ -51,6 +81,15 @@ function Messenger() {
             text: newMessage,
             conversationId: currentChat._id
         }
+
+        const receiverId = currentChat.members.find((member) => member !== user._id);
+
+        socket.current.emit("sendMessage", {
+            senderId: user._id,
+            receiverId,
+            text: newMessage
+        })
+
         try {
             const { data } = await axios.post(`/api/v1/message`, message)
             setMessages([...messages, data])
@@ -61,9 +100,11 @@ function Messenger() {
         }
     }
 
-    useEffect(()=>{
-        scrollRef.current?.scrollIntoView({behavior:"smooth"})
-    },[messages])
+
+
+    useEffect(() => {
+        scrollRef.current?.scrollIntoView({ behavior: "smooth" })
+    }, [messages])
 
 
 
@@ -115,10 +156,12 @@ function Messenger() {
                 </div>
                 <div className="chatOnline">
                     <div className="chatOnlineWrapper">
-                        <ChatOnline />
-                        <ChatOnline />
-                        <ChatOnline />
-                        <ChatOnline />
+                        <ChatOnline
+                         onlineUsers={onlineUsers && onlineUsers}
+                          currentId={user.following._id} 
+                          setCurrentChat={setCurrentChat}
+                          />
+                        
 
                     </div>
                 </div>

@@ -15,12 +15,27 @@ exports.Conversation = async (req, res) => {
   };
 
   exports.getOneUserAllConversation = async (req,res) => {
-    console.log("hai");
     try {
       const conversation = await Conversation.find({
         members: {$in:[req.params.userId]},
       })
       res.status(200).json(conversation);
+    } catch (err) {
+      res.status(500).json(err);
+      
+    }
+  }
+
+  // get conv include 2 userId
+
+  exports.getTwoUserConversation = async(req,res) =>{
+    try {
+      const conversation = await Conversation.findOne({
+        members: {$all:[req.params.firstUserId, req.params.secondUserId]},
+
+      })
+      res.status(200).json(conversation);
+      
     } catch (err) {
       res.status(500).json(err);
       
