@@ -6,6 +6,8 @@ import "./Messenger.css"
 import { useDispatch, useSelector } from "react-redux"
 import axios from "axios"
 import { io } from "socket.io-client"
+import chatimg from "../../../../src/Images/chat.gif"
+import walkingCouples from "../../../../src/Images/walkingCouples.gif"
 
 function Messenger() {
     const [converstions, setConverstions] = useState([])
@@ -117,7 +119,7 @@ function Messenger() {
             <div className='messenger  container'>
                 <div className="chatMenu">
                     <div className="chatMenuWrapper">
-                        <input placeholder="Search for friends" className="chatMenuInput" />
+                        <p>Recent Chats</p>
                         {converstions.map((c) => (
                             <div onClick={() => setCurrentChat(c)}>
                                 <Conversation conversation={c} currentUser={user} />
@@ -154,7 +156,14 @@ function Messenger() {
                                     </button>
                                 </div>
                             </>
-                            : <span className='noConversationText'>Open a conversation to start a chat.</span>
+                            : (
+<>
+                            <img className='noConversationImg' src={chatimg} alt="" />
+                           <p className='noConversationText'>Open a conversation to start a chat.</p>
+                            
+                            </>
+                            )
+                            
                         }
                     </div>
                 </div>
