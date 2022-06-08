@@ -34,12 +34,30 @@ exports.Conversation = async (req, res) => {
         members: {$all:[req.params.firstUserId, req.params.secondUserId]},
 
       })
-      res.status(200).json(conversation);
+      if(conversation){
+
+        res.status(200).json(conversation);
+      }else{
+        const newConversation = new Conversation({
+          members: [req.params.firstUserId, req.params.secondUserId],
+    
+        });
+      
+        try {
+          const savedConversation = await newConversation.save();
+          res.status(200).json(savedConversation);
+        } catch (err) {
+          res.status(500).json(err);
+        }
+      }
       
     } catch (err) {
       res.status(500).json(err);
       
     }
   }
+
+  
+
 
 

@@ -14,6 +14,7 @@ function Messenger() {
     const [newMessage, setNewMessage] = useState("")
     const [arrivalMessage, setArrivalMessage] = useState(null)
     const [onlineUsers, setOnlineUsers] = useState(null)
+    const [conversation, setConversation] = useState(null)
 
 
     const socket = useRef(io("ws://localhost:8900"))
@@ -110,6 +111,20 @@ function Messenger() {
         scrollRef.current?.scrollIntoView({ behavior: "smooth" })
     }, [messages])
 
+    // const createconversation = async () => {
+
+    //     const chat = {
+    //         sender: params.sender,
+    //         receiver: params.receiver
+    //     }
+    //     try {
+    //         const { data } = await axios.post('/conversation', chat)
+    //         setConversation(data)
+
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
 
 
     return (
