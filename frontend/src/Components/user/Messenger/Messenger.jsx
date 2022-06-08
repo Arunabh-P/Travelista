@@ -31,7 +31,10 @@ function Messenger() {
                 createdAt: Date.now()
             });
         });
-    }, []);
+        return () => {
+            socket.current.close()
+        }
+    }, [socket]);
 
     useEffect(() => {
         arrivalMessage && 
@@ -42,11 +45,12 @@ function Messenger() {
     useEffect(() => {
         socket.current.emit("addUser", user._id)
         socket.current.on("getUsers", (users) => {
+            users=JSON.parse(users)
+           
         setOnlineUsers(
-            user.following.filter((f)=>users.some((u)=>u.userId===f)))
+            user.following.filter((f)=>users.some((u)=>u.userId===f._id)))
         })
     }, [user.following])
-    console.log(user.following,"voooooom");
 
     useEffect(() => {
         const getConversations = async () => {
@@ -158,7 +162,7 @@ function Messenger() {
                     <div className="chatOnlineWrapper">
                         <ChatOnline
                          onlineUsers={onlineUsers && onlineUsers}
-                          currentId={user.following._id} 
+                          currentId={user._id} 
                           setCurrentChat={setCurrentChat}
                           />
                         

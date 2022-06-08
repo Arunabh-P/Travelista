@@ -7,6 +7,7 @@ import axios from "axios"
 function ChatOnline({onlineUsers, currentId, setCurrentChat }) {
   const[friends, setFriends]=useState([]);
   const[onlineFriends, setOnlineFriends]=useState([]);
+  console.log(currentId,"currrrentiddddddddddd");
 
   useEffect(()=>{
     const getFriends = async () => {
@@ -16,16 +17,18 @@ function ChatOnline({onlineUsers, currentId, setCurrentChat }) {
     }
     getFriends()
   },[currentId])
-  console.log(friends,"dddddddddddddddddddddddddd");
+  // console.log(friends,"dddddddddddddddddddddddddd");
 
-  useEffect(()=>{
-    setOnlineFriends(friends.filter((f)=>onlineUsers && onlineUsers.includes(f._id)));
-  },[friends,onlineUsers])
 
-// console.log(onlineUsers,"haiiiiiiiiiiiiiiiiiiiiiiiii");
+  // useEffect(()=>{
+  //   setOnlineFriends(friends.filter((f)=>onlineUsers && onlineUsers.includes(f._id)));
+  
+  // },[friends,onlineUsers])
+
+console.log(onlineUsers,"haiiiiiiiiiiiiiiiiiiiiiiiii");
   return (
     <div className="chatOnline">
-      {onlineFriends.map((o)=>(
+      {onlineUsers?.map((o)=>(
         <div className="chatOnlineFriend" >
         <div className="chatOnlineImgContainer">
         <img

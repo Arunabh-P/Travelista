@@ -10,10 +10,11 @@ const addUser = (userId,socketId) => {
 }
 const removeUser = (socketId) =>{
     users = users.filter((user)=>user.socketId !== socketId)
+    console.log(users,"amoooog");
 }
 
 const getUser = (userId) => {
-    return users.find(user=>user.userId === userId)
+    return users.find((user)=>user.userId === userId)
 }
 
 io.on("connection", (socket) => {
@@ -22,9 +23,10 @@ io.on("connection", (socket) => {
     console.log("a user connected.");
 
     //take userId socketId from user
-    socket.on("addUser", userId => {
+    socket.on("addUser", (userId) => {
         addUser(userId, socket.id);
-        io.emit("getUsers",users)
+        console.log(users);
+        io.emit("getUsers",JSON.stringify(users))
 
     });
 
@@ -42,7 +44,8 @@ io.on("connection", (socket) => {
     socket.on("disconnect",()=>{
         console.log("a user disconnected!");
         removeUser(socket.id);
-        io.emit("getUsers",users)
+        console.log(users,"prrrrrrrrrrrrrrrraaaaa");
+        io.emit("getUsers",JSON.stringify(users))
 
     })
 })
