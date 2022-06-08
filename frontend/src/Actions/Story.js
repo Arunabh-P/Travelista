@@ -25,7 +25,6 @@ export const createNewStory = ( image) => async (dispatch) => {
         dispatch({
             type: "newStoryFailure ",
             
-            // payload: error.response
             payload: error.response.data.message,
         })
 

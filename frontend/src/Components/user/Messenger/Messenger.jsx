@@ -111,21 +111,6 @@ function Messenger() {
         scrollRef.current?.scrollIntoView({ behavior: "smooth" })
     }, [messages])
 
-    // const createconversation = async () => {
-
-    //     const chat = {
-    //         sender: params.sender,
-    //         receiver: params.receiver
-    //     }
-    //     try {
-    //         const { data } = await axios.post('/conversation', chat)
-    //         setConversation(data)
-
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
-
 
     return (
         <div className="body-messager pt-2 ">

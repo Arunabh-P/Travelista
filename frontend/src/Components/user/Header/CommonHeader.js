@@ -57,11 +57,11 @@ function Header() {
             <Link to="/messenger" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/messenger")} >
               {tab === "/messenger" ? <ChatIcon /> : <ChatOutlinedIcon />}
             </Link>
-            <Link to="/notification" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/notification")} >
+            {/* <Link to="/notification" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/notification")} >
               {tab === "/notification" ? <NotificationsIcon /> : <NotificationsNoneOutlinedIcon />}
-            </Link>
+            </Link> */}
 
-            <NavDropdown style={{ color: "black", paddingLeft: "22.5px" }} title={<UserProfile style={{color: "black"}} />} id="basic-nav-dropdown">
+            <NavDropdown style={{ color: "black", paddingLeft: "22.5px",marginTop: "-8px" }} title={<UserProfile style={{color: "black"}} />} id="basic-nav-dropdown">
 
               <NavDropdown.Item >
                 <Link to="/account" className="account-texts" >Account</Link>

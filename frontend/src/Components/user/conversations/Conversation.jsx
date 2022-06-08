@@ -7,10 +7,7 @@ function Conversation({conversation, currentUser}) {
 
   useEffect(()=>{
     const friendId = conversation.members.find(m=>m !== currentUser._id)
-    // const { data } = await axios.get(`/api/v1/conversation/${user._id}`)
-    // const { data } = await axios.get(`/api/v1/user/${id}`);
-    // const { data } = await axios.get(`/api/v1/users?name=${name}`);
-console.log(currentUser,"lllllllllllllllllllllllllllllll");
+   
     const getUser = async () => {
       try {
         
