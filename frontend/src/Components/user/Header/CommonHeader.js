@@ -64,30 +64,37 @@ function Header() {
             <NavDropdown style={{ color: "black", paddingLeft: "22.5px",marginTop: "-8px" }} title={<UserProfile style={{color: "black"}} />} id="basic-nav-dropdown">
 
               <NavDropdown.Item >
-                <Link to="/account" className="account-texts" >Account</Link>
+                <Link to="/account" className="account-text-header" >Account</Link>
               </NavDropdown.Item>
 
               <NavDropdown.Item>
-                <Link to="/proposals" className="account-texts">Proposals</Link>
+                <Link to="/proposals" className="account-text-header">Proposals</Link>
+              </NavDropdown.Item>
+
+
+              <NavDropdown.Item>
+                <Link to="/update/password" className="account-text-header">Change Password</Link>
+              </NavDropdown.Item>
+
+              <NavDropdown.Item>
+                <Link to="/update/profile" className="account-text-header">Edit Profile</Link>
               </NavDropdown.Item>
 
               <NavDropdown.Divider />
-
+              
               <NavDropdown.Item>
-                <Link to="/update/password" className="account-texts">Change Password</Link>
-              </NavDropdown.Item>
-
-              <NavDropdown.Item>
-                <Link to="/update/profile" className="account-texts">Edit Profile</Link>
+                <p onClick={(logoutHandler)} style={{marginBottom:"0"}}>
+                <LogoutIcon  /> LogOut
+                </p>
               </NavDropdown.Item>
 
             </NavDropdown>
             {/* <Link to="/account" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/account")} >
               {tab === "/account" ? <AccountCircleIcon /> : <UserProfile />}
             </Link> */}
-            <p style={{ paddingLeft: "22.5px", cursor: "pointer" }}>
+            {/* <p style={{ paddingLeft: "22.5px", cursor: "pointer" }}>
               <LogoutIcon onClick={(logoutHandler)} />
-            </p>
+            </p> */}
           </Nav>
         </Navbar.Collapse>
       </Container>

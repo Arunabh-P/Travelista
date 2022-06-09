@@ -84,6 +84,7 @@
   }
   
   .noConversationText {
+    padding-top: 16rem;
     font-size: 40px;
     color: rgb(224, 220, 220);
     cursor: default;
@@ -93,7 +94,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width:65%;
+    width:60%;
   }
   
   @media screen and (max-width: 768px) {

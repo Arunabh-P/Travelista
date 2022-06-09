@@ -6,7 +6,7 @@ import "./Messenger.css"
 import { useDispatch, useSelector } from "react-redux"
 import axios from "axios"
 import { io } from "socket.io-client"
-import chatimg from "../../../../src/Images/chat.gif"
+import chatimg from "../../../../src/Images/chat4.png"
 import walkingCouples from "../../../../src/Images/walkingCouples.gif"
 
 function Messenger() {
@@ -158,8 +158,8 @@ function Messenger() {
                             </>
                             : (
 <>
-                            <img className='noConversationImg' src={chatimg} alt="" />
                            <p className='noConversationText'>Open a conversation to start a chat.</p>
+                            {/* <img className='noConversationImg' src={chatimg} alt="" /> */}
                             
                             </>
                             )
