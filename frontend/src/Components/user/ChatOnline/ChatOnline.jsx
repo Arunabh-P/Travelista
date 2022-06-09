@@ -3,7 +3,7 @@ import "./ChatOnline.css"
 import profilePic from "../../../Images/profilePic.jpeg"
 import axios from "axios"
 import { useSelector } from "react-redux"
-
+import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied';
 
 function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
   const [friends, setFriends] = useState([]);
@@ -32,7 +32,7 @@ function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
   return (
     <>
       <div className="chatOnline">
-<p>Online Users</p>
+        <h5>Online Users</h5>
         {
         onlineUsers&&onlineUsers.length>0?(
           
@@ -50,13 +50,13 @@ function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
           </div>
         ))
         ):(
-          <p>Oops..everyone is having a break time!</p>
+          <p style={{color:"rgb(118, 118, 124)"}}><SentimentDissatisfiedIcon/> <span className='no-one-online'>Oops..everyone is having a break time!</span> </p>
         )
         }
       </div>
       <div>
         <div className="chatOnline">
-          <p>Connections</p>
+          <h5>Connections</h5>
           {
             user && user.following.length > 0 ? user.following.map((follow) => ((
               <div className="chatOnlineFriend" onClick={() => handleClick(follow)}>

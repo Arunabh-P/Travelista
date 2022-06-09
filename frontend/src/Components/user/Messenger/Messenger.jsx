@@ -28,8 +28,10 @@ function Messenger() {
     useEffect(() => {
         socket.current = io("ws://localhost:8900");
         socket.current.on("getMessage", (data) => {
+
+            // console.log(data,"EEEERRORR");
             setArrivalMessage({
-                sender: data.senderId,
+                sender: data.sender,
                 text: data.text,
                 createdAt: Date.now()
             });
@@ -41,7 +43,7 @@ function Messenger() {
 
     useEffect(() => {
         arrivalMessage && 
-        currentChat?.members.includes(arrivalMessage.sender) &&
+        currentChat?.members.includes(arrivalMessage.sender._id) &&
         setMessages((prev) => [...prev,arrivalMessage])
     }, [arrivalMessage, currentChat])
 
@@ -84,15 +86,18 @@ function Messenger() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const message = {
-            sender: user._id,
+            sender: user,
             text: newMessage,
             conversationId: currentChat._id
         }
 
         const receiverId = currentChat.members.find((member) => member !== user._id);
-
+// console.log(user,"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj");
         socket.current.emit("sendMessage", {
-            senderId: user._id,
+            senderId: {
+                avatar:user.avatar,
+                _id:user._id
+            },
             receiverId,
             text: newMessage
         })
@@ -119,7 +124,7 @@ function Messenger() {
             <div className='messenger  container'>
                 <div className="chatMenu">
                     <div className="chatMenuWrapper">
-                        <p>Recent Chats</p>
+                        <h5>Recent Chats</h5>
                         {converstions.map((c) => (
                             <div onClick={() => setCurrentChat(c)}>
                                 <Conversation conversation={c} currentUser={user} />
@@ -135,7 +140,7 @@ function Messenger() {
                                 <div className="chatBoxTop">
                                     {messages.map(m => (
                                         <div ref={scrollRef}>
-                                            < Message message={m} own={m.sender === user._id} />
+                                            < Message message={m} own={m.sender._id === user._id} />
                                         </div>
                                     ))
                                     }

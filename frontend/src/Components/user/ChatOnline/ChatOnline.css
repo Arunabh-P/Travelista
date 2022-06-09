@@ -44,7 +44,10 @@
   }
 
  
-
+.no-one-online{
+  color: rgb(118, 118, 124);
+  font-weight: lighter;
+}
 
 /* .chatOnline{
 
