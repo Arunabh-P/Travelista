@@ -8,7 +8,7 @@ import axios from "axios"
 import { io } from "socket.io-client"
 import chatimg from "../../../../src/Images/chat4.png"
 import walkingCouples from "../../../../src/Images/walkingCouples.gif"
-
+import SendRoundedIcon from '@mui/icons-material/SendRounded';
 function Messenger() {
     const [converstions, setConverstions] = useState([])
     const [currentChat, setCurrentChat] = useState(null)
@@ -155,9 +155,8 @@ function Messenger() {
                                     >
 
                                     </textarea>
-
                                     <button className="chatSubmitButton" onClick={handleSubmit}>
-                                        Send
+                                       Send
                                     </button>
                                 </div>
                             </>

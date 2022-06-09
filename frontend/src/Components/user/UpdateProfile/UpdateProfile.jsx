@@ -7,7 +7,7 @@ import { Avatar } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux"
 import { FormControl } from "react-bootstrap";
 import CropImage from "../../user/ProfilePicCropper/CropImage"
-
+import update from "../../../../src/Images/update.png"
 import {
   loadUser,
   updateProfileUser
@@ -61,89 +61,102 @@ export default function UpdateProfile() {
 
 
   return (
-    <div className='update' style={{ backgroundImage: `url(${bg})` }}>
-      <div className="update-container">
-        <h6 className="update-subheader">Update Profile</h6>
+    <div className='update' >
+      <div className="update-profile-headline p-5">
+
+<h3>Update Profile</h3>
+</div>
+      <div className="container ">
         <form onSubmit={submitHandler} >
           <div className='update-dataform'>
-            <FormControl
-              className="crop_image d-none"
-              id="upload_image"
-              type="file"
-              name="crop_image"
-              onChange={(e) => {
-                setCropImage(e.target.files[0]);
-                setShowCropper(true);
-              }}
-              accept=".jpg,.jpeg,.png,"
-            />
-            <label for="upload_image">
-              <span class="profilepic__icon">
-              <Avatar className="update-avatar"
-                src={avatar ? avatar :avatarPrev }
-                value={avatarPrev}
-                alt="User"
-                sx={{ height: "5vmax", width: "5vmax" }}
-              />
-            </span>
+            <div className="row update-row p-4 rounded">
+              
+              <div className="col-md-6 update-img p-5">
 
-          </label>
-          {showCropper && (
-            <CropImage
-              src={cropImage}
-              imageCallback={(avatar) => {
-                setAvatar(avatar);
-                setShowCropper(false);
-              }}
-              closeHander={() => {
-                setShowCropper(false);
-              }}
-            />
-          )}
+                <FormControl
+                  className="crop_image d-none"
+                  id="upload_image"
+                  type="file"
+                  name="crop_image"
+                  onChange={(e) => {
+                    setCropImage(e.target.files[0]);
+                    setShowCropper(true);
+                  }}
+                  accept=".jpg,.jpeg,.png,"
+                />
+                <label for="upload_image">
+                  <span class="profilepic__icon">
+                    <Avatar className="update-avatar"
+                      src={avatar ? avatar : avatarPrev}
+                      value={avatarPrev}
+                      alt="User"
+                      sx={{ height: "12.5rem", width: "12.5rem" }}
+                    />
+                  </span>
 
-          <input
-            className='update-dataform-email'
-            type="text"
-            placeholder="Name"
-            required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+                </label>
+                {showCropper && (
+                  <CropImage
+                    src={cropImage}
+                    imageCallback={(avatar) => {
+                      setAvatar(avatar);
+                      setShowCropper(false);
+                    }}
+                    closeHander={() => {
+                      setShowCropper(false);
+                    }}
+                  />
+                )}
+              </div>
+              <div className="col-md-6 p-5">
+                <div className="update-texts-pro">
 
-
-          />
-          <input
-            className='update-dataform-email'
-            type="text"
-            placeholder="Bio"
-            required
-            value={bio}
-            onChange={(e) => setBio(e.target.value)}
+                  <input
+                    className='update-dataform-email'
+                    type="text"
+                    placeholder="Name"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
 
 
-          />
-          <input
-            className='update-dataform-email'
-            type="email"
-            placeholder="Email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <input
+                    className='update-dataform-email'
+                    type="text"
+                    placeholder="Bio"
+                    required
+                    value={bio}
+                    onChange={(e) => setBio(e.target.value)}
 
 
-          />
+                  />
+                  <input
+                    className='update-dataform-email'
+                    type="email"
+                    placeholder="Email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
 
 
+                  />
 
 
+                  <button disabled={updateLoading} className='update-dataform-button' type='submit'>Update</button>
+                </div>
 
+                
 
-          <button disabled={updateLoading} className='update-dataform-button' type='submit'>Update</button>
+              </div>
 
+            </div>
 
-      </div>
-    </form>
+          </div>
+        </form>
 
       </div >
+
     </div >
   );
 }

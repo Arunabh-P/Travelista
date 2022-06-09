@@ -3,7 +3,7 @@ import "./NewPost.css"
 import { Button, Dialog, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux"
 import { createNewPost } from '../../../Actions/Post';
-import { useAlert } from "react-alert"
+// import { useAlert } from "react-alert"
 import { loadUser } from "../../../Actions/User"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -18,7 +18,7 @@ function NewPost() {
 
 
   const dispatch = useDispatch()
-  const alert = useAlert();
+  // const alert = useAlert();
   const [newPostToggle, setNewPostToggle] = useState(false)
 
 
@@ -44,19 +44,19 @@ function NewPost() {
 
 
   }
-  useEffect(() => {
+  // useEffect(() => {
 
-    if (error) {
-      alert.error(error);
-      dispatch({ type: "clearErrors" })
-    }
+  //   if (error) {
+  //     alert.error(error);
+  //     dispatch({ type: "clearErrors" })
+  //   }
 
-    if (message) {
-      alert.success(message);
-      dispatch({ type: "clearErrors" })
-    }
+  //   if (message) {
+  //     alert.success(message);
+  //     dispatch({ type: "clearErrors" })
+  //   }
 
-  }, [dispatch, error, message, alert])
+  // }, [dispatch, error, message, alert])
 
 
   return (

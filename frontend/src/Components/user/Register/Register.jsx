@@ -139,7 +139,7 @@ export default function Register() {
                         <button disabled={loading} className='register-dataform-button' type='submit'>Register</button>
 
 
-                        <small className='dont-have-acc'>Already have an account <Link to="/">Create HERE</Link></small>
+                        <small className='dont-have-acc'>Already have an account <Link to="/">Login HERE</Link></small>
                     </div>
                 </form>
 

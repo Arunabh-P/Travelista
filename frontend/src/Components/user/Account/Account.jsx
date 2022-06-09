@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } 
-from "react-redux"
+import { useDispatch, useSelector }
+  from "react-redux"
 import { deleteMyProfile, getMyPosts, loadUser, logoutUser, updateCoverImage } from '../../../Actions/User';
 import "./Account.css"
 import Post from '../Post/Post';
@@ -15,8 +15,46 @@ import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import { FormControl } from "react-bootstrap";
 import CropImage from "../../user/CoverPicCroper/CropImage"
 import SaveIcon from '@mui/icons-material/Save';
+const Swal = require('sweetalert2')
 
 function Account() {
+
+
+     const deleteProfileHandler = async () => {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then( (result) => {
+        if (result.isConfirmed) {
+
+           dispatch(deleteMyProfile())
+          dispatch(logoutUser())
+          
+        }
+      })
+     }
+      
+
+  // const deleteProfileHandler = async () => {
+    
+  //     Swal.fire({
+  //       title: `Do You want to Block ?`,
+  //       icon: 'warning',
+  //       showCancelButton: true,
+  //       confirmButtonColor: '#d33',
+  //       cancelButtonColor: '#3085d6 ',
+  //       confirmButtonText: 'Yes!'
+  //     }).then(async() => {
+        
+  //       await dispatch(deleteMyProfile())
+  //      dispatch(logoutUser())
+  //     })
+  // }
 
   const dispatch = useDispatch()
   const alert = useAlert()
@@ -36,10 +74,10 @@ function Account() {
 
 
 
-  const deleteProfileHandler = async () => {
-    await dispatch(deleteMyProfile());
-    dispatch(logoutUser())
-  }
+  // const deleteProfileHandler = async () => {
+  //   await dispatch(deleteMyProfile());
+  //   dispatch(logoutUser())
+  // }
 
 
   useEffect(() => {
@@ -189,6 +227,8 @@ function Account() {
               >
                 Delete My Profile
               </Button>
+
+             
 
               <Dialog open={followersToggle} onClose={() => setFollowersToggle(!followersToggle)}>
                 <div className="DialogBox">

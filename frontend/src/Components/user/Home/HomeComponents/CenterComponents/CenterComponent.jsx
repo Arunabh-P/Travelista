@@ -5,11 +5,11 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import { getAllUsers, getFollowingPosts } from '../../../../../Actions/User'
 import { Typography } from "@mui/material";
-import { useAlert } from "react-alert"
+// import { useAlert } from "react-alert"
 import Story from '../../../Story/Story'
 function CenterComponent() {
   const dispatch = useDispatch();
-  const alert = useAlert();
+  // const alert = useAlert();
   const { user, loading: userLoading } = useSelector((state) => state.user);
   const { loading, posts, error } = useSelector(
     (state) => state.postOfFollowing
@@ -24,20 +24,20 @@ function CenterComponent() {
     dispatch(getAllUsers())
   }, [dispatch])
 
-  useEffect(() => {
-    if (error) {
-      alert.error(error)
-      dispatch({ type: "clearErrors" })
-    }
-    if (likeError) {
-      alert.error(likeError);
-      dispatch({ type: "clearErrors" })
-    }
-    if (message) {
-      alert.success(message);
-      dispatch({ type: "clearMessage" })
-    }
-  }, [alert, error, message, likeError, dispatch]);
+  // useEffect(() => {
+  //   if (error) {
+  //     alert.error(error)
+  //     dispatch({ type: "clearErrors" })
+  //   }
+  //   if (likeError) {
+  //     alert.error(likeError);
+  //     dispatch({ type: "clearErrors" })
+  //   }
+  //   if (message) {
+  //     alert.success(message);
+  //     dispatch({ type: "clearMessage" })
+  //   }
+  // }, [alert, error, message, likeError, dispatch]);
   return (
     <>
 

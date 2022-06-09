@@ -86,6 +86,7 @@ export const postOfFollowingReducer = createReducer(initialState, {
     postOfFollowingFailure: (state, action) => {
         state.loading = false;
         state.error = action.payload;
+        
     },
     clearErrors: (state) => {
         state.error = null;

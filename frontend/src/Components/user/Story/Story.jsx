@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState ,useEffect} from 'react'
 import "./Story.css"
 import AddStory from './StoryComponents/AddStory';
 import FollowersStories from './StoryComponents/FollowersStories';
@@ -6,6 +6,25 @@ import { useDispatch, useSelector } from "react-redux"
 import { useAlert } from 'react-alert';
 
 function Story() {
+  const dispatch = useDispatch()
+  const { loading, error, message } = useSelector((state) => state.addStory)
+
+
+  const alert = useAlert();
+
+    useEffect(() => {
+
+    if (error) {
+      alert.error(error);
+      dispatch({ type: "clearErrors" })
+    }
+
+    if (message) {
+      alert.success(message);
+      dispatch({ type: "clearErrors" })
+    }
+
+  }, [dispatch, error, message, alert])
    
     return (
         <div className="row mb-2 all-stories-in-the-home-page mx-1"  style={{overflowX:"scroll"}}>

@@ -63,15 +63,19 @@
   }
   
   .chatSubmitButton {
-    width: 70px;
-    height: 40px;
+    width: 8.90rem;
+    height: 5.625rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     background-color: teal;
     color: white;
+    margin-left: 4px;
   }
-  
+  .chat-send-button{
+
+height: 20px;
+  }
   .chatOnline {
     flex: 2.5;
   }
