@@ -66,7 +66,7 @@ export default function UpdateProfile() {
 
 <h3>Update Profile</h3>
 </div>
-      <div className="container ">
+      <div className="container mb-4 ">
         <form onSubmit={submitHandler} >
           <div className='update-dataform'>
             <div className="row update-row p-4 rounded">
