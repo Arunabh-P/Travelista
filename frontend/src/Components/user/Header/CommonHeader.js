@@ -48,53 +48,98 @@ function Header() {
             navbarScroll
           ></Nav>
           <Nav>
-            <Link to="/" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/")}>
-              {tab === "/" ? <HomeIcon /> : <HomeOutlinedIcon />}
-            </Link>
-            <Link to="/search" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/search")} >
-              {tab === "/search" ? <PersonSearchIcon /> : <PersonSearchOutlinedIcon />}
-            </Link>
-            <Link to="/messenger" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/messenger")} >
-              {tab === "/messenger" ? <ChatIcon /> : <ChatOutlinedIcon />}
-            </Link>
+            <div className="d-none d-lg-flex">
+              <Link to="/" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/")}>
+                {tab === "/" ? <HomeIcon /> : <HomeOutlinedIcon />}
+              </Link>
+              <Link to="/search" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/search")} >
+                {tab === "/search" ? <PersonSearchIcon /> : <PersonSearchOutlinedIcon />}
+              </Link>
+              <Link to="/messenger" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/messenger")} >
+                {tab === "/messenger" ? <ChatIcon /> : <ChatOutlinedIcon />}
+              </Link>
+              <NavDropdown style={{ color: "black", paddingLeft: "22.5px", marginTop: "-8px" }} title={<UserProfile style={{ color: "black" }} />} id="basic-nav-dropdown">
+                <NavDropdown.Item >
+                  <Link to="/account" className="account-text-header" >Account</Link>
+                </NavDropdown.Item>
+
+                <NavDropdown.Item>
+                  <Link to="/proposals" className="account-text-header">Proposals</Link>
+                </NavDropdown.Item>
+
+
+                <NavDropdown.Item>
+                  <Link to="/update/password" className="account-text-header">Change Password</Link>
+                </NavDropdown.Item>
+
+                <NavDropdown.Item>
+                  <Link to="/update/profile" className="account-text-header">Edit Profile</Link>
+                </NavDropdown.Item>
+
+                <NavDropdown.Divider />
+
+                <NavDropdown.Item>
+                  <p onClick={(logoutHandler)} style={{ marginBottom: "0" }}>
+                    <LogoutIcon /> LogOut
+                  </p>
+                </NavDropdown.Item>
+
+              </NavDropdown>
+            </div>
+            <div className="d-lg-none d-flex justify-content-start">
+              <div className="home-md-icons">
+                <div className="each-list-icons" >
+                  <Link to="/" style={{ color: "black", paddingLeft: "22.5px" }} className="icon-in-header" onClick={() => setTab("/")}>
+                  {tab === "/" ? <HomeIcon /> : <HomeOutlinedIcon />} Home
+                  </Link>
+                </div>
+                <div  className="each-list-icons">
+                  <Link to="/search" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/search")} className="icon-in-header" >
+                  {tab === "/search" ? <PersonSearchIcon /> : <PersonSearchOutlinedIcon />} Search
+                  </Link>
+                </div>
+                <div className="each-list-icons">
+                  <Link to="/messenger" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/messenger")} className="icon-in-header" >
+                  {tab === "/messenger" ? <ChatIcon /> : <ChatOutlinedIcon />} Chat
+                  </Link>
+                </div>
+                <div className="each-list-icons">
+                  <NavDropdown style={{ color: "black", paddingLeft: "22.5px", marginTop: "-8px" }} title="Account" id="basic-nav-dropdown">
+                    <NavDropdown.Item >
+                      <Link to="/account" className="account-text-header" >Account</Link>
+                    </NavDropdown.Item>
+
+                    <NavDropdown.Item>
+                      <Link to="/proposals" className="account-text-header">Proposals</Link>
+                    </NavDropdown.Item>
+
+
+                    <NavDropdown.Item>
+                      <Link to="/update/password" className="account-text-header">Change Password</Link>
+                    </NavDropdown.Item>
+
+                    <NavDropdown.Item>
+                      <Link to="/update/profile" className="account-text-header">Edit Profile</Link>
+                    </NavDropdown.Item>
+
+                    <NavDropdown.Divider />
+
+                    <NavDropdown.Item>
+                      <p onClick={(logoutHandler)} style={{ marginBottom: "0" }}>
+                        <LogoutIcon /> LogOut
+                      </p>
+                    </NavDropdown.Item>
+
+                  </NavDropdown>
+                </div>
+              </div>
+            </div>
             {/* <Link to="/notification" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/notification")} >
               {tab === "/notification" ? <NotificationsIcon /> : <NotificationsNoneOutlinedIcon />}
             </Link> */}
 
-            <NavDropdown style={{ color: "black", paddingLeft: "22.5px",marginTop: "-8px" }} title={<UserProfile style={{color: "black"}} />} id="basic-nav-dropdown">
-
-              <NavDropdown.Item >
-                <Link to="/account" className="account-text-header" >Account</Link>
-              </NavDropdown.Item>
-
-              <NavDropdown.Item>
-                <Link to="/proposals" className="account-text-header">Proposals</Link>
-              </NavDropdown.Item>
 
 
-              <NavDropdown.Item>
-                <Link to="/update/password" className="account-text-header">Change Password</Link>
-              </NavDropdown.Item>
-
-              <NavDropdown.Item>
-                <Link to="/update/profile" className="account-text-header">Edit Profile</Link>
-              </NavDropdown.Item>
-
-              <NavDropdown.Divider />
-              
-              <NavDropdown.Item>
-                <p onClick={(logoutHandler)} style={{marginBottom:"0"}}>
-                <LogoutIcon  /> LogOut
-                </p>
-              </NavDropdown.Item>
-
-            </NavDropdown>
-            {/* <Link to="/account" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/account")} >
-              {tab === "/account" ? <AccountCircleIcon /> : <UserProfile />}
-            </Link> */}
-            {/* <p style={{ paddingLeft: "22.5px", cursor: "pointer" }}>
-              <LogoutIcon onClick={(logoutHandler)} />
-            </p> */}
           </Nav>
         </Navbar.Collapse>
       </Container>
