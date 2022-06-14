@@ -35,7 +35,7 @@ function FollowersStories() {
             {
                 stories && stories.length > 0 ? (
                     stories.map((story,index) => (
-                        <div className="story-list ">
+                        <div key={story._id} className="story-list ">
 
 
                             <div onClick={() =>showSingleImage(index) }

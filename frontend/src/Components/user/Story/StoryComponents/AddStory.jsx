@@ -42,7 +42,7 @@ function AddStory() {
 
 
     return (
-        <div className=' add-story-box   me-3 p-0'>
+        <div className=' add-story-box   me-3 p-0 '>
 
             <form >
                 <input type="file" accept='image/*' className="crop_image d-none"  name="crop_image" id="upload_image" onChange={(e) => {
@@ -53,11 +53,12 @@ function AddStory() {
                 </div>
                 <div className=' p-3 d-flex justify-content-center plus-Button-add-story' >
 
-                    <label for="upload_image" ><span class="profilepic__icon"><AddCircleOutlineRoundedIcon
+                    <label htmlFor="upload_image" ><span className="profilepic__icon"><AddCircleOutlineRoundedIcon
                         sx={{ fontSize: 50 }}
                         className='bg-white rounded-circle p-2' /></span></label>
 
 {showCropper && (
+  <div className='d-flex justify-content-center'>
                     <CropImage
                       src={cropImage}
                       imageCallback={(image) => {
@@ -68,9 +69,11 @@ function AddStory() {
                         setShowCropper(false);
                       }}
                     />
+                  
+                  </div>
                   )}
-
                 </div>
+
             </form>
         </div>
     )

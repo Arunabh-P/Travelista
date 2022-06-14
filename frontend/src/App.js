@@ -1,16 +1,9 @@
 import "./App.css";
 import Login from "./Components/user/Login/Login"
-// import Signup from "./Components/user/Register/SignUp";
 import Header from "./Components/user/Header/CommonHeader"
-// import Home1 from "./Components/user/HomePage/Home";
 import Home from "./Components/user/Home/Home"
-import AdminHome from "./Components/admin/AdminHome";
-import Proposal from "./Components/user/Proposal/Proposal"
 import ProposalForm from "./Components/user/Proposal/ProposalForm"
-// import UserProfilePage from "./Components/user/UserProfilePage/UserProfilePage"
 import Messenger from "./Components/user/Messenger/Messenger";
-import AdminLogin from "./Components/admin/AdminLogin";
-import Userupdate from "./Components/admin/Userupdate";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react"
@@ -25,7 +18,6 @@ import ResetPassword from "./Components/user/ResetPassword/ResetPassword";
 import UserProfile from "./Components/user/UserProfile/UserProfile";
 import Search from "./Components/user/Search/Search"
 import NotFound from "./Components/user/NotFound/NotFound";
-import MyProposals from "./Components/user/MyProposals/MyProposals";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -42,16 +34,10 @@ function App() {
       {isAuthenticated && <Header />}
 
       <Routes>
-        {/* <Route path="/home1" element={<Home1 />} /> */}
-
         <Route path="/" element={isAuthenticated ? <Home /> : <Login />} />
         <Route path="/account" element={isAuthenticated ? <Account /> : <Login />} />
         <Route path="/register" element={isAuthenticated ? <Account /> : <Register />} />
 
-        {/* <Route path="/signup" element={<Signup />} /> */}
-        <Route path="/admin" element={<AdminHome />}></Route>
-        <Route path="/edit/:id" element={<Userupdate />}></Route>
-        <Route path="/adminlogin" element={<AdminLogin />}></Route>
 
         <Route path="/newpost"
           element={isAuthenticated ? <NewPost /> : <Login />}
@@ -92,9 +78,7 @@ function App() {
         />
 
 
-        <Route path="/proposals"
-          element={isAuthenticated ? <MyProposals /> : <Login />}
-        />
+       
 
 
         <Route path="*" element={<NotFound />} />

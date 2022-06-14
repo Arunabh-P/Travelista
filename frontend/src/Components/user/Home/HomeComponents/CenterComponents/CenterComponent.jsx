@@ -57,6 +57,8 @@ function CenterComponent() {
 
             <Post
               key={post._id}
+              host = {post.host}
+    buddy = {post.buddy}
               postId={post._id}
               caption={post.caption}
               postImage={post.image.url}

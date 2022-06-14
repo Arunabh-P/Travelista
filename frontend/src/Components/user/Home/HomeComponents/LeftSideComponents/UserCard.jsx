@@ -57,20 +57,6 @@ function UserCard() {
         <h3 className="pt-3">Hi <span style={{ textTransform: "capitalize"}}>{user.name},</span></h3>
         <h4>{date}!</h4>
         <img src={wave} className="pt-3  wave-card" alt="here cover image" />
-
-
-        {/* {
-                    user && user.following.length > 0 ? user.following.map((follow) => ((
-                      <User
-                        key={follow._id}
-                        userId={follow._id}
-                        name={follow.name}
-                        avatar={follow.avatar.url}
-                      />
-                    ))
-                    ) : (
-                      <Typography style={{ margin: "2vmax" }}> You're not following anyone</Typography>
-                    )} */}
       </div>
     </div>
   )

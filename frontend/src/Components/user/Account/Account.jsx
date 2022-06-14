@@ -4,6 +4,7 @@ import { useDispatch, useSelector }
 import { deleteMyProfile, getMyPosts, loadUser, logoutUser, updateCoverImage } from '../../../Actions/User';
 import "./Account.css"
 import Post from '../Post/Post';
+import MyPost from "../MyPost/MyPost";
 import User from "../User/User"
 import { Avatar } from '@mantine/core';
 import { Button, Dialog, Typography } from "@mui/material";
@@ -74,12 +75,6 @@ function Account() {
 
 
 
-  // const deleteProfileHandler = async () => {
-  //   await dispatch(deleteMyProfile());
-  //   dispatch(logoutUser())
-  // }
-
-
   useEffect(() => {
     dispatch(getMyPosts());
   }, [dispatch]);
@@ -125,16 +120,17 @@ function Account() {
                 }}
                 accept=".jpg,.jpeg,.png,"
               />
-              <label for="upload_image">
+              <label htmlFor="upload_image">
 
-                {image ? <span class="profilepic__icon mt-5 mx-2 text-white" onClick={saveCoverImage}>
+                {image ? <span className="profilepic__icon mt-5 mx-2 text-white" onClick={saveCoverImage}>
                   <SaveIcon />
-                </span> : <span class="profilepic__icon mt-5 mx-2 text-white" >
+                </span> : <span className="profilepic__icon mt-5 mx-2 text-white" >
                   <AddAPhotoIcon />
                 </span>}
 
               </label>
               {showCropper && (
+                <div className=' d-flex justify-content-center'>
                 <CropImage
                   src={cropImage}
                   imageCallback={(image) => {
@@ -144,7 +140,8 @@ function Account() {
                   closeHander={() => {
                     setShowCropper(false);
                   }}
-                />
+                  />
+                </div>
               )}
             </div> :
               <div className="text-end" style={{ backgroundImage: `url(${image ? image : cover})`, height: "15rem", width: "100%", borderRadius: "5px 5px 0px 0px", backgroundSize: "cover", backgroundRepeat: "no-repeat", marginBottom: "-4.5rem" }}>
@@ -159,11 +156,11 @@ function Account() {
                   }}
                   accept=".jpg,.jpeg,.png,"
                 />
-                <label for="upload_image">
+                <label htmlFor="upload_image d-flex justify-content-end w-100">
 
-                  {image ? <span class="icons-in-cover-pic mt-5 mx-2 text-white" onClick={saveCoverImage}>
+                  {image ? <span className="icons-in-cover-pic mt-5 mx-2 text-white" onClick={saveCoverImage}>
                     <SaveIcon />
-                  </span> : <span class="icons-in-cover-pic mt-5 mx-2 text-white" >
+                  </span> : <span className="icons-in-cover-pic mt-5 mx-2 text-white" >
                     <AddAPhotoIcon />
                   </span>}
 
@@ -183,7 +180,7 @@ function Account() {
               </div>}
 
             <div className='coverTopSec'>
-              <Avatar radius="xl" src={user.avatar.url} className='CoverPage_avatar' style={{ width: "130px", height: "130px" }} />
+              <img radius="xl" src={user.avatar.url} className='CoverPage_avatar' style={{ width: "130px", height: "130px", borderRadius: "20%"}} />
             </div>
             <div className='d-md-flex justify-content-between'>
               <div>
@@ -191,34 +188,23 @@ function Account() {
                 <h4 className='cover-profile-cat'>{user.bio}</h4>
               </div>
               <div  >
-                <Button onClick={() => setFollowersToggle(!followersToggle)}>
-                  <Typography className="account-texts" >Followers</Typography>
-                </Button>
+                
+                  <Typography onClick={() => setFollowersToggle(!followersToggle)} className="account-texts" > <span className="acc-span"> {user.followers.length}</span> Followers</Typography>
+                
 
-                <Typography className='text-center' >{user.followers.length}</Typography>
+                {/* <Typography onClick={() => setFollowersToggle(!followersToggle)}  className='text-center' >{user.followers.length}</Typography> */}
 
               </div>
 
               <div>
-                <Button onClick={() => setFollowingToggle(!followingToggle)}>
-                  <Typography className="account-texts">Following</Typography>
-                </Button>
-                <Typography className='text-center'>{user.following.length}</Typography>
+                  <Typography onClick={() => setFollowingToggle(!followingToggle)}  className="account-texts"><span className="acc-span">{user.following.length}</span> Following</Typography>
+                {/* <Typography  onClick={() => setFollowingToggle(!followingToggle)}  className='text-center'>{user.following.length}</Typography> */}
               </div>
 
               <div>
-                <Button>
-                  <Typography className="account-texts">Posts</Typography>
-                </Button>
-                <Typography className='text-center'>{user.posts.length}</Typography>
+                <Typography className="account-texts"><span className="acc-span" >{user.posts.length}</span> Posts</Typography>
+                {/* <Typography className='text-center '>{user.posts.length}</Typography> */}
               </div>
-              {/* <Button variant="contained">Logout</Button> */}
-
-              {/* <Link to="/proposals" className="account-texts">Proposals</Link>
-
-              <Link to="/update/profile" className="account-texts">Edit Profile</Link>
-
-              <Link to="/update/password" className="account-texts">Change Password</Link> */}
               <Button
                 variant="text"
                 style={{ color: "red", margin: "2vmax" }}
@@ -270,6 +256,7 @@ function Account() {
 
                 </div>
               </Dialog>
+
             </div>
           </div>
           <div className='row'>
@@ -277,9 +264,11 @@ function Account() {
             {posts && posts.length > 0 ? (
               posts.map((post) => (
                 <div className='col-12 col-md-6' >
-                  <Post
+                  <MyPost
                     className="samplepost"
                     key={post._id}
+                    host = {post.host}
+                    buddy = {post.buddy}
                     postId={post._id}
                     caption={post.caption}
                     tripDate={post.tripDate}

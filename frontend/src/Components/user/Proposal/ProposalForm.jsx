@@ -1,21 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Avatar } from '@mantine/core';
-import { Container } from "react-bootstrap"
-import cover from "../../../Images/cover.jpg"
 import "./Proposal.css"
 import TextField from '@mui/material/TextField';
-
-
 import { loadUser } from "../../../Actions/User"
-
 import { useDispatch, useSelector } from "react-redux"
 import { useAlert } from "react-alert"
 import { postBuddyRequest, postHostRequest } from '../../../Actions/Post';
 import { useParams } from 'react-router-dom';
-
-import walkingCouples from "../../../../src/Images/walkingCouples.gif"
-
-
+import thinking from "../../../../src/Images/thinking.png"
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
 import { useTheme } from '@mui/material/styles';
@@ -72,10 +63,6 @@ function ProposalForm() {
     const handleChangeIndex = (index) => {
         setValue(index);
     };
-
-
-
-    // const [value, setValue] = React.useState(0);
     const [name, setName] = useState("");
     const [place, setPlace] = useState("");
     const [number, setNumber] = useState("");
@@ -120,19 +107,22 @@ function ProposalForm() {
         }
 
     }, [dispatch, error, message, alert])
-    // const handleChange = (event, newValue) => {
-    //     setValue(newValue);
-    // };
+
     return (
         <>
-            <div className="bg-color p-5 fixed">
-                    <div className="row bg-color pb-3 px-5 mx-5">
-                        <div className="col-md-6 img-max-height">
-                            <img  src={walkingCouples} alt="" />
-                        </div>
-                        <div className="col-md-6">
 
-                            <Box sx={{ bgcolor: 'background.paper', width: 600 }}>
+            <div className='update-password' >
+
+                <div className="container serch-container mb-4 ">
+                    <div className="row update-row p-4 rounded mt-4">
+                        <div className="col-lg-6 update-img p-5">
+                            <img className="proposal-img" src={thinking} alt="" />
+
+
+                        </div>
+
+                        <div className="col-lg-6 px-5">
+                            <Box sx={{ bgcolor: 'background.paper' }}>
                                 <AppBar position="static" >
                                     <Tabs
                                         value={value}
@@ -233,13 +223,6 @@ function ProposalForm() {
                                                         onChange={(e) => setNumber(e.target.value)}
 
                                                     />
-                                                    {/* <TextField
-                                        id="fullWidth"
-                                        label="Place"
-                                        className='mb-4'
-                                        value={place}
-                                        onChange={(e) => setPlace(e.target.value)}
-                                    /> */}
                                                     <TextField
                                                         id="fullWidth"
                                                         label="Service you are providing?"
@@ -247,10 +230,6 @@ function ProposalForm() {
                                                         value={service}
                                                         onChange={(e) => setService(e.target.value)}
                                                     />
-
-
-
-
 
                                                     <TextField
                                                         id="outlined-multiline-static"
@@ -277,7 +256,10 @@ function ProposalForm() {
 
 
                     </div>
-            </div>
+
+                </div >
+
+            </div >
 
         </>
     )

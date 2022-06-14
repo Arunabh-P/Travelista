@@ -7,18 +7,17 @@ import {
     ChatBubbleOutline,
     DeleteOutline,
     ConnectWithoutContact,
-    VolunteerActivism
+    VolunteerActivism,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import "./Post.css"
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addCommentOnPost, deletePost, likePost, updatePost } from "../../../Actions/Post"
 import { getFollowingPosts, getMyPosts, loadUser } from "../../../Actions/User";
 import User from "../User/User";
 import CommentCard from "../CommentCard/CommentCard";
-
-function Post({
+import Request from "../Request/Request";
+function MyPost({
     postId,
     caption,
     postImage,
@@ -34,6 +33,7 @@ function Post({
     host = [],
     buddy = [],
 }) {
+    console.log(buddy);
     const [liked, setLiked] = useState(false);
     const [likesUser, setLikesUser] = useState(false);
     const [commentValue, setCommentValue] = useState("");
@@ -42,8 +42,13 @@ function Post({
     const [captionValue, setCaptionValue] = useState(caption);
     const [captionToggle, setCaptionToggle] = useState(false);
 
+    const [hostRequestToggle, setHostRequestToggle] = useState(false);
+    const [buddyRequestToggle, setBuddyRequestToggle] = useState(false);
 
 
+
+
+    
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.user)
 
@@ -91,6 +96,8 @@ function Post({
         });
     }, [likes, user._id]);
 
+    
+
 
     return (
         <div className="post" style={{ width: width }}>
@@ -125,7 +132,7 @@ function Post({
                     color="rgba(0, 0, 0, 0.582)"
                     style={{ alignSelf: "center" }}
                 >
-                     {tripDate}
+                    {tripDate}
                 </Typography>
 
 
@@ -152,13 +159,12 @@ function Post({
                 <Button onClick={() => setCommentToggle(!commentToggle)}>
                     <ChatBubbleOutline />
                 </Button>
-<Link to={`/proposal/${postId}`} className="proposal-button">
-                <Button className="InputOptions">
-
-                    <VolunteerActivism className="thumbs-up"  />
-                    <Typography className="buttonText" >Proposal</Typography>
-                </Button>
-                </Link>
+                    <Button onClick={() => setHostRequestToggle(!hostRequestToggle)} className="InputOptions">
+                        <Typography className="buttonText" >Host Request</Typography>
+                    </Button>
+                    <Button onClick={() => setBuddyRequestToggle(!buddyRequestToggle)} className="InputOptions">
+                        <Typography className="buttonText" >Buddy Request</Typography>
+                    </Button>
 
 
 
@@ -169,6 +175,53 @@ function Post({
                 ) : null}
 
             </div>
+            <Dialog open={buddyRequestToggle} onClose={() => setBuddyRequestToggle(!buddyRequestToggle)}>
+                <div className="DialogBox">
+                    <Typography variant="h4">Buddy Requests</Typography>
+                    <hr />
+                    {buddy.map((buddy) => (
+                        <>
+                        <Request
+                            key={buddy._id}
+                            name={buddy.name}
+                            number={buddy.number}
+                            place ={buddy.place}
+                            description={buddy.description}
+
+
+                        />
+                        <hr/>
+                        </>
+                    
+                    ))}
+                   
+                </div>
+            </Dialog>
+
+            <Dialog open={hostRequestToggle} onClose={() => setHostRequestToggle(!hostRequestToggle)}>
+                <div className="DialogBox">
+                    <Typography variant="h4">Host Requests</Typography>
+                    <hr />
+                    {host.map((host) => (
+                        <>
+                        <Request
+                            key={host._id}
+                            name={host.name}
+                            number={host.number}
+                            place ={host.place}
+                            service={host.service}
+                            description={host.description}
+
+
+                        />
+                        <hr/>
+                        </>
+                    
+                    ))}
+                   
+                </div>
+            </Dialog>
+
             <Dialog open={likesUser} onClose={() => setLikesUser(!likesUser)}>
                 <div className="DialogBox">
                     <Typography variant="h4">Liked By</Typography>
@@ -258,4 +311,4 @@ function Post({
     )
 }
 
-export default Post
+export default MyPost

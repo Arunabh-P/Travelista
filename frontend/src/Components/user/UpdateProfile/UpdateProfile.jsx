@@ -64,52 +64,52 @@ export default function UpdateProfile() {
     <div className='update' >
       <div className="update-profile-headline p-5">
 
-<h3>Update Profile</h3>
-</div>
+        <h3>Update Profile</h3>
+      </div>
       <div className="container mb-4 ">
         <form onSubmit={submitHandler} >
           <div className='update-dataform'>
-            <div className="row update-row p-4 rounded">
-              
-              <div className="col-md-6 update-img p-5">
+            <div className="row update-row p-4 rounded  d-flex justify-content-center ">
 
-                <FormControl
-                  className="crop_image d-none"
-                  id="upload_image"
-                  type="file"
-                  name="crop_image"
-                  onChange={(e) => {
-                    setCropImage(e.target.files[0]);
-                    setShowCropper(true);
-                  }}
-                  accept=".jpg,.jpeg,.png,"
-                />
-                <label for="upload_image">
-                  <span class="profilepic__icon">
-                    <Avatar className="update-avatar"
-                      src={avatar ? avatar : avatarPrev}
-                      value={avatarPrev}
-                      alt="User"
-                      sx={{ height: "12.5rem", width: "12.5rem" }}
-                    />
-                  </span>
 
-                </label>
-                {showCropper && (
-                  <CropImage
-                    src={cropImage}
-                    imageCallback={(avatar) => {
-                      setAvatar(avatar);
-                      setShowCropper(false);
+
+                  <FormControl
+                    className="crop_image d-none"
+                    id="upload_image"
+                    type="file"
+                    name="crop_image"
+                    onChange={(e) => {
+                      setCropImage(e.target.files[0]);
+                      setShowCropper(true);
                     }}
-                    closeHander={() => {
-                      setShowCropper(false);
-                    }}
+                    accept=".jpg,.jpeg,.png,"
                   />
-                )}
-              </div>
-              <div className="col-md-6 p-5">
+                  <label htmlFor="upload_image">
+                    <span className="profilepic__icon">
+                      <img className="update-avatar"
+                        src={avatar ? avatar : avatarPrev}
+                        value={avatarPrev}
+                        alt="User"
+                        width="150"
+                        style={{borderRadius: "20%"}}
+                      />
+                    </span>
+
+                  </label>
+                  {showCropper && (
+                    <CropImage
+                      src={cropImage}
+                      imageCallback={(avatar) => {
+                        setAvatar(avatar);
+                        setShowCropper(false);
+                      }}
+                      closeHander={() => {
+                        setShowCropper(false);
+                      }}
+                    />
+                  )}
                 <div className="update-texts-pro">
+
 
                   <input
                     className='update-dataform-email'
@@ -141,17 +141,9 @@ export default function UpdateProfile() {
 
 
                   />
-
-
                   <button disabled={updateLoading} className='update-dataform-button' type='submit'>Update</button>
                 </div>
-
-                
-
               </div>
-
-            </div>
-
           </div>
         </form>
 

@@ -141,7 +141,7 @@ exports.getPostOfFollowing = async (req, res) => {
             owner: {
                 $in: user.following,
             }
-        }).populate("owner likes comments.user")
+        }).populate("owner likes comments.user host buddy")
 
         res.status(200).json({
             success: true,
@@ -311,6 +311,4 @@ exports.createHostRequest = async (req, res) => {
 
     }
 };
-
-
 

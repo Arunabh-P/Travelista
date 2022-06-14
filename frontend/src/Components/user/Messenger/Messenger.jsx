@@ -126,7 +126,7 @@ function Messenger() {
                     <div className="chatMenuWrapper">
                         <h5>Recent Chats</h5>
                         {converstions.map((c) => (
-                            <div onClick={() => setCurrentChat(c)}>
+                            <div key={c._id} onClick={() => setCurrentChat(c)}>
                                 <Conversation conversation={c} currentUser={user} />
                             </div>
                         ))}
@@ -139,7 +139,7 @@ function Messenger() {
                             <>
                                 <div className="chatBoxTop">
                                     {messages.map(m => (
-                                        <div ref={scrollRef}>
+                                        <div key={m._id} ref={scrollRef}>
                                             < Message message={m} own={m.sender._id === user._id} />
                                         </div>
                                     ))

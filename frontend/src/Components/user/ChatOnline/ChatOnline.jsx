@@ -37,7 +37,7 @@ function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
         onlineUsers&&onlineUsers.length>0?(
           
         onlineUsers?.map((o) => (
-          <div className="chatOnlineFriend" onClick={() => handleClick(o)}>
+          <div className="chatOnlineFriend" key={o._id} onClick={() => handleClick(o)}>
             <div className="chatOnlineImgContainer">
               <img
                 className="chatOnlineImg"

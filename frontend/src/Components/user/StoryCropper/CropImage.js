@@ -21,14 +21,14 @@ const CropImage = ({ src, imageCallback, closeHander }) => {
   }
 
   return (
-    <div className="position-fixed " style={{zIndex:9999 ,top:"2rem" ,left:"23rem" ,minWidth:"30rem",maxWidth:"40rem"}}>
+    <div className="position-fixed " style={{zIndex:9999 ,top:"2rem" ,left:"2rem" ,minWidth:"24rem",maxWidth:"40rem"}}>
       <Container className=" text-center bg-white shadow rounded-2 mx-auto p-2 m-0">
         
           <Col xs={12} className="text-center  ">
             <Cropper
               src={src ? URL.createObjectURL(src) : ''}
               className="image-fulid"
-              style={{ height: '500px', width: 'fit-content' }}
+              style={{ height: '500px'}}
               // Cropper.js options
               aspectRatio={216 / 384}
               guides={false}

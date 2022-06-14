@@ -10,7 +10,9 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 margin: auto;
+
 }
+
 .proposal-dataform-button{
   padding: .8rem;
   margin-top: 1rem;
@@ -19,7 +21,9 @@ margin: auto;
   outline: none;
   border: none; 
 }
-
+.proposal-img{
+  max-width: 300px;
+}
 .its-my-data{
   border: 1px solid black;
   background-color: #fff;

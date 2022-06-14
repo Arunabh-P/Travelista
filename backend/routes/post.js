@@ -1,5 +1,5 @@
 const express = require("express");
-const { createPost, likeAndUnlikePost, deletePost, getPostOfFollowing, updateCaption, deleteComment, createBuddyRequest, createHostRequest } = require("../controllers/post");
+const { createPost, likeAndUnlikePost, deletePost, getPostOfFollowing, updateCaption, deleteComment, createBuddyRequest, createHostRequest, getAllBuddies, getAllHosts } = require("../controllers/post");
 const { commentOnPost } = require("../controllers/user");
 const { isAuthenticated } = require("../middlewares/auth");
 
@@ -23,5 +23,7 @@ router
   .route("/post/comment/:id")
   .put(isAuthenticated, commentOnPost)
   .delete(isAuthenticated, deleteComment);
+
+
 
 module.exports = router; 

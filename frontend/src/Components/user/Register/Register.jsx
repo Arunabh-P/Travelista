@@ -72,7 +72,7 @@ export default function Register() {
                             }}
                             accept=".jpg,.jpeg,.png,"
                         />
-<label for="upload_image">
+<label htmlFor="upload_image">
               <span class="profilepic__icon">
                         <Avatar className="reg-avatar"
                             src={avatar}

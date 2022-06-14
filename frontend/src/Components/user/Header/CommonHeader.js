@@ -37,7 +37,7 @@ function Header() {
 
     <Navbar expand="lg" className=" sticky-top  w-100 bg-white  ">
       <Container >
-        <Navbar.Brand href="#" style={{ fontSize: "30px" }}>
+        <Navbar.Brand style={{ fontSize: "30px" }}>
           <Link style={{ textDecoration: "none", color: "black" }} to={'/'}> Travelista</Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -62,12 +62,6 @@ function Header() {
                 <NavDropdown.Item >
                   <Link to="/account" className="account-text-header" >Account</Link>
                 </NavDropdown.Item>
-
-                <NavDropdown.Item>
-                  <Link to="/proposals" className="account-text-header">Proposals</Link>
-                </NavDropdown.Item>
-
-
                 <NavDropdown.Item>
                   <Link to="/update/password" className="account-text-header">Change Password</Link>
                 </NavDropdown.Item>
@@ -86,19 +80,19 @@ function Header() {
 
               </NavDropdown>
             </div>
-            <div className="d-lg-none d-flex justify-content-start">
-              <div className="home-md-icons">
-                <div className="each-list-icons" >
+            <div className="d-lg-none d-flex justify-content-start row">
+              <div className="home-md-icons row">
+                <div className="each-list-icons dropdown-item" >
                   <Link to="/" style={{ color: "black", paddingLeft: "22.5px" }} className="icon-in-header" onClick={() => setTab("/")}>
                   {tab === "/" ? <HomeIcon /> : <HomeOutlinedIcon />} Home
                   </Link>
                 </div>
-                <div  className="each-list-icons">
+                <div  className="each-list-icons dropdown-item">
                   <Link to="/search" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/search")} className="icon-in-header" >
                   {tab === "/search" ? <PersonSearchIcon /> : <PersonSearchOutlinedIcon />} Search
                   </Link>
                 </div>
-                <div className="each-list-icons">
+                <div className="each-list-icons dropdown-item">
                   <Link to="/messenger" style={{ color: "black", paddingLeft: "22.5px" }} onClick={() => setTab("/messenger")} className="icon-in-header" >
                   {tab === "/messenger" ? <ChatIcon /> : <ChatOutlinedIcon />} Chat
                   </Link>
