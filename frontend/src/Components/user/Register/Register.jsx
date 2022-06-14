@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import bg from "../../../Images/bg2.jpg";
 import "./Register.css"
-import { Avatar, Typography, Button, IconButton, Input } from "@mui/material";
+import { Avatar } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux"
 import { registerUser } from "../../../Actions/User"
 import CropImage from "../ProfilePicCropper/CropImage";
@@ -14,6 +14,7 @@ export default function Register() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [showpass, setShowpass] = useState(false);
     const [avatar, setAvatar] = useState("");
     const [showCropper, setShowCropper] = useState(false);
     const [cropImage, setCropImage] = useState(false);
@@ -22,22 +23,6 @@ export default function Register() {
     const alert = useAlert();
 
     const { loading, error } = useSelector((state) => state.user)
-
-
-
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-
-        const Reader = new FileReader();
-        Reader.readAsDataURL(file);
-
-        Reader.onload = () => {
-            if (Reader.readyState === 2) {
-                setAvatar(Reader.result)
-            }
-        }
-    }
-
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -72,35 +57,27 @@ export default function Register() {
                             }}
                             accept=".jpg,.jpeg,.png,"
                         />
-<label htmlFor="upload_image">
-              <span class="profilepic__icon">
-                        <Avatar className="reg-avatar"
-                            src={avatar}
-                            alt="User"
-                            sx={{ height: "5vmax", width: "5vmax" }}
-                        />
-                         </span>
-
-</label>
-{showCropper && (
-            <CropImage
-              src={cropImage}
-              imageCallback={(avatar) => {
-                setAvatar(avatar);
-                setShowCropper(false);
-              }}
-              closeHander={() => {
-                setShowCropper(false);
-              }}
-            />
-          )}
-
-                        {/* <input className="register-image-button"
-                            type="file" accept="image/*"
-                            onChange={handleImageChange}
-
-                        /> */}
-
+                        <label htmlFor="upload_image">
+                            <span class="profilepic__icon">
+                                <Avatar className="reg-avatar"
+                                    src={avatar}
+                                    alt="User"
+                                    sx={{ height: "5vmax", width: "5vmax" }}
+                                />
+                            </span>
+                        </label>
+                        {showCropper && (
+                            <CropImage
+                                src={cropImage}
+                                imageCallback={(avatar) => {
+                                    setAvatar(avatar);
+                                    setShowCropper(false);
+                                }}
+                                closeHander={() => {
+                                    setShowCropper(false);
+                                }}
+                            />
+                        )}
                         <input
                             className='register-dataform-email'
                             type="text"
@@ -108,8 +85,6 @@ export default function Register() {
                             required
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-
-
                         />
                         <input
                             className='register-dataform-email'
@@ -118,28 +93,19 @@ export default function Register() {
                             required
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-
-
                         />
-
                         <input
                             className='register-dataform-password'
-                            type={"password"}
+                            type={showpass ? "type" : "password"}
                             name="password"
-
                             placeholder='Password'
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-
                         />
-
-
-
-
+                        <small className='register-show-pass' onClick={() => setShowpass(!showpass)}> {showpass ? "Hide" : "Show"}</small>
                         <button disabled={loading} className='register-dataform-button' type='submit'>Register</button>
+                        <p className='dont-have-acc'>Already have an account?<Link className="link-style-none" to="/">Login HERE</Link></p>
 
-
-                        <small className='dont-have-acc'>Already have an account <Link to="/">Login HERE</Link></small>
                     </div>
                 </form>
 

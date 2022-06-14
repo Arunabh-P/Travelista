@@ -41,21 +41,7 @@ function Account() {
      }
       
 
-  // const deleteProfileHandler = async () => {
-    
-  //     Swal.fire({
-  //       title: `Do You want to Block ?`,
-  //       icon: 'warning',
-  //       showCancelButton: true,
-  //       confirmButtonColor: '#d33',
-  //       cancelButtonColor: '#3085d6 ',
-  //       confirmButtonText: 'Yes!'
-  //     }).then(async() => {
-        
-  //       await dispatch(deleteMyProfile())
-  //      dispatch(logoutUser())
-  //     })
-  // }
+  
 
   const dispatch = useDispatch()
   const alert = useAlert()
@@ -192,18 +178,15 @@ function Account() {
                   <Typography onClick={() => setFollowersToggle(!followersToggle)} className="account-texts" > <span className="acc-span"> {user.followers.length}</span> Followers</Typography>
                 
 
-                {/* <Typography onClick={() => setFollowersToggle(!followersToggle)}  className='text-center' >{user.followers.length}</Typography> */}
 
               </div>
 
               <div>
                   <Typography onClick={() => setFollowingToggle(!followingToggle)}  className="account-texts"><span className="acc-span">{user.following.length}</span> Following</Typography>
-                {/* <Typography  onClick={() => setFollowingToggle(!followingToggle)}  className='text-center'>{user.following.length}</Typography> */}
               </div>
 
               <div>
                 <Typography className="account-texts"><span className="acc-span" >{user.posts.length}</span> Posts</Typography>
-                {/* <Typography className='text-center '>{user.posts.length}</Typography> */}
               </div>
               <Button
                 variant="text"

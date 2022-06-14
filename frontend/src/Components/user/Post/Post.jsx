@@ -169,7 +169,7 @@ function Post({
                 ) : null}
 
             </div>
-            <Dialog open={likesUser} onClose={() => setLikesUser(!likesUser)}>
+            <Dialog  className="Dialogbox-scroll" open={likesUser} onClose={() => setLikesUser(!likesUser)}>
                 <div className="DialogBox">
                     <Typography variant="h4">Liked By</Typography>
 
@@ -184,7 +184,7 @@ function Post({
                 </div>
             </Dialog>
 
-            <Dialog
+            <Dialog  className="Dialogbox-scroll"
                 open={commentToggle}
                 onClose={() => setCommentToggle(!commentToggle)}
             >
@@ -226,7 +226,7 @@ function Post({
                 </div>
             </Dialog>
 
-            <Dialog
+            <Dialog  className="Dialogbox-scroll"
                 open={captionToggle}
                 onClose={() => setCaptionToggle(!captionToggle)}
             >

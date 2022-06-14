@@ -6,8 +6,6 @@ import {
     FavoriteBorder,
     ChatBubbleOutline,
     DeleteOutline,
-    ConnectWithoutContact,
-    VolunteerActivism,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -16,7 +14,11 @@ import { addCommentOnPost, deletePost, likePost, updatePost } from "../../../Act
 import { getFollowingPosts, getMyPosts, loadUser } from "../../../Actions/User";
 import User from "../User/User";
 import CommentCard from "../CommentCard/CommentCard";
-import Request from "../Request/Request";
+import BuddyRequest from "../BuddyRequest/BuddyRequest";
+import HostRequest from "../HostRequest/HostRequest";
+import "./MyPost.css"
+const Swal = require('sweetalert2')
+
 function MyPost({
     postId,
     caption,
@@ -48,7 +50,7 @@ function MyPost({
 
 
 
-    
+
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.user)
 
@@ -83,9 +85,21 @@ function MyPost({
     }
 
     const deletePostHandler = async () => {
-        await dispatch(deletePost(postId));
-        dispatch(getMyPosts())
-        dispatch(loadUser())
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                await dispatch(deletePost(postId))
+                dispatch(getMyPosts())
+                dispatch(loadUser())
+            }
+        })
     }
 
     useEffect(() => {
@@ -96,7 +110,7 @@ function MyPost({
         });
     }, [likes, user._id]);
 
-    
+
 
 
     return (
@@ -159,14 +173,12 @@ function MyPost({
                 <Button onClick={() => setCommentToggle(!commentToggle)}>
                     <ChatBubbleOutline />
                 </Button>
-                    <Button onClick={() => setHostRequestToggle(!hostRequestToggle)} className="InputOptions">
-                        <Typography className="buttonText" >Host Request</Typography>
-                    </Button>
-                    <Button onClick={() => setBuddyRequestToggle(!buddyRequestToggle)} className="InputOptions">
-                        <Typography className="buttonText" >Buddy Request</Typography>
-                    </Button>
-
-
+                <Button onClick={() => setHostRequestToggle(!hostRequestToggle)} className="InputOptions">
+                    <Typography className="buttonText2" >Host Requests</Typography>
+                </Button>
+                <Button onClick={() => setBuddyRequestToggle(!buddyRequestToggle)} className="InputOptions">
+                    <Typography className="buttonText2" >Buddy Requests</Typography>
+                </Button>
 
                 {isDelete ? (
                     <Button onClick={deletePostHandler}>
@@ -175,54 +187,51 @@ function MyPost({
                 ) : null}
 
             </div>
-            <Dialog open={buddyRequestToggle} onClose={() => setBuddyRequestToggle(!buddyRequestToggle)}>
+            <Dialog className="Dialogbox-scroll" open={buddyRequestToggle} onClose={() => setBuddyRequestToggle(!buddyRequestToggle)}>
                 <div className="DialogBox">
                     <Typography variant="h4">Buddy Requests</Typography>
                     <hr />
                     {buddy.map((buddy) => (
                         <>
-                        <Request
-                            key={buddy._id}
-                            name={buddy.name}
-                            number={buddy.number}
-                            place ={buddy.place}
-                            description={buddy.description}
-
-
-                        />
-                        <hr/>
+                            <BuddyRequest
+                                key={buddy._id}
+                                name={buddy.name}
+                                number={buddy.number}
+                                place={buddy.place}
+                                description={buddy.description}
+                            />
+                            <hr />
                         </>
-                    
+
                     ))}
-                   
+
                 </div>
             </Dialog>
 
-            <Dialog open={hostRequestToggle} onClose={() => setHostRequestToggle(!hostRequestToggle)}>
+            <Dialog className="Dialogbox-scroll" open={hostRequestToggle} onClose={() => setHostRequestToggle(!hostRequestToggle)}>
                 <div className="DialogBox">
                     <Typography variant="h4">Host Requests</Typography>
                     <hr />
                     {host.map((host) => (
                         <>
-                        <Request
-                            key={host._id}
-                            name={host.name}
-                            number={host.number}
-                            place ={host.place}
-                            service={host.service}
-                            description={host.description}
+                            <HostRequest
+                                key={host._id}
+                                name={host.name}
+                                number={host.number}
+                                place={host.place}
+                                service={host.service}
+                                description={host.description}
 
-
-                        />
-                        <hr/>
+                            />
+                            <hr />
                         </>
-                    
+
                     ))}
-                   
+
                 </div>
             </Dialog>
 
-            <Dialog open={likesUser} onClose={() => setLikesUser(!likesUser)}>
+            <Dialog className="Dialogbox-scroll" open={likesUser} onClose={() => setLikesUser(!likesUser)}>
                 <div className="DialogBox">
                     <Typography variant="h4">Liked By</Typography>
 
@@ -237,7 +246,7 @@ function MyPost({
                 </div>
             </Dialog>
 
-            <Dialog
+            <Dialog className="Dialogbox-scroll"
                 open={commentToggle}
                 onClose={() => setCommentToggle(!commentToggle)}
             >
@@ -250,8 +259,6 @@ function MyPost({
                             onChange={(e) => setCommentValue(e.target.value)}
                             placeholder="Comment Here..."
                             required
-
-
                         />
 
                         <Button className="add-button" type="submit" variant="contained"  >
@@ -279,7 +286,7 @@ function MyPost({
                 </div>
             </Dialog>
 
-            <Dialog
+            <Dialog className="Dialogbox-scroll"
                 open={captionToggle}
                 onClose={() => setCaptionToggle(!captionToggle)}
             >
@@ -292,8 +299,6 @@ function MyPost({
                             onChange={(e) => setCaptionValue(e.target.value)}
                             placeholder="Caption Here..."
                             required
-
-
                         />
 
                         <Button className="add-button" type="submit" variant="contained"  >
@@ -305,8 +310,6 @@ function MyPost({
             </Dialog>
 
         </div>
-
-
 
     )
 }

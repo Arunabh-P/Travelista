@@ -1,0 +1,7 @@
+.buttonText2{
+    font-weight: 500;
+    text-transform: capitalize;
+}
+.Dialogbox-scroll div::-webkit-scrollbar{
+    display: none !important;
+  }
