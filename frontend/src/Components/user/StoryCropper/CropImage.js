@@ -1,16 +1,13 @@
-import React, { useRef, useState } from 'react'
-import { Button, Col, Container, Row } from 'react-bootstrap'
+import React, { useRef } from 'react'
+import { Button, Col, Container } from 'react-bootstrap'
 import Cropper from 'react-cropper'
 import 'cropperjs/dist/cropper.css'
 import { getCroppedImg } from './getCroppedImg'
 
 const CropImage = ({ src, imageCallback, closeHander }) => {
-
   const cropperRef = useRef(null)
   const cropDetailsRef = useRef(null)
-
   const onCrop = (e) => (cropDetailsRef.current = e.detail)
-
   const clickHndler = async () => {
     const croppedImage = await getCroppedImg(
       cropperRef.current,
@@ -23,19 +20,16 @@ const CropImage = ({ src, imageCallback, closeHander }) => {
   return (
     <div className="position-fixed " style={{zIndex:9999 ,top:"2rem" ,left:"2rem" ,minWidth:"24rem",maxWidth:"40rem"}}>
       <Container className=" text-center bg-white shadow rounded-2 mx-auto p-2 m-0">
-        
           <Col xs={12} className="text-center  ">
             <Cropper
               src={src ? URL.createObjectURL(src) : ''}
               className="image-fulid"
               style={{ height: '500px'}}
-              // Cropper.js options
               aspectRatio={216 / 384}
               guides={false}
               crop={onCrop}
               ref={cropperRef}
               zoomable={true}
-              // autoCrop={false}
               movable={false}
               minCropBoxWidth={200}
               minCropBoxHeight={250}
@@ -51,7 +45,6 @@ const CropImage = ({ src, imageCallback, closeHander }) => {
             >
               Cancel
             </Button>
-
             <Button
               type="button"
               className="us-btn mx-1"
@@ -62,7 +55,6 @@ const CropImage = ({ src, imageCallback, closeHander }) => {
             </Button>
             </div>
           </Col>
-          
       </Container>
     </div>
   )

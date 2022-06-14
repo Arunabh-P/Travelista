@@ -1,9 +1,6 @@
 .home-right {
   position: sticky;
-  /* top: 84px; */
   margin-top: 10px;
-
-  /* height: 34rem; */
 }
 
 .home-left {
@@ -13,8 +10,3 @@
 .home-center {
   margin-top: 10px;
 }
-
-/* .fullBodyHome {
-  background-color: #edf0f5;
-  min-height:100vh ;
-} */

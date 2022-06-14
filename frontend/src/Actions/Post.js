@@ -53,10 +53,10 @@ export const deleteCommentOnPost = (id, commentId) => async (dispatch) => {
         dispatch({
             type: "deleteCommentRequest",
         });
-        const { data } = await axios.delete(`/api/v1/post/comment/${id}`,{
-            data:{commentId},
+        const { data } = await axios.delete(`/api/v1/post/comment/${id}`, {
+            data: { commentId },
         }
-            )
+        )
         dispatch({
             type: "deleteCommentSuccess",
             payload: data.message,
@@ -76,16 +76,16 @@ export const createNewPost = (caption, image, tripDate) => async (dispatch) => {
         dispatch({
             type: "newPostRequest",
         });
-        const { data } = await axios.post(`/api/v1/post/upload`,{
+        const { data } = await axios.post(`/api/v1/post/upload`, {
             caption,
             image,
             tripDate,
-        },{
+        }, {
             headers: {
-                "Content-type" : "application/json",
+                "Content-type": "application/json",
             }
         }
-            )
+        )
         dispatch({
             type: "newPostSuccess",
             payload: data.message,
@@ -106,14 +106,14 @@ export const updatePost = (caption, id) => async (dispatch) => {
         dispatch({
             type: "updateCaptionRequest",
         });
-        const { data } = await axios.put(`/api/v1/post/${id}`,{
+        const { data } = await axios.put(`/api/v1/post/${id}`, {
             caption,
-        },{
+        }, {
             headers: {
-                "Content-type" : "application/json",
+                "Content-type": "application/json",
             }
         }
-            )
+        )
         dispatch({
             type: "updateCaptionSuccess",
             payload: data.message,
@@ -129,7 +129,7 @@ export const updatePost = (caption, id) => async (dispatch) => {
 }
 
 
-export const deletePost = ( id) => async (dispatch) => {
+export const deletePost = (id) => async (dispatch) => {
     try {
         dispatch({
             type: "deletePostRequest",
@@ -150,7 +150,7 @@ export const deletePost = ( id) => async (dispatch) => {
 }
 
 
-export const postHostRequest = ({id, name,place,number,description,service}) => async (dispatch) => {
+export const postHostRequest = ({ id, name, place, number, description, service }) => async (dispatch) => {
     try {
         dispatch({
             type: "hostRequest"
@@ -158,7 +158,7 @@ export const postHostRequest = ({id, name,place,number,description,service}) => 
 
         const { data } = await axios.post(
             `/api/v1/host/request/${id}`,
-            {  name,place,number,description, service },
+            { name, place, number, description, service },
             {
                 headers: {
                     "Content-Type": "application/json"
@@ -178,7 +178,7 @@ export const postHostRequest = ({id, name,place,number,description,service}) => 
     }
 };
 
-export const postBuddyRequest  = ({id, name,place,number,description}) => async (dispatch) => {
+export const postBuddyRequest = ({ id, name, place, number, description }) => async (dispatch) => {
     try {
         dispatch({
             type: "buddyRequest"
@@ -186,7 +186,7 @@ export const postBuddyRequest  = ({id, name,place,number,description}) => async 
 
         const { data } = await axios.post(
             `/api/v1/buddy/request/${id}`,
-            {  name,place,number,description },
+            { name, place, number, description },
             {
                 headers: {
                     "Content-Type": "application/json"

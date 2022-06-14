@@ -1,4 +1,4 @@
-.add-story-box{
+.add-story-box {
     position: relative;
     border-radius: 10px;
     height: 12.5rem;
@@ -9,13 +9,15 @@
     -o-border-radius: 10px;
     background-color: white;
 }
-.plus-Button-add-story{
+
+.plus-Button-add-story {
     position: absolute;
     cursor: pointer;
     top: 7.6rem;
     left: 1rem;
 }
-.add-story-img{
+
+.add-story-img {
     position: relative;
     background-position: center center;
     background-size: cover;

@@ -10,7 +10,7 @@
     margin-bottom: 7px;
 }
 
-.user-card-for-side{
+.user-card-for-side {
     position: sticky;
     top: 80px;
 }
@@ -19,7 +19,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* border: 1px solid lightgrey; */
     border-radius: 10px;
     background-color: white;
     padding-bottom: 10px;
@@ -35,6 +34,7 @@
     border-top-right-radius: 10px;
     object-fit: cover;
 }
+
 .widget-card {
     margin-bottom: -20px;
     width: 100%;
@@ -42,8 +42,9 @@
     border-top-right-radius: 10px;
     object-fit: cover;
 }
-.wave-card{
-    height:60px;
+
+.wave-card {
+    height: 60px;
     width: 100%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -72,13 +73,14 @@
     top: 80px;
     background-color: white;
     border-radius: 10px;
-    /* border: 1px solid lightgray; */
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
     height: 29.5rem;
 }
-.user-followers-list::-webkit-scrollbar, body::-webkit-scrollbar{
+
+.user-followers-list::-webkit-scrollbar,
+body::-webkit-scrollbar {
     display: none;
-  }
+}

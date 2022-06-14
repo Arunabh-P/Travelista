@@ -1,32 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import { followAndUnFollowUser, getUserPosts, getUserProfile } from '../../../Actions/User';
-import Loader from '../Loader/Loader';
 import Post from '../Post/Post';
 import User from "../User/User"
 import { Avatar } from '@mantine/core';
 import { Button, Dialog, Typography } from "@mui/material";
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Container } from "react-bootstrap"
 import cover from "../../../Images/cover.jpg"
 import { useAlert } from 'react-alert';
 import './UserProfile.css'
 
 function UserProfile() {
-
-
     const dispatch = useDispatch()
     const alert = useAlert()
-    const { user, loading: userLoading, error: userError } = useSelector((state) => state.userProfile);
+    const { user, error: userError } = useSelector((state) => state.userProfile);
     const { user: me } = useSelector((state) => state.user)
-    const { loading, error, posts } = useSelector((state) => state.userPosts);
+    const { error, posts } = useSelector((state) => state.userPosts);
     const {
         error: followError,
         message,
         loading: followLoading,
     } = useSelector((state) => state.like);
     const params = useParams();
-
     const [followersToggle, setFollowersToggle] = useState(false)
     const [followingToggle, setFollowingToggle] = useState(false)
     const [following, setFollowing] = useState(false);
@@ -36,7 +32,6 @@ function UserProfile() {
         setFollowing(!following)
         await dispatch(followAndUnFollowUser(user._id))
         dispatch(getUserProfile(params.id));
-
     }
 
     useEffect(() => {
@@ -59,13 +54,11 @@ function UserProfile() {
         }
     }, [user, me._id, params.id,])
 
-
     useEffect(() => {
         if (error) {
             alert.error(error);
             dispatch({ type: "clearErrors" });
         }
-
         if (followError) {
             alert.error(followError);
             dispatch({ type: "clearErrors" });
@@ -84,11 +77,9 @@ function UserProfile() {
         <div className="user-profile-full-body">
             <Container>
                 <div className='user-profile-page-inside'>
-
                     <div className='user-profile-page-top-section'>
                         {user && (
                             <>
-
                                 <img src={cover} alt="*here cover image" />
                                 <div className='user-profile-pageTopSec'>
                                     <Avatar radius="xl" src={user.avatar.url} className='user-page-top-avatar' style={{ width: "130px", height: "130px" }} />
@@ -102,18 +93,14 @@ function UserProfile() {
                                         <Button onClick={() => setFollowersToggle(!followersToggle)}>
                                             <Typography>Followers</Typography>
                                         </Button>
-
                                         <Typography className='text-center' >{user.followers.length}</Typography>
-
                                     </div>
-
                                     <div>
                                         <Button onClick={() => setFollowingToggle(!followingToggle)}>
                                             <Typography>Following</Typography>
                                         </Button>
                                         <Typography className='text-center'>{user.following.length}</Typography>
                                     </div>
-
                                     <div>
                                         <Button>
                                             <Typography>Posts</Typography>
@@ -123,7 +110,7 @@ function UserProfile() {
                                     {
                                         myProfile ? null : (
                                             <Button variant="contained"
-                                                style={{ background: following ? "red" : "green" ,marginRight:" 25px"}}
+                                                style={{ background: following ? "red" : "green", marginRight: " 25px" }}
                                                 onClick={followHandler}
                                                 disabled={followLoading}
                                                 className="follow-button-in-user-profile"
@@ -137,7 +124,6 @@ function UserProfile() {
                                     <Dialog open={followersToggle} onClose={() => setFollowersToggle(!followersToggle)}>
                                         <div className="DialogBox">
                                             <Typography variant="h4">Followers</Typography>
-
                                             {
                                                 user && user.followers.length > 0 ? user.followers.map((follower) => ((
                                                     <User
@@ -150,15 +136,11 @@ function UserProfile() {
                                                 ) : (
                                                     <Typography style={{ margin: "2vmax" }}> You have no followers</Typography>
                                                 )}
-
-
                                         </div>
                                     </Dialog>
-
                                     <Dialog open={followingToggle} onClose={() => setFollowingToggle(!followingToggle)}>
                                         <div className="DialogBox">
                                             <Typography variant="h4">Following</Typography>
-
                                             {
                                                 user && user.following.length > 0 ? user.following.map((follow) => ((
                                                     <User
@@ -171,7 +153,6 @@ function UserProfile() {
                                                 ) : (
                                                     <Typography style={{ margin: "2vmax" }}> You're not following anyone</Typography>
                                                 )}
-
                                         </div>
                                     </Dialog>
                                 </div>
@@ -179,7 +160,6 @@ function UserProfile() {
                         )}
                     </div>
                     <div className='row'>
-
                         {posts && posts.length > 0 ? (
                             posts.map((post) => (
                                 <div className='col-12 col-md-6' >

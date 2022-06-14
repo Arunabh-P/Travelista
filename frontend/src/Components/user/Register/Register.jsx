@@ -36,7 +36,6 @@ export default function Register() {
         }
     }, [dispatch, error, alert]);
 
-
     return (
         <div className='register' style={{ backgroundImage: `url(${bg})` }}>
             <div className="register-container">
@@ -44,7 +43,6 @@ export default function Register() {
                 <h6 className="register-subheader">Register</h6>
                 <form onSubmit={submitHandler} >
                     <div className='register-dataform'>
-
                         <FormControl
                             className="crop_image d-none"
                             id="upload_image"
@@ -105,10 +103,8 @@ export default function Register() {
                         <small className='register-show-pass' onClick={() => setShowpass(!showpass)}> {showpass ? "Hide" : "Show"}</small>
                         <button disabled={loading} className='register-dataform-button' type='submit'>Register</button>
                         <p className='dont-have-acc'>Already have an account?<Link className="link-style-none" to="/">Login HERE</Link></p>
-
                     </div>
                 </form>
-
             </div>
         </div>
     );

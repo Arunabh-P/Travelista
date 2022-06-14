@@ -17,27 +17,21 @@ function CommentCard({
   postId,
   isAccount,
 }) {
+
   const { user } = useSelector((state) => state.user);
-
   const dispatch = useDispatch();
-
-  
 
   const deleteCommentHandle = () => {
     dispatch(deleteCommentOnPost(postId, commentId));
-
     if (isAccount) {
       dispatch(getMyPosts());
-
     } else {
       dispatch(getFollowingPosts());
     }
   };
 
-
   return (
     <div className="commentUser">
-
       <Link to={`/user/${userId}`}>
         <img src={avatar} alt={name} />
         <Typography style={{ minWidth: "6vmax" }}>{name}</Typography>
@@ -45,7 +39,6 @@ function CommentCard({
       <Typography>
         {comment}
       </Typography>
-
       {isAccount ? (
         <Button onClick={deleteCommentHandle} >
           <Delete />
@@ -56,12 +49,7 @@ function CommentCard({
         </Button>
       ) : null
       }
-
-
-
-
     </div>
-
   )
 }
 

@@ -1,11 +1,10 @@
-.followers-all-stories{
+.followers-all-stories {
     position: relative;
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     width: 7rem;
     height: 200px;
-    /* box-shadow: 0px 5px 17px -7px rgba(0, 0, 0.75); */
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -19,7 +18,8 @@
     -o-transition: transform 100ms ease-in;
     cursor: pointer;
 }
-.single-story-img{
+
+.single-story-img {
     position: relative;
     background-position: center center;
     background-size: cover;
@@ -35,14 +35,15 @@
     cursor: pointer;
 }
 
-.story-list:hover{
+.story-list:hover {
     transform: scale(1.07);
     -webkit-transform: scale(1.07);
     -moz-transform: scale(1.07);
     -ms-transform: scale(1.07);
     -o-transform: scale(1.07);
 }
-.story-follower-name{
+
+.story-follower-name {
     position: absolute;
     bottom: 20px;
     left: 20px;
@@ -50,7 +51,8 @@
     font-size: medium;
     text-transform: capitalize;
 }
-.single-story-follower-name{
+
+.single-story-follower-name {
     position: absolute;
     bottom: 20px;
     left: 20px;
@@ -59,6 +61,6 @@
     text-transform: capitalize;
 }
 
-.avatar-img{
+.avatar-img {
     padding: 7.5px;
 }

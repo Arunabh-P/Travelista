@@ -27,17 +27,16 @@ function App() {
   const { isAuthenticated } = useSelector((state) => state.user)
   return (
 
-
-
-
     <Router>
       {isAuthenticated && <Header />}
 
       <Routes>
-        <Route path="/" element={isAuthenticated ? <Home /> : <Login />} />
-        <Route path="/account" element={isAuthenticated ? <Account /> : <Login />} />
-        <Route path="/register" element={isAuthenticated ? <Account /> : <Register />} />
 
+        <Route path="/" element={isAuthenticated ? <Home /> : <Login />} />
+
+        <Route path="/account" element={isAuthenticated ? <Account /> : <Login />} />
+
+        <Route path="/register" element={isAuthenticated ? <Account /> : <Register />} />
 
         <Route path="/newpost"
           element={isAuthenticated ? <NewPost /> : <Login />}
@@ -47,7 +46,7 @@ function App() {
           element={isAuthenticated ? <UpdateProfile /> : <Login />}
         />
 
-<Route path="/messenger"
+        <Route path="/messenger"
           element={isAuthenticated ? <Messenger /> : <Login />}
         />
 
@@ -69,17 +68,9 @@ function App() {
 
         <Route path="/search" element={<Search />} />
 
-        {/* <Route path="/proposal/:id"
-          element={isAuthenticated ? <Proposal /> : <Login />}
-        /> */}
-
         <Route path="/proposal/:id"
           element={isAuthenticated ? <ProposalForm /> : <Login />}
         />
-
-
-       
-
 
         <Route path="*" element={<NotFound />} />
 

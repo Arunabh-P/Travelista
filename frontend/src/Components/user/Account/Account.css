@@ -1,57 +1,63 @@
-.account-texts{
-  color:rgba(0, 0, 0, 0.767);
+.account-texts {
+  color: rgba(0, 0, 0, 0.767);
   font-weight: bolder;
   text-decoration: none;
   padding: 10px;
   cursor: pointer;
 }
-.acc-span{
+
+.acc-span {
   font-weight: bolder;
   color: rgb(14, 0, 29);
 }
+
 .account {
-    box-sizing: border-box;
-    display: grid;
-    grid-template-columns: 1fr 400px;
-    height: 92vh;
-  }
-  
- 
-.cover-profile-name{
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  height: 92vh;
+}
+
+.cover-profile-name {
   padding-top: 5px;
-    font-size: 25px;
-    font-weight: bold;
-    margin-left: 50px;
+  font-size: 25px;
+  font-weight: bold;
+  margin-left: 50px;
 }
-.cover-profile-cat{
+
+.cover-profile-cat {
   color: grey;
-    font-size: 18px;
-    margin-left: 50px;
+  font-size: 18px;
+  margin-left: 50px;
 }
-.CoverPage{
+
+.CoverPage {
   padding-top: 25px;
-  
+
 }
-.samplepost{
+
+.samplepost {
   width: 100% !important;
 }
-.CoverPage_avatar{
+
+.CoverPage_avatar {
   margin-bottom: 10px;
   margin-left: 50px;
-  
 }
 
-.fullBodyProfile{
+.fullBodyProfile {
   background-color: #edf0f5;
-  min-height:100vh ;
+  min-height: 100vh;
 }
-.userProfile_main{
+
+.userProfile_main {
   padding-top: 20px;
 }
-.icons-in-cover-pic{
+
+.icons-in-cover-pic {
   cursor: pointer;
 }
-.profilepic__icon{
-  cursor: pointer;
 
+.profilepic__icon {
+  cursor: pointer;
 }

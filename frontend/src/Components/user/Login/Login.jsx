@@ -20,8 +20,8 @@ export default function Login() {
     const loginHandler = (e) => {
         e.preventDefault();
         dispatch(loginUser(email, password));
-
     };
+    
     useEffect(() => {
         if (error) {
             alert.error(error);

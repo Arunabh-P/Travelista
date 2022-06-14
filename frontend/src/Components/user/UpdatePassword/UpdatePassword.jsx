@@ -1,10 +1,6 @@
 import "./UpdatePassword.css"
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import Typography from "@mui/material/Typography";
-import { createTheme } from "@mui/material/styles";
 import { useDispatch, useSelector } from "react-redux"
-import bg from "../../../Images/bg2.jpg";
 import { useAlert } from "react-alert"
 import { updatePassword } from "../../../Actions/User";
 import password from "../../../../src/Images/password.png"
@@ -35,24 +31,19 @@ function UpdatePassword() {
   }, [dispatch, error, alert, message]);
 
   return (
+
     <>
       <div className='update-password' >
         <div className="update-profile-headline p-5">
-
           <h3>Update Password</h3>
         </div>
         <div className="container mb-4 ">
           <div className='update-dataform'>
             <div className="row update-row p-4 rounded">
-
               <div className="col-md-6 update-img p-5">
-
                 <img src={password} className="image-pass-update" alt="" />
               </div>
               <div className="col-md-6 p-5">
-
-
-
                 <form className="update-passwordForm" onSubmit={submitHandler} >
                   <div className='update-password-dataform'>
                     <div className="bg-color row-up-pass w-100 row">
@@ -82,31 +73,19 @@ function UpdatePassword() {
                         />
                       </div>
                       <div className="col-2 col-md-3 col-lg-2 d-flex align-items-center">
-
                         <small className='update-password-show-pass' onClick={() => setShowNewpassword(!showNewpassword)}> {showNewpassword ? "Hide" : "Show"}</small>
                       </div>
-
                     </div>
                     <div className="w-100">
-                      
                         <button className='update-password-dataform-button w-100'  disabled={loading} type='submit'>Change Password</button>
                     </div>
                   </div>
                 </form>
-
-
               </div>
-
             </div>
-
           </div>
-
         </div >
-
       </div >
-
-
-
     </>
 
   )

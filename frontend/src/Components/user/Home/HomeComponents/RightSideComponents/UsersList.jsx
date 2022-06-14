@@ -5,15 +5,15 @@ import User from '../../../User/User'
 import { useSelector } from "react-redux"
 
 function UsersList() {
-  const { user, loading: userLoading } = useSelector((state) => state.user);
 
-  const { users, loading: usersLoading } = useSelector(
+  const { users } = useSelector(
     (state) => state.allUsers
   )
+
   return (
 
     <div className='users-list-to-show'>
-<h4>Connect with travelista family</h4>
+      <h4>Connect with travelista family</h4>
       {users && users.length > 0 ? (
         users.map((user) => (
           <User

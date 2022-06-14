@@ -6,15 +6,15 @@ import { allUsersReducer, postOfFollowingReducer, userProfileReducer, userReduce
 const store = configureStore({
     reducer: {
         user: userReducer,
-        postOfFollowing : postOfFollowingReducer,
-        allUsers : allUsersReducer,
-        like : likeReducer,
-        myPosts : myPostsReducer,
-        userProfile : userProfileReducer,
-        userPosts : userPostsReducer,
-        addStory : addStoryReducer,
-        storyOfFollowing :storyOfFollowingReducer,
-    } 
+        postOfFollowing: postOfFollowingReducer,
+        allUsers: allUsersReducer,
+        like: likeReducer,
+        myPosts: myPostsReducer,
+        userProfile: userProfileReducer,
+        userPosts: userPostsReducer,
+        addStory: addStoryReducer,
+        storyOfFollowing: storyOfFollowingReducer,
+    }
 });
 
 export default store;

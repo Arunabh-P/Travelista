@@ -6,7 +6,6 @@ import {
     FavoriteBorder,
     ChatBubbleOutline,
     DeleteOutline,
-    ConnectWithoutContact,
     VolunteerActivism
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
@@ -38,20 +37,14 @@ function Post({
     const [likesUser, setLikesUser] = useState(false);
     const [commentValue, setCommentValue] = useState("");
     const [commentToggle, setCommentToggle] = useState(false);
-
     const [captionValue, setCaptionValue] = useState(caption);
     const [captionToggle, setCaptionToggle] = useState(false);
-
-
-
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.user)
 
     const handleLike = async () => {
         setLiked(!liked);
-
         await dispatch(likePost(postId));
-
         if (isAccount) {
             dispatch(getMyPosts())
         } else {
@@ -62,7 +55,6 @@ function Post({
     const addCommentHandler = async (e) => {
         e.preventDefault();
         await dispatch(addCommentOnPost(postId, commentValue))
-
         if (isAccount) {
             dispatch(getMyPosts())
         } else {
@@ -74,7 +66,6 @@ function Post({
         e.preventDefault();
         dispatch(updatePost(captionValue, postId))
         dispatch(getMyPosts())
-
     }
 
     const deletePostHandler = async () => {
@@ -110,7 +101,6 @@ function Post({
                         width: "3vmax"
                     }}
                 />
-
                 <Link to={`/user/${ownerId}`}>
                     <Typography fontWeight={700}>{ownerName}</Typography>
                 </Link>
@@ -125,10 +115,8 @@ function Post({
                     color="rgba(0, 0, 0, 0.582)"
                     style={{ alignSelf: "center" }}
                 >
-                     {tripDate}
+                    {tripDate}
                 </Typography>
-
-
             </div>
             <Button
                 style={{
@@ -140,39 +128,30 @@ function Post({
                 onClick={() => setLikesUser(!likesUser)}
                 disabled={likes.length === 0 ? true : false}
             >
-
                 <Typography>{likes.length} likes</Typography>
             </Button>
             <div className="postFooter">
-
                 <Button onClick={handleLike} className="InputOptions">
                     {liked ? <Favorite /> : <FavoriteBorder />}
                 </Button>
-
                 <Button onClick={() => setCommentToggle(!commentToggle)}>
                     <ChatBubbleOutline />
                 </Button>
-<Link to={`/proposal/${postId}`} className="proposal-button">
-                <Button className="InputOptions">
-
-                    <VolunteerActivism className="thumbs-up"  />
-                    <Typography className="buttonText" >Proposal</Typography>
-                </Button>
+                <Link to={`/proposal/${postId}`} className="proposal-button">
+                    <Button className="InputOptions">
+                        <VolunteerActivism className="thumbs-up" />
+                        <Typography className="buttonText" >Proposal</Typography>
+                    </Button>
                 </Link>
-
-
-
                 {isDelete ? (
                     <Button onClick={deletePostHandler}>
                         <DeleteOutline />
                     </Button>
                 ) : null}
-
             </div>
-            <Dialog  className="Dialogbox-scroll" open={likesUser} onClose={() => setLikesUser(!likesUser)}>
+            <Dialog className="Dialogbox-scroll" open={likesUser} onClose={() => setLikesUser(!likesUser)}>
                 <div className="DialogBox">
                     <Typography variant="h4">Liked By</Typography>
-
                     {likes.map((like) => (
                         <User
                             key={like._id}
@@ -183,8 +162,7 @@ function Post({
                     ))}
                 </div>
             </Dialog>
-
-            <Dialog  className="Dialogbox-scroll"
+            <Dialog className="Dialogbox-scroll"
                 open={commentToggle}
                 onClose={() => setCommentToggle(!commentToggle)}
             >
@@ -197,10 +175,7 @@ function Post({
                             onChange={(e) => setCommentValue(e.target.value)}
                             placeholder="Comment Here..."
                             required
-
-
                         />
-
                         <Button className="add-button" type="submit" variant="contained"  >
                             Add
                         </Button>
@@ -221,12 +196,9 @@ function Post({
                     ) : (
                         <Typography>No comments Yet</Typography>
                     )}
-
-
                 </div>
             </Dialog>
-
-            <Dialog  className="Dialogbox-scroll"
+            <Dialog className="Dialogbox-scroll"
                 open={captionToggle}
                 onClose={() => setCaptionToggle(!captionToggle)}
             >
@@ -239,21 +211,14 @@ function Post({
                             onChange={(e) => setCaptionValue(e.target.value)}
                             placeholder="Caption Here..."
                             required
-
-
                         />
-
                         <Button className="add-button" type="submit" variant="contained"  >
                             Update
                         </Button>
                     </form>
-
                 </div>
             </Dialog>
-
         </div>
-
-
 
     )
 }

@@ -40,25 +40,16 @@ function MyPost({
     const [likesUser, setLikesUser] = useState(false);
     const [commentValue, setCommentValue] = useState("");
     const [commentToggle, setCommentToggle] = useState(false);
-
     const [captionValue, setCaptionValue] = useState(caption);
     const [captionToggle, setCaptionToggle] = useState(false);
-
     const [hostRequestToggle, setHostRequestToggle] = useState(false);
     const [buddyRequestToggle, setBuddyRequestToggle] = useState(false);
-
-
-
-
-
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.user)
 
     const handleLike = async () => {
         setLiked(!liked);
-
         await dispatch(likePost(postId));
-
         if (isAccount) {
             dispatch(getMyPosts())
         } else {
@@ -69,7 +60,6 @@ function MyPost({
     const addCommentHandler = async (e) => {
         e.preventDefault();
         await dispatch(addCommentOnPost(postId, commentValue))
-
         if (isAccount) {
             dispatch(getMyPosts())
         } else {
@@ -81,7 +71,6 @@ function MyPost({
         e.preventDefault();
         dispatch(updatePost(captionValue, postId))
         dispatch(getMyPosts())
-
     }
 
     const deletePostHandler = async () => {
@@ -110,9 +99,6 @@ function MyPost({
         });
     }, [likes, user._id]);
 
-
-
-
     return (
         <div className="post" style={{ width: width }}>
             <div className="postHeader">
@@ -123,7 +109,6 @@ function MyPost({
                 ) : null}
             </div>
             <img src={postImage} alt="Post" />
-
             <div className="postDetails">
                 <Avatar src={ownerImage} alt="user"
                     sz={{
@@ -131,7 +116,6 @@ function MyPost({
                         width: "3vmax"
                     }}
                 />
-
                 <Link to={`/user/${ownerId}`}>
                     <Typography fontWeight={700}>{ownerName}</Typography>
                 </Link>
@@ -148,8 +132,6 @@ function MyPost({
                 >
                     {tripDate}
                 </Typography>
-
-
             </div>
             <Button
                 style={{
@@ -161,15 +143,12 @@ function MyPost({
                 onClick={() => setLikesUser(!likesUser)}
                 disabled={likes.length === 0 ? true : false}
             >
-
                 <Typography>{likes.length} likes</Typography>
             </Button>
             <div className="postFooter">
-
                 <Button onClick={handleLike} className="InputOptions">
                     {liked ? <Favorite /> : <FavoriteBorder />}
                 </Button>
-
                 <Button onClick={() => setCommentToggle(!commentToggle)}>
                     <ChatBubbleOutline />
                 </Button>
@@ -179,13 +158,11 @@ function MyPost({
                 <Button onClick={() => setBuddyRequestToggle(!buddyRequestToggle)} className="InputOptions">
                     <Typography className="buttonText2" >Buddy Requests</Typography>
                 </Button>
-
                 {isDelete ? (
                     <Button onClick={deletePostHandler}>
                         <DeleteOutline />
                     </Button>
                 ) : null}
-
             </div>
             <Dialog className="Dialogbox-scroll" open={buddyRequestToggle} onClose={() => setBuddyRequestToggle(!buddyRequestToggle)}>
                 <div className="DialogBox">
@@ -202,12 +179,9 @@ function MyPost({
                             />
                             <hr />
                         </>
-
                     ))}
-
                 </div>
             </Dialog>
-
             <Dialog className="Dialogbox-scroll" open={hostRequestToggle} onClose={() => setHostRequestToggle(!hostRequestToggle)}>
                 <div className="DialogBox">
                     <Typography variant="h4">Host Requests</Typography>
@@ -221,20 +195,15 @@ function MyPost({
                                 place={host.place}
                                 service={host.service}
                                 description={host.description}
-
                             />
                             <hr />
                         </>
-
                     ))}
-
                 </div>
             </Dialog>
-
             <Dialog className="Dialogbox-scroll" open={likesUser} onClose={() => setLikesUser(!likesUser)}>
                 <div className="DialogBox">
                     <Typography variant="h4">Liked By</Typography>
-
                     {likes.map((like) => (
                         <User
                             key={like._id}
@@ -245,7 +214,6 @@ function MyPost({
                     ))}
                 </div>
             </Dialog>
-
             <Dialog className="Dialogbox-scroll"
                 open={commentToggle}
                 onClose={() => setCommentToggle(!commentToggle)}
@@ -260,7 +228,6 @@ function MyPost({
                             placeholder="Comment Here..."
                             required
                         />
-
                         <Button className="add-button" type="submit" variant="contained"  >
                             Add
                         </Button>
@@ -281,11 +248,8 @@ function MyPost({
                     ) : (
                         <Typography>No comments Yet</Typography>
                     )}
-
-
                 </div>
             </Dialog>
-
             <Dialog className="Dialogbox-scroll"
                 open={captionToggle}
                 onClose={() => setCaptionToggle(!captionToggle)}
@@ -300,17 +264,13 @@ function MyPost({
                             placeholder="Caption Here..."
                             required
                         />
-
                         <Button className="add-button" type="submit" variant="contained"  >
                             Update
                         </Button>
                     </form>
-
                 </div>
             </Dialog>
-
         </div>
-
     )
 }
 

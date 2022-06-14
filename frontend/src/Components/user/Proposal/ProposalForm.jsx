@@ -51,11 +51,8 @@ function a11yProps(index) {
 
 
 function ProposalForm() {
-
-
     const theme = useTheme();
     const [value, setValue] = React.useState(0);
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -81,16 +78,12 @@ function ProposalForm() {
         e.preventDefault()
         await dispatch(postBuddyRequest({ id: params.id, name, place, number, description }))
         dispatch(loadUser());
-
-
     }
 
     const hostSubmitHandler = async (e) => {
         e.preventDefault()
         await dispatch(postHostRequest({ id: params.id, name, place, number, description, service }))
         dispatch(loadUser());
-
-
     }
 
 
@@ -112,15 +105,11 @@ function ProposalForm() {
         <>
 
             <div className='update-password' >
-
                 <div className="container serch-container mb-4 ">
                     <div className="row update-row p-4 rounded mt-4">
                         <div className="col-lg-6 update-img p-5">
                             <img className="proposal-img" src={thinking} alt="" />
-
-
                         </div>
-
                         <div className="col-lg-6 px-5">
                             <Box sx={{ bgcolor: 'background.paper' }}>
                                 <AppBar position="static" >
@@ -141,11 +130,7 @@ function ProposalForm() {
                                     index={value}
                                     onChangeIndex={handleChangeIndex}
                                 >
-
-
-
                                     <TabPanel value={value} index={0} dir={theme.direction}  >
-
                                         <div className="buddy-form-container">
                                             <form onSubmit={buddySubmitHandler}>
                                                 <div className='buddy-form-div'>
@@ -157,8 +142,6 @@ function ProposalForm() {
                                                         required
                                                         onChange={(e) => setName(e.target.value)}
                                                     />
-
-
                                                     <TextField
                                                         id="outlined-number"
                                                         label="Contact Number"
@@ -167,7 +150,6 @@ function ProposalForm() {
                                                         value={number}
                                                         required
                                                         onChange={(e) => setNumber(e.target.value)}
-
                                                     />
                                                     <TextField
                                                         id="fullWidth"
@@ -177,10 +159,6 @@ function ProposalForm() {
                                                         required
                                                         onChange={(e) => setPlace(e.target.value)}
                                                     />
-
-
-
-
                                                     <TextField
                                                         id="outlined-multiline-static"
                                                         label="Description"
@@ -189,12 +167,8 @@ function ProposalForm() {
                                                         className=' '
                                                         value={description}
                                                         onChange={(e) => setDescription(e.target.value)}
-
                                                     />
-
-
                                                     <button disabled={loading} className='proposal-dataform-button' type='submit'>Submit</button>
-
                                                 </div>
                                             </form>
                                         </div>
