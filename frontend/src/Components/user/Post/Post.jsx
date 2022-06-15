@@ -124,15 +124,15 @@ function Post({
                 </Typography>
 
             </div>
-                    {
-                        tripDate ? <Typography
-                            fontWeight={100}
-                            color="rgba(0, 0, 0, 0.582)"
-                            style={{ alignSelf: "center" }}
-                        >
-                            &#160; <span style={{ fontWeight: "bold" }} className="mt-1 pl-5">&#160; Trip planned on {tripDate} </span>
-                        </Typography> : ""
-                    }
+            {
+                tripDate ? <Typography
+                    fontWeight={100}
+                    color="rgba(0, 0, 0, 0.582)"
+                    style={{ alignSelf: "center" }}
+                >
+                    &#160; <span style={{ fontWeight: "bold" }} className="mt-1 pl-5">&#160; Trip planned on {tripDate} </span>
+                </Typography> : ""
+            }
             <Button
                 style={{
                     border: "none",
@@ -158,7 +158,7 @@ function Post({
                         <Typography className="buttonText" >Proposal</Typography>
                     </Button>
                 </Link>
-                
+
 
                 {isDelete ? (
                     <Button onClick={deletePostHandler}>

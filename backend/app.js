@@ -1,10 +1,12 @@
 const express = require("express")
 const app = express();
 const cookieParser = require("cookie-parser")
+const path = require("path")
 
 if (process.env.NODE_ENV !== "production") {
     require("dotenv").config({ path: "backend/config/config.env" });
   }
+
 
   //using middlewares
   app.use(express.json({limit:'50mb'}))
@@ -30,5 +32,18 @@ if (process.env.NODE_ENV !== "production") {
 
 
 
+  if (process.env.NODE_ENV === 'production') {
+
+    app.use(express.static(path.join(__dirname, '../frontend/build')))
+  
+    app.get('*', (req, res) =>
+      res.sendFile(path.resolve(__dirname, '../frontend', 'build', 'index.html'))
+    )
+  } else {
+    app.get('/', (req, res) => {
+      res.send('API is running....')
+    })
+  }
+  
 
 module.exports = app;
