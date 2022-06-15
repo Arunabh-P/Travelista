@@ -2,11 +2,15 @@ const Post = require("../models/Post");
 const User = require("../models/User");
 const cloudinary = require("cloudinary")
 exports.createPost = async (req, res) => {
+    console.log("koooy1");
     try {
 
         const myCloud = await cloudinary.v2.uploader.upload(req.body.image, {
             folder: "posts",
         });
+console.log("hooy2");
+
+        // tripdate=Date(req.body.tripDate).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) 
 
         const newPostData = {
             caption: req.body.caption,
@@ -17,8 +21,6 @@ exports.createPost = async (req, res) => {
             owner: req.user._id,
             ////
             tripDate: req.body.tripDate
-            ////
-
 
         };
         const post = await Post.create(newPostData);

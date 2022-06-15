@@ -16,6 +16,8 @@ import { addCommentOnPost, deletePost, likePost, updatePost } from "../../../Act
 import { getFollowingPosts, getMyPosts, loadUser } from "../../../Actions/User";
 import User from "../User/User";
 import CommentCard from "../CommentCard/CommentCard";
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import { format } from "timeago.js"
 
 function Post({
     postId,
@@ -25,6 +27,7 @@ function Post({
     comments = [],
     ownerImage,
     tripDate,
+    createdAt,
     ownerName,
     ownerId,
     isDelete = false,
@@ -110,14 +113,26 @@ function Post({
                     style={{ alignSelf: "center" }}
                 >
                     {caption} </Typography>
+
+
                 <Typography
                     fontWeight={100}
                     color="rgba(0, 0, 0, 0.582)"
                     style={{ alignSelf: "center" }}
                 >
-                    {tripDate}
+                    <span > &#160; {format(createdAt)} </span>
                 </Typography>
+
             </div>
+                    {
+                        tripDate ? <Typography
+                            fontWeight={100}
+                            color="rgba(0, 0, 0, 0.582)"
+                            style={{ alignSelf: "center" }}
+                        >
+                            &#160; <span style={{ fontWeight: "bold" }} className="mt-1 pl-5">&#160; Trip planned on {tripDate} </span>
+                        </Typography> : ""
+                    }
             <Button
                 style={{
                     border: "none",
@@ -143,11 +158,15 @@ function Post({
                         <Typography className="buttonText" >Proposal</Typography>
                     </Button>
                 </Link>
+                
+
                 {isDelete ? (
                     <Button onClick={deletePostHandler}>
                         <DeleteOutline />
                     </Button>
                 ) : null}
+
+
             </div>
             <Dialog className="Dialogbox-scroll" open={likesUser} onClose={() => setLikesUser(!likesUser)}>
                 <div className="DialogBox">

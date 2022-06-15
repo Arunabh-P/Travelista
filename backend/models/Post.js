@@ -19,7 +19,7 @@ const postSchema = new mongoose.Schema({
   },
   /////
   tripDate: {
-    type: Date,
+    type: String,
   },
   ////
   likes: [

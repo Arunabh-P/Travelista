@@ -33,6 +33,8 @@ function CenterComponent() {
               postId={post._id}
               caption={post.caption}
               postImage={post.image.url}
+              tripDate={post.tripDate}
+              createdAt={post.createdAt}
               likes={post.likes}
               comments={post.comments}
               ownerImage={post.owner.avatar.url}
