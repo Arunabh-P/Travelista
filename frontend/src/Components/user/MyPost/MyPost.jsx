@@ -26,7 +26,7 @@ function MyPost({
     likes = [],
     comments = [],
     ownerImage,
-    tripDate,
+    // tripDate,
     ownerName,
     ownerId,
     isDelete = false,
@@ -125,13 +125,13 @@ function MyPost({
                     style={{ alignSelf: "center" }}
                 >
                     {caption} </Typography>
-                <Typography
+                {/* <Typography
                     fontWeight={100}
                     color="rgba(0, 0, 0, 0.582)"
                     style={{ alignSelf: "center" }}
                 >
                     {tripDate}
-                </Typography>
+                </Typography> */}
             </div>
             <Button
                 style={{

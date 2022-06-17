@@ -1,8 +1,4 @@
-.body-messager {
-  background-color: #edf0f5;
-  height: calc(100vh - 72px);
 
-}
 
 .messenger {
   height: calc(100vh - 88px);
@@ -125,6 +121,6 @@ body::-webkit-scrollbar {
   }
 
   .chatOnline {
-    flex: 1px;
+    flex: 1;
   }
 }

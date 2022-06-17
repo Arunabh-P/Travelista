@@ -52,6 +52,7 @@ function Account() {
   }
 
   const saveCoverImage = async (e) => {
+    console.log("hiii here")
     e.preventDefault()
     await dispatch(updateCoverImage(image))
     dispatch(loadUser())
@@ -155,7 +156,8 @@ function Account() {
             </div>
             <div className='d-md-flex justify-content-between'>
               <div>
-                <h2 className='cover-profile-name'>{user.name}</h2>
+                <h2 className='cover-profile-name'>{user.name}
+                </h2>
                 <h4 className='cover-profile-cat'>{user.bio}</h4>
               </div>
               <div>
@@ -222,7 +224,7 @@ function Account() {
                     buddy={post.buddy}
                     postId={post._id}
                     caption={post.caption}
-                    tripDate={post.tripDate}
+                    // tripDate={post.tripDate}
                     postImage={post.image.url}
                     likes={post.likes}
                     comments={post.comments}
@@ -238,6 +240,10 @@ function Account() {
             ) : (
               <Typography variant="h6">You have not made any post</Typography>
             )}
+          </div>
+          <div className="footer bg-white ">
+          
+          <p className='text-center p-2'>Copyright ©2022 travalista.online All Rights Reserved.</p>
           </div>
         </div>
       </Container>

@@ -100,7 +100,7 @@ export default function Register() {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
-                        <small className='register-show-pass' onClick={() => setShowpass(!showpass)}> {showpass ? "Hide" : "Show"}</small>
+                        <small className='register-show-pass pt-md-2 pt-lg-4' onClick={() => setShowpass(!showpass)}> {showpass ? "Hide" : "Show"}</small>
                         <button disabled={loading} className='register-dataform-button' type='submit'>Register</button>
                         <p className='dont-have-acc'>Already have an account?<Link className="link-style-none" to="/">Login HERE</Link></p>
                     </div>

@@ -30,11 +30,12 @@ console.log("hooy2");
         user.posts.unshift(post._id);
 
         await user.save();
-
+        
         res.status(201).json({
             success: true,
             message: "Post created",
         })
+        console.log("hooy33333333");
 
 
     } catch (error) {

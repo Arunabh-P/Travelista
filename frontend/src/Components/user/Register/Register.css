@@ -1,6 +1,6 @@
 .register {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -31,7 +31,7 @@
 
 .register-dataform-email {
     padding: .8rem;
-    margin: 1rem;
+    margin: .5rem;
     border-radius: 2.5px;
     outline: none;
     border: none;
@@ -39,7 +39,7 @@
 
 .register-dataform-password {
     padding: .8rem;
-    margin: 1rem;
+    margin: .5rem;
     border-radius: 2.5px;
     outline: none;
     border: none;
@@ -48,14 +48,14 @@
 
 .register-dataform-button {
     padding: .8rem;
-    margin: 1rem;
+    margin: .5rem;
     border-radius: 2.5px;
     outline: none;
     border: none;
 }
 
 .register-container {
-    width: 25rem;
+    /* width: 25rem; */
     padding: 2rem;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 16px;
@@ -71,7 +71,7 @@
 
 .register-show-pass {
     position: fixed;
-    top: 63.5%;
+    top: 59.5%;
     left: 70%;
 }
 

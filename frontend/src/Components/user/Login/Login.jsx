@@ -21,7 +21,7 @@ export default function Login() {
         e.preventDefault();
         dispatch(loginUser(email, password));
     };
-    
+
     useEffect(() => {
         if (error) {
             alert.error(error);
@@ -34,7 +34,7 @@ export default function Login() {
     }, [dispatch, alert, error, message]);
 
     return (
-        <div className='login' style={{ backgroundImage: `url(${bg})` }}>
+        <div className='login ' style={{ backgroundImage: `url(${bg})` }}>
             <div className="login-container">
                 <h3 className="login-header">Travelista</h3>
                 <h6 className="login-subheader">Login</h6>
