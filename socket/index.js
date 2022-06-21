@@ -1,6 +1,7 @@
 const io = require("socket.io")(8900, {
+    path: "/mysocket",
     cors: {
-        origin: "http://travalista.online",
+        origin: "https://travalista.online",
     },
 });
 let users = [];

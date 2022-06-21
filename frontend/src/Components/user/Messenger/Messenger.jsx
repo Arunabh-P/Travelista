@@ -15,7 +15,9 @@ function Messenger() {
     const [arrivalMessage, setArrivalMessage] = useState(null)
     const [onlineUsers, setOnlineUsers] = useState(null)
     // const socket = useRef(io("ws://localhost:8900"))
-    const socket = useRef(io("http://localhost:4000"))
+    const socket = useRef(io("https://travalista.online",{
+        path: "/mysocket",
+    }))
 
     
     const scrollRef = useRef()
@@ -24,7 +26,9 @@ function Messenger() {
     useEffect(() => {
         // socket.current = io("ws://localhost:8900");
         //changes
-        socket.current = io("http://localhost:4000");
+        socket.current = io("https://travalista.online",{
+            path: "/mysocket",
+        });
 
         socket.current.on("getMessage", (data) => {
             setArrivalMessage({
