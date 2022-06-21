@@ -23,6 +23,7 @@ function Messenger() {
 
     useEffect(() => {
         // socket.current = io("ws://localhost:8900");
+        //changes
         socket.current = io("ws://localhost:4000");
 
         socket.current.on("getMessage", (data) => {
