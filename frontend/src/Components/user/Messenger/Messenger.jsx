@@ -14,12 +14,17 @@ function Messenger() {
     const [newMessage, setNewMessage] = useState("")
     const [arrivalMessage, setArrivalMessage] = useState(null)
     const [onlineUsers, setOnlineUsers] = useState(null)
-    const socket = useRef(io("ws://localhost:8900"))
+    // const socket = useRef(io("ws://localhost:8900"))
+    const socket = useRef(io("ws://localhost:4000"))
+
+    
     const scrollRef = useRef()
     const { user } = useSelector((state) => state.user);
 
     useEffect(() => {
-        socket.current = io("ws://localhost:8900");
+        // socket.current = io("ws://localhost:8900");
+        socket.current = io("ws://localhost:4000");
+
         socket.current.on("getMessage", (data) => {
             setArrivalMessage({
                 sender: data.sender,
