@@ -15,21 +15,17 @@ function Messenger() {
     const [arrivalMessage, setArrivalMessage] = useState(null)
     const [onlineUsers, setOnlineUsers] = useState(null)
     // const socket = useRef(io("ws://localhost:8900"))
-    const socket = useRef(io("https://travalista.online",{
+    const socket = useRef(io("https://travalistasocket.online",{
         path: "/mysocket",
     }))
-
-    
     const scrollRef = useRef()
     const { user } = useSelector((state) => state.user);
-
     useEffect(() => {
         // socket.current = io("ws://localhost:8900");
-        //changes
-        socket.current = io("https://travalista.online",{
+        //changestravalista.soket.online
+        socket.current = io("https://travalistasocket.online",{
             path: "/mysocket",
         });
-
         socket.current.on("getMessage", (data) => {
             setArrivalMessage({
                 sender: data.sender,
