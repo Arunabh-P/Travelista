@@ -14,14 +14,14 @@ function Messenger() {
     const [newMessage, setNewMessage] = useState("")
     const [arrivalMessage, setArrivalMessage] = useState(null)
     const [onlineUsers, setOnlineUsers] = useState(null)
-    const socket = useRef(io("ws://localhost:4000"))
+    const socket = useRef(io("http://localhost:4000"))
     // const socket = useRef(io("https://travalistasocket.online",{
     //     path: "/mysocket",
     // }))
     const scrollRef = useRef()
     const { user } = useSelector((state) => state.user);
     useEffect(() => {
-        socket.current = io("ws://localhost:4000");
+        socket.current = io("http://localhost:4000");
         //changes
         // socket.current = io("https://travalistasocket.online",{
         //     path: "/mysocket",
