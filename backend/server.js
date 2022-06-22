@@ -15,10 +15,10 @@ const server = app.listen(process.env.PORT,()=>{
 })
 
 const io = require("socket.io")(server, {
-    // path: "/mysocket",
+    
     cors: {
         origin: "https://travalista.online"
-        // origin: "http://localhost:3000"
+        
     },
 });
 let users = [];
