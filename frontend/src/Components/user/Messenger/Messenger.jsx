@@ -22,7 +22,7 @@ function Messenger() {
     const { user } = useSelector((state) => state.user);
     useEffect(() => {
         // socket.current = io("ws://localhost:8900");
-        //changestravalista.soket.online
+        //changes
         socket.current = io("https://travalistasocket.online",{
             path: "/mysocket",
         });
