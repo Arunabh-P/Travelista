@@ -17,8 +17,14 @@ import CommentCard from "../CommentCard/CommentCard";
 import BuddyRequest from "../BuddyRequest/BuddyRequest";
 import HostRequest from "../HostRequest/HostRequest";
 import "./MyPost.css"
-const Swal = require('sweetalert2')
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
+import { TbFriends } from "react-icons/tb";
+import { TbAlien } from "react-icons/tb";
+
+
+const Swal = require('sweetalert2')
 function MyPost({
     postId,
     caption,
@@ -152,18 +158,32 @@ function MyPost({
                 <Button onClick={() => setCommentToggle(!commentToggle)}>
                     <ChatBubbleOutline />
                 </Button>
+
+                <OverlayTrigger overlay={<Tooltip id='tooltip-top'>Host Requests</Tooltip>}>
                 <Button onClick={() => setHostRequestToggle(!hostRequestToggle)} className="InputOptions">
-                    <Typography className="buttonText2" >Host Requests</Typography>
+                    <TbAlien />
                 </Button>
-                <Button onClick={() => setBuddyRequestToggle(!buddyRequestToggle)} className="InputOptions">
-                    <Typography className="buttonText2" >Buddy Requests</Typography>
-                </Button>
+                </OverlayTrigger>
+
+
+                <OverlayTrigger overlay={<Tooltip id='tooltip-top'>Buddy Requests</Tooltip>}>
+                    <Button onClick={() => setBuddyRequestToggle(!buddyRequestToggle)} className="InputOptions">
+                        <TbFriends />
+                    </Button>
+                </OverlayTrigger>
+
+
+                <OverlayTrigger overlay={<Tooltip id='tooltip-top'>Delete Post</Tooltip>}>
                 {isDelete ? (
                     <Button onClick={deletePostHandler}>
                         <DeleteOutline />
                     </Button>
                 ) : null}
+                </OverlayTrigger>
+
             </div>
+
+
             <Dialog className="Dialogbox-scroll" open={buddyRequestToggle} onClose={() => setBuddyRequestToggle(!buddyRequestToggle)}>
                 <div className="DialogBox">
                     <Typography variant="h4">Buddy Requests</Typography>

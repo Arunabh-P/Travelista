@@ -16,9 +16,11 @@ import { addCommentOnPost, deletePost, likePost, updatePost } from "../../../Act
 import { getFollowingPosts, getMyPosts, loadUser } from "../../../Actions/User";
 import User from "../User/User";
 import CommentCard from "../CommentCard/CommentCard";
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import { format } from "timeago.js"
-
+import { FaRegHandPeace } from "react-icons/fa";
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+import FlutterDashOutlinedIcon from '@mui/icons-material/FlutterDashOutlined';
 function Post({
     postId,
     caption,
@@ -118,7 +120,7 @@ function Post({
                 <Typography
                     fontWeight={100}
                     color="rgba(0, 0, 0, 0.582)"
-                    style={{ alignSelf: "center" }}
+                    style={{ alignSelf: "center"}}
                 >
                     <span > &#160; {format(createdAt)} </span>
                 </Typography>
@@ -126,11 +128,11 @@ function Post({
             </div>
             {
                 tripDate ? <Typography
-                    fontWeight={100}
+                    // fontWeight={100}
                     color="rgba(0, 0, 0, 0.582)"
                     style={{ alignSelf: "center" }}
                 >
-                    &#160; <span style={{ fontWeight: "bold" }} className="mt-1 pl-5">&#160; Trip planned on {tripDate} </span>
+                    &#160; <span style={{ fontSize:'.9rem' }} className="mt-1 pl-5">&#160; Trip planned on {tripDate} </span>
                 </Typography> : ""
             }
             <Button
@@ -138,7 +140,7 @@ function Post({
                     border: "none",
                     backgroundColor: "white",
                     cursor: "pointer",
-                    margin: "1vmax 2vmax",
+                    marginLeft:'1rem',
                 }}
                 onClick={() => setLikesUser(!likesUser)}
                 disabled={likes.length === 0 ? true : false}
@@ -152,13 +154,14 @@ function Post({
                 <Button onClick={() => setCommentToggle(!commentToggle)}>
                     <ChatBubbleOutline />
                 </Button>
-                <Link to={`/proposal/${postId}`} className="proposal-button">
-                    <Button className="InputOptions">
-                        <VolunteerActivism className="thumbs-up" />
-                        <Typography className="buttonText" >Proposal</Typography>
-                    </Button>
-                </Link>
 
+                    <Button className="InputOptions" >
+                <OverlayTrigger overlay={<Tooltip id='tooltip-top'>Give a proposal</Tooltip>}>
+                        <Link to={`/proposal/${postId}`} className=" proposal-button">
+                            <FlutterDashOutlinedIcon />
+                        </Link>
+                </OverlayTrigger>
+                    </Button>
 
                 {isDelete ? (
                     <Button onClick={deletePostHandler}>
