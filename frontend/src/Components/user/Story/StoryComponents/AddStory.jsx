@@ -32,7 +32,7 @@ function AddStory() {
   }, [dispatch, error, message, image, alert])
 
   return (
-    <div className=' add-story-box   me-3 p-0 '>
+    <div className=' add-story-box  p-0 '>
 
       <form >
         <input type="file" accept='image/*' className="crop_image d-none" name="crop_image" id="upload_image" onChange={(e) => {

@@ -8,6 +8,7 @@ import User from "../User/User"
 import { Button, Dialog, Typography } from "@mui/material";
 import { Container } from "react-bootstrap"
 import cover from "../../../Images/cover.jpg"
+import coverimg from "../../../Images/coverimg.png"
 import { useAlert } from 'react-alert';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import { FormControl } from "react-bootstrap";
@@ -16,23 +17,6 @@ import SaveIcon from '@mui/icons-material/Save';
 const Swal = require('sweetalert2')
 
 function Account() {
-
-  const { user } = useSelector((state) => state.user);
-  const { error, posts } = useSelector((state) => state.myPosts);
-  const {
-    error: likeError,
-    message,
-    loading: deleteLoading,
-  } = useSelector((state) => state.like);
-
-  const dispatch = useDispatch()
-  const alert = useAlert()
-
-  const [followersToggle, setFollowersToggle] = useState(false)
-  const [followingToggle, setFollowingToggle] = useState(false)
-  const [showCropper, setShowCropper] = useState(false);
-  const [cropImage, setCropImage] = useState(false);
-  const [image, setImage] = useState(null);
 
   const deleteProfileHandler = async () => {
     Swal.fire({
@@ -51,12 +35,24 @@ function Account() {
     })
   }
 
-  const saveCoverImage = async (e) => {
-    console.log("hiii here")
-    e.preventDefault()
-    await dispatch(updateCoverImage(image))
-    dispatch(loadUser())
-  }
+  const dispatch = useDispatch()
+  const alert = useAlert()
+
+  const { user, loading: userLoading } = useSelector((state) => state.user);
+  const { loading,error, posts } = useSelector((state) => state.myPosts);
+  const {
+    error: likeError,
+    message,
+    loading: deleteLoading,
+  } = useSelector((state) => state.like);
+
+  
+
+  const [followersToggle, setFollowersToggle] = useState(false)
+  const [followingToggle, setFollowingToggle] = useState(false)
+  const [showCropper, setShowCropper] = useState(false);
+  const [cropImage, setCropImage] = useState(false);
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
     dispatch(getMyPosts());
@@ -78,14 +74,18 @@ function Account() {
   }, [alert, error, message, likeError, dispatch]);
 
 
-
+  const saveCoverImage = async (e) => {
+    e.preventDefault()
+    await dispatch(updateCoverImage(image))
+    dispatch(loadUser())
+  }
 
   return (
     <div className="fullBodyProfile">
       <Container>
         <div className='CoverPage  '>
           <div className=' bg-white my-2 rounded'>
-            {user.coverImage ? <div className="text-end" style={{ backgroundImage: `url(${image ? image : user.coverImage.url})`, height: "15rem", width: "100%", borderRadius: "5px 5px 0px 0px", backgroundSize: "cover", backgroundRepeat: "no-repeat", marginBottom: "-4.5rem" }}>
+          {user.coverImage ? <div className="text-end" style={{ backgroundImage: `url(${image ? image : user.coverImage.url})`, height: "15rem", width: "100%", borderRadius: "5px 5px 0px 0px", backgroundSize: "cover", backgroundRepeat: "no-repeat", marginBottom: "-4.5rem" }}>
               <FormControl
                 className="crop_image d-none"
                 id="upload_image"
@@ -97,29 +97,31 @@ function Account() {
                 }}
                 accept=".jpg,.jpeg,.png,"
               />
-              <label htmlFor="upload_image">
-                {image ? <span className="profilepic__icon mt-5 mx-2 text-white" onClick={saveCoverImage}>
+              <label for="upload_image">
+
+                {image ? <span class="profilepic__icon mt-5 mx-2 text-white" onClick={saveCoverImage}>
                   <SaveIcon />
-                </span> : <span className="profilepic__icon mt-5 mx-2 text-white" >
+                </span> : <span class="profilepic__icon mt-5 mx-2 text-white" >
                   <AddAPhotoIcon />
                 </span>}
+
               </label>
               {showCropper && (
-                <div className=' d-flex justify-content-center'>
-                  <CropImage
-                    src={cropImage}
-                    imageCallback={(image) => {
-                      setImage(image);
-                      setShowCropper(false);
-                    }}
-                    closeHander={() => {
-                      setShowCropper(false);
-                    }}
-                  />
-                </div>
+                 <div className=' d-flex justify-content-center'>
+                <CropImage
+                  src={cropImage}
+                  imageCallback={(image) => {
+                    setImage(image);
+                    setShowCropper(false);
+                  }}
+                  closeHander={() => {
+                    setShowCropper(false);
+                  }}
+                />
+                 </div>
               )}
             </div> :
-              <div className="text-end" style={{ backgroundImage: `url(${image ? image : cover})`, height: "15rem", width: "100%", borderRadius: "5px 5px 0px 0px", backgroundSize: "cover", backgroundRepeat: "no-repeat", marginBottom: "-4.5rem" }}>
+              <div className="text-end" style={{ backgroundImage: `url(${image ? image : coverimg})`, height: "15rem", width: "100%", borderRadius: "5px 5px 0px 0px", backgroundSize: "cover", backgroundRepeat: "no-repeat", marginBottom: "-4.5rem" }}>
                 <FormControl
                   className="crop_image d-none"
                   id="upload_image"
@@ -131,14 +133,17 @@ function Account() {
                   }}
                   accept=".jpg,.jpeg,.png,"
                 />
-                <label htmlFor="upload_image d-flex justify-content-end w-100">
-                  {image ? <span className="icons-in-cover-pic mt-5 mx-2 text-white" onClick={saveCoverImage}>
+                <label for="upload_image">
+
+                  {image ? <span class="icons-in-cover-pic mt-5 mx-2 text-white" onClick={saveCoverImage}>
                     <SaveIcon />
-                  </span> : <span className="icons-in-cover-pic mt-5 mx-2 text-white" >
+                  </span> : <span class="icons-in-cover-pic mt-5 mx-2 text-white" >
                     <AddAPhotoIcon />
                   </span>}
+
                 </label>
                 {showCropper && (
+                  <div className=' d-flex justify-content-center'>
                   <CropImage
                     src={cropImage}
                     imageCallback={(image) => {
@@ -149,6 +154,7 @@ function Account() {
                       setShowCropper(false);
                     }}
                   />
+                  </div>
                 )}
               </div>}
             <div className='coverTopSec'>

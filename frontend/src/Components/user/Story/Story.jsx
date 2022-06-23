@@ -23,10 +23,14 @@ function Story() {
 
   return (
     <div className="row mb-2 all-stories-in-the-home-page mx-1" style={{ overflowX: "scroll" }}>
-      <div className="col-2 me-3 add-story-home p-0">
+      {/* <div className="col-4 col-sm-3 add-story-home p-0">
         <AddStory />
       </div>
-      <div className="col-9   stories-in-home d-flex ">
+      <div className="col-8 col-sm-9 stories-in-home d-flex ps-3">
+        <FollowersStories />
+      </div> */}
+      <div className="col-12 add-story-home stories-in-home p-0 d-flex">
+        <AddStory />
         <FollowersStories />
       </div>
     </div>

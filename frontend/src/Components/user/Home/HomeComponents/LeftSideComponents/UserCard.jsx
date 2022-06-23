@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Avatar } from '@mui/material'
 import { useSelector } from "react-redux"
-import cover from "../../../../../Images/cover.jpg"
+import coverimg from "../../../../../Images/coverimg.png"
 import widget from "../../../../../Images/widget.gif"
 import wave from "../../../../../Images/wave.gif"
 import "./UserCard.css"
@@ -34,7 +34,7 @@ function UserCard() {
     <div className='user-card-for-side '>
       <div className='user-card'>
         <div className='user-card-top'>
-          <img src={user.coverImage ? user.coverImage.url : cover} alt="cover" />
+          <img src={user.coverImage ? user.coverImage.url : coverimg} alt="cover" />
           <Avatar src={user.avatar.url} className='user-card-avatar' />
           <h2 style={{ textTransform: "capitalize" }}>{user.name}</h2>
           <h4 style={{ textTransform: "capitalize" }}>{user.bio}</h4>

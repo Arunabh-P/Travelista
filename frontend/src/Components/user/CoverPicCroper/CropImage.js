@@ -18,6 +18,7 @@ const CropImage = ({ src, imageCallback, closeHander }) => {
     )
     imageCallback(croppedImage)
   }
+  
 
   return (
     <div className="position-fixed " style={{ zIndex: 9999, top: "2rem", minWidth: "24rem", maxWidth: "40rem" }}>

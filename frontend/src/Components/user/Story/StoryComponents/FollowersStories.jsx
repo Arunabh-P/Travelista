@@ -4,6 +4,7 @@ import { Avatar } from "@nextui-org/react";
 import { useDispatch, useSelector } from "react-redux"
 import { Dialog, Typography } from "@mui/material";
 import { getAllUsers, getFollowingStories } from '../../../../Actions/User';
+import emptyStory from "../../../../Images/emptyStory.gif"
 function FollowersStories() {
 
     const dispatch = useDispatch()
@@ -49,7 +50,17 @@ function FollowersStories() {
                         </div>
                     ))
                 ) : (
-                    <Typography variant='h6'>No stories yet</Typography>
+                    <>
+                    <div  className="story-list ">
+                            <div 
+                                style={{ backgroundImage: `url(${emptyStory})` }}
+                                className="followers-all-stories"
+                            >
+                                <h4 className="no-story-text" >No stories yet</h4>
+                            </div>
+                        </div>
+                    </>
+                    // <Typography variant='h6'>No stories yet</Typography>
                 )
             }
             <Dialog open={storyToggle} onClose={() => setStoryToggle(!storyToggle)}>
