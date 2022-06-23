@@ -1,4 +1,6 @@
-/* chat screen */
+.text-on-online{
+font-weight: 500;
+}
 .chatOnlineFriend {
   display: flex;
   align-items: center;

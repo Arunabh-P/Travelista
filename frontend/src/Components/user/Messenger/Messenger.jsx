@@ -107,7 +107,7 @@ function Messenger() {
     return (
         <div className="body-messager pt-2 ">
             <div className='messenger  container'>
-                <div className="chatMenu">
+                <div className="chatMenu d-none d-sm-block col-2">
                     <div className="chatMenuWrapper">
                         <h5>Recent Chats</h5>
                         {converstions.map((c) => (
@@ -117,7 +117,7 @@ function Messenger() {
                         ))}
                     </div>
                 </div>
-                <div className="chatBox">
+                <div className="chatBox col-sm-8">
                     <div className="chatBoxWrapper">
                         {currentChat ?
                             <>
@@ -150,7 +150,7 @@ function Messenger() {
                         }
                     </div>
                 </div>
-                <div className="chatOnline">
+                <div className="chatOnline col-4 col-sm-2">
                     <div className="chatOnlineWrapper">
                         <ChatOnline
                             onlineUsers={onlineUsers && onlineUsers}

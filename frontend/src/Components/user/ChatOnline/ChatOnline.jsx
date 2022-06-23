@@ -19,7 +19,7 @@ function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
   return (
     <>
       <div className="chatOnline">
-        <h5>Online Users</h5>
+        <p className="text-on-online">Online Users</p>
         {
           onlineUsers && onlineUsers.length > 0 ? (
             onlineUsers?.map((o) => (
@@ -36,13 +36,13 @@ function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
               </div>
             ))
           ) : (
-            <p style={{ color: "rgb(118, 118, 124)" }}><SentimentDissatisfiedIcon /> <span className='no-one-online'>Oops..everyone is having a break time!</span> </p>
+            <p style={{ color: "rgb(118, 118, 124)" }}><SentimentDissatisfiedIcon /> <span className='no-one-online'>Oops.. everyone is having a break time!</span> </p>
           )
         }
       </div>
       <div>
         <div className="chatOnline">
-          <h5>Connections</h5>
+          <p className="text-on-online mt-2">Friends list</p>
           {
             user && user.following.length > 0 ? user.following.map((follow) => ((
               <div className="chatOnlineFriend" onClick={() => handleClick(follow)}>

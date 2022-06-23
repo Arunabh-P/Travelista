@@ -18,6 +18,8 @@ const io = require("socket.io")(server, {
     
     cors: {
         origin: "https://travalista.online"
+        // origin: "http://localhost:3000"
+
         
     },
 });
