@@ -16,9 +16,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1vmax;
+  padding: 1.25vmax;
   box-sizing: border-box;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-bottom: 10px;
 }
 

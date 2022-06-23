@@ -97,9 +97,6 @@ function Header() {
                       <Link to="/account" className="account-text-header" >Account</Link>
                     </NavDropdown.Item>
                     <NavDropdown.Item>
-                      <Link to="/proposals" className="account-text-header">Proposals</Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
                       <Link to="/update/password" className="account-text-header">Change Password</Link>
                     </NavDropdown.Item>
                     <NavDropdown.Item>

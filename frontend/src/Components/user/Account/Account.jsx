@@ -39,14 +39,14 @@ function Account() {
   const alert = useAlert()
 
   const { user, loading: userLoading } = useSelector((state) => state.user);
-  const { loading,error, posts } = useSelector((state) => state.myPosts);
+  const { loading, error, posts } = useSelector((state) => state.myPosts);
   const {
     error: likeError,
     message,
     loading: deleteLoading,
   } = useSelector((state) => state.like);
 
-  
+
 
   const [followersToggle, setFollowersToggle] = useState(false)
   const [followingToggle, setFollowingToggle] = useState(false)
@@ -85,7 +85,7 @@ function Account() {
       <Container>
         <div className='CoverPage  '>
           <div className=' bg-white my-2 rounded'>
-          {user.coverImage ? <div className="text-end" style={{ backgroundImage: `url(${image ? image : user.coverImage.url})`, height: "15rem", width: "100%", borderRadius: "5px 5px 0px 0px", backgroundSize: "cover", backgroundRepeat: "no-repeat", marginBottom: "-4.5rem" }}>
+            {user.coverImage ? <div className="text-end" style={{ backgroundImage: `url(${image ? image : user.coverImage.url})`, height: "15rem", width: "100%", borderRadius: "5px 5px 0px 0px", backgroundSize: "cover", backgroundRepeat: "no-repeat", marginBottom: "-4.5rem" }}>
               <FormControl
                 className="crop_image d-none"
                 id="upload_image"
@@ -107,18 +107,18 @@ function Account() {
 
               </label>
               {showCropper && (
-                 <div className=' d-flex justify-content-center'>
-                <CropImage
-                  src={cropImage}
-                  imageCallback={(image) => {
-                    setImage(image);
-                    setShowCropper(false);
-                  }}
-                  closeHander={() => {
-                    setShowCropper(false);
-                  }}
-                />
-                 </div>
+                <div className=' d-flex justify-content-center'>
+                  <CropImage
+                    src={cropImage}
+                    imageCallback={(image) => {
+                      setImage(image);
+                      setShowCropper(false);
+                    }}
+                    closeHander={() => {
+                      setShowCropper(false);
+                    }}
+                  />
+                </div>
               )}
             </div> :
               <div className="text-end" style={{ backgroundImage: `url(${image ? image : coverimg})`, height: "15rem", width: "100%", borderRadius: "5px 5px 0px 0px", backgroundSize: "cover", backgroundRepeat: "no-repeat", marginBottom: "-4.5rem" }}>
@@ -144,16 +144,16 @@ function Account() {
                 </label>
                 {showCropper && (
                   <div className=' d-flex justify-content-center'>
-                  <CropImage
-                    src={cropImage}
-                    imageCallback={(image) => {
-                      setImage(image);
-                      setShowCropper(false);
-                    }}
-                    closeHander={() => {
-                      setShowCropper(false);
-                    }}
-                  />
+                    <CropImage
+                      src={cropImage}
+                      imageCallback={(image) => {
+                        setImage(image);
+                        setShowCropper(false);
+                      }}
+                      closeHander={() => {
+                        setShowCropper(false);
+                      }}
+                    />
                   </div>
                 )}
               </div>}
@@ -244,12 +244,15 @@ function Account() {
                 </div>
               ))
             ) : (
-              <Typography variant="h6">You have not made any post</Typography>
+              <div className="no-post-account bg-white col ">
+
+                <p className='text-center '>You have not made any post.</p>
+              </div>
             )}
           </div>
-          <div className="footer bg-white ">
-          
-          <p className='text-center p-2'>Copyright ©2022 travalista.online All Rights Reserved.</p>
+          <div className="bg-white ">
+
+            <p className='text-center p-2'>Copyright ©2022 travalista.online All Rights Reserved.</p>
           </div>
         </div>
       </Container>

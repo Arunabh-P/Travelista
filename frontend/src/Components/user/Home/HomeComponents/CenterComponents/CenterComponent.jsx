@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { getAllUsers, getFollowingPosts } from '../../../../../Actions/User'
 import { Typography } from "@mui/material";
 import Story from '../../../Story/Story'
+import nopostyet from "../../../../../Images/nopostyet.jpg"
+import "./CenterComponent.css"
 
 function CenterComponent() {
 
@@ -44,7 +46,10 @@ function CenterComponent() {
             />
           ))
         ) : (
-          <Typography variant='h6'>No posts yet</Typography>
+          <div className='col-12'>
+          <img src={nopostyet} alt="" className="no-post-yet" />
+          </div>
+          
         )
       }
     </>
