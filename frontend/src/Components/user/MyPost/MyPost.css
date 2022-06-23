@@ -5,3 +5,33 @@
 .Dialogbox-scroll div::-webkit-scrollbar{
     display: none !important;
   }
+
+  .myPostFooter>button {
+    color: rgba(0, 0, 0, 0.767);
+    /* padding: 10px; */
+    cursor: pointer;
+  }
+  
+  
+  .myPostFooter>button:hover {
+    background-color: whitesmoke;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+  }
+  
+  .myPostFooter>button>svg {
+    font-size: 24px;
+  }
+  .my-postDetails-wrapper {
+    display: flex;
+    padding: 1vmax;
+  }
+
+  .my-postDetails-wrapper>a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    margin: 1vmax;
+  }

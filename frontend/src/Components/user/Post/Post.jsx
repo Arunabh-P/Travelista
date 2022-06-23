@@ -188,9 +188,21 @@ function Post({
                 open={commentToggle}
                 onClose={() => setCommentToggle(!commentToggle)}
             >
-                <div className="DialogBox">
-                    <Typography variant="h4">Comments</Typography>
-                    <form className="commentForm" onSubmit={addCommentHandler}>
+                <div className="DialogBox2 p-5">
+                    <form className=" col-12  p-5 mt-2" onSubmit={addCommentHandler}>
+                        <textarea name="" value={commentValue}  
+                        onChange={(e) => setCommentValue(e.target.value)}
+                        id="" cols="20" rows="3"
+                        className="w-100 "
+                        />
+                        <Button className="add-butto col-12 "type="submit" variant="contained"  >
+                            Add Comment
+                        </Button>
+                    </form>
+
+
+
+                    {/* <form className="commentForm" onSubmit={addCommentHandler}>
                         <input
                             type="text"
                             value={commentValue}
@@ -201,7 +213,7 @@ function Post({
                         <Button className="add-button" type="submit" variant="contained"  >
                             Add
                         </Button>
-                    </form>
+                    </form> */}
                     {comments.length > 0 ? (
                         comments.map((item) => (
                             <CommentCard

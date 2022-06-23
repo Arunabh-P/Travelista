@@ -19,7 +19,7 @@ import HostRequest from "../HostRequest/HostRequest";
 import "./MyPost.css"
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-
+import EditIcon from '@mui/icons-material/Edit';
 import { TbFriends } from "react-icons/tb";
 import { TbAlien } from "react-icons/tb";
 
@@ -107,15 +107,8 @@ function MyPost({
 
     return (
         <div className="post" style={{ width: width }}>
-            <div className="postHeader">
-                {isAccount ? (
-                    <Button onClick={() => setCaptionToggle(!captionToggle)}>
-                        <MoreVert />
-                    </Button>
-                ) : null}
-            </div>
-            <img src={postImage} alt="Post" />
-            <div className="postDetails">
+            <img src={postImage} alt="Post " className="pt-3"/>
+            <div className="my-postDetails-wrapper">
                 <Avatar src={ownerImage} alt="user"
                     sz={{
                         height: "3vmax",
@@ -131,27 +124,24 @@ function MyPost({
                     style={{ alignSelf: "center" }}
                 >
                     {caption} </Typography>
-                {/* <Typography
-                    fontWeight={100}
-                    color="rgba(0, 0, 0, 0.582)"
-                    style={{ alignSelf: "center" }}
-                >
-                    {tripDate}
-                </Typography> */}
+
+                {isAccount ? (
+                <EditIcon onClick={() => setCaptionToggle(!captionToggle)} className="me-0 ms-auto mt-2" />
+                ) : null}
             </div>
             <Button
                 style={{
                     border: "none",
                     backgroundColor: "white",
                     cursor: "pointer",
-                    margin: "1vmax 2vmax",
+                    marginLeft: "1vmax ",
                 }}
                 onClick={() => setLikesUser(!likesUser)}
                 disabled={likes.length === 0 ? true : false}
             >
                 <Typography>{likes.length} likes</Typography>
             </Button>
-            <div className="postFooter">
+            <div className="myPostFooter">
                 <Button onClick={handleLike} className="InputOptions">
                     {liked ? <Favorite /> : <FavoriteBorder />}
                 </Button>
@@ -160,9 +150,9 @@ function MyPost({
                 </Button>
 
                 <OverlayTrigger overlay={<Tooltip id='tooltip-top'>Host Requests</Tooltip>}>
-                <Button onClick={() => setHostRequestToggle(!hostRequestToggle)} className="InputOptions">
-                    <TbAlien />
-                </Button>
+                    <Button onClick={() => setHostRequestToggle(!hostRequestToggle)} className="InputOptions">
+                        <TbAlien />
+                    </Button>
                 </OverlayTrigger>
 
 
@@ -174,11 +164,11 @@ function MyPost({
 
 
                 <OverlayTrigger overlay={<Tooltip id='tooltip-top'>Delete Post</Tooltip>}>
-                {isDelete ? (
-                    <Button onClick={deletePostHandler}>
-                        <DeleteOutline />
-                    </Button>
-                ) : null}
+                    {isDelete ? (
+                        <Button onClick={deletePostHandler}>
+                            <DeleteOutline />
+                        </Button>
+                    ) : null}
                 </OverlayTrigger>
 
             </div>
@@ -274,17 +264,14 @@ function MyPost({
                 open={captionToggle}
                 onClose={() => setCaptionToggle(!captionToggle)}
             >
-                <div className="DialogBox">
-                    <Typography variant="h4">Update caption</Typography>
-                    <form className="commentForm" onSubmit={updateCaptionHandler}>
-                        <input
-                            type="text"
-                            value={captionValue}
-                            onChange={(e) => setCaptionValue(e.target.value)}
-                            placeholder="Caption Here..."
-                            required
+                <div className="DialogBo">
+                    <form className=" col-12  p-5 mt-2" onSubmit={updateCaptionHandler}>
+                        <textarea name="" value={captionValue}  
+                        onChange={(e) => setCaptionValue(e.target.value)} 
+                        id="" cols="20" rows="5"
+                        className="w-100 "
                         />
-                        <Button className="add-button" type="submit" variant="contained"  >
+                        <Button className="add-butto col-12 "type="submit" variant="contained"  >
                             Update
                         </Button>
                     </form>
