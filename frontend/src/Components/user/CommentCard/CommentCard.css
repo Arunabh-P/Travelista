@@ -12,6 +12,9 @@
   align-self: flex-start;
   transition: all 0.5s;
 }
+.comment-tab{
+  padding-left: 5px;
+}
 
 .commentUser img {
   height: 3vmax;

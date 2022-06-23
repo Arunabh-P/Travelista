@@ -36,7 +36,7 @@ function CommentCard({
         <img src={avatar} alt={name} />
         <Typography style={{ minWidth: "6vmax" }}>{name}</Typography>
       </Link>
-      <Typography>
+      <Typography className="comment-tab">
         {comment}
       </Typography>
       {isAccount ? (
