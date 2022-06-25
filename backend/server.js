@@ -14,15 +14,29 @@ const server = app.listen(process.env.PORT,()=>{
     console.log(`Server is running on port ${process.env.PORT}`);
 })
 
+// const io = require("socket.io")(server, {
+    
+//     cors: {
+//         origin: "https://travalista.online"
+//         // origin: "http://localhost:3000"
+
+        
+//     },
+// });
+
+
 const io = require("socket.io")(server, {
     
     cors: {
-        origin: "https://travalista.online"
-        // origin: "http://localhost:3000"
-
+        origin: "*",
+        methods: ["GET", "POST"]
         
     },
 });
+
+
+
+
 let users = [];
 const addUser = (userId,socketId) => {
     !users.some((user)=>user.userId === userId) &&
