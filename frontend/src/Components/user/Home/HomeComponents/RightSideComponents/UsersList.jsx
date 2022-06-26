@@ -30,7 +30,11 @@ let others
     <div className='users-list-to-show'>
       <h4>Connect with travelista family</h4>
       {others && others.length > 0 ? (
-        others.map((user) => (
+        
+        others
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 7)
+        .map((user) => (
           <User
             key={user._id}
             userId={user._id}

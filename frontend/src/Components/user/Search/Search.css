@@ -1,3 +1,15 @@
+.search-user {
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  background-color: #edf0f5;
+}
 .search {
     background-image: linear-gradient(to right, #fff5bc, #cec1ff);
     display: flex;
@@ -10,7 +22,9 @@
   .height-max {
     max-height: 350px;
   }
-  
+  body {
+    background-color: #edf0f5;
+  }
 
   .searchResults-div::-webkit-scrollbar, body::-webkit-scrollbar{
     display: none;

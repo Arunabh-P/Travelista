@@ -3,7 +3,6 @@ import Post from '../../../Post/Post'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import { getAllUsers, getFollowingPosts } from '../../../../../Actions/User'
-import { Typography } from "@mui/material";
 import Story from '../../../Story/Story'
 import nopostyet from "../../../../../Images/nopostyet.jpg"
 import "./CenterComponent.css"

@@ -37,7 +37,7 @@ function UpdatePassword() {
         <div className="update-profile-headline p-5">
           <h3>Update Password</h3>
         </div>
-        <div className="container mb-4 ">
+        <div className="container mb-4 bg-white ">
           <div className='update-dataform'>
             <div className="row update-row p-4 rounded">
               <div className="col-md-6 update-img p-5">

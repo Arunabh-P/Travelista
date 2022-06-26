@@ -20,11 +20,11 @@ function Search() {
 
     return (
         <>
-            <div className='update-password' >
+            <div className='search-user' >
                 <div className="update-profile-headline p-5">
                     <h3>Search</h3>
                 </div>
-                <div className="container serch-container mb-4 ">
+                <div className="container mb-4 bg-white ">
                     <div className="row update-row p-4 rounded">
                         <div className="col-md-6 update-img p-5">
                             <img src={search} className="image-search-up" alt="" />

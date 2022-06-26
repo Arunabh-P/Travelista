@@ -21,6 +21,7 @@ import { FaRegHandPeace } from "react-icons/fa";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import FlutterDashOutlinedIcon from '@mui/icons-material/FlutterDashOutlined';
+
 function Post({
     postId,
     caption,
