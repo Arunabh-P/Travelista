@@ -9,13 +9,28 @@ function UsersList() {
   const { users } = useSelector(
     (state) => state.allUsers
   )
+  const {user} = useSelector(
+    (state) => state.user
+  )
+
+let others 
+  if(users !== undefined){
+     others = users.filter((usr)=>{
+  if(!usr.followers.includes(user._id) && usr._id !== user._id){
+    return usr
+  }
+})
+  }
+
+
+
 
   return (
 
     <div className='users-list-to-show'>
       <h4>Connect with travelista family</h4>
-      {users && users.length > 0 ? (
-        users.map((user) => (
+      {others && others.length > 0 ? (
+        others.map((user) => (
           <User
             key={user._id}
             userId={user._id}

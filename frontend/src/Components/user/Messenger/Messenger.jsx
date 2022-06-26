@@ -131,13 +131,15 @@ function Messenger() {
                                     }
                                 </div>
                                 <div className="chatBoxBottom">
-                                    <textarea
+                                    <input
+                                    type="text"
                                         className="chatMessageInput"
                                         placeholder='write something...'
                                         onChange={(e) => setNewMessage(e.target.value)}
                                         value={newMessage}
-                                    >
-                                    </textarea>
+                                        onKeyPress={(e) => { e.key === "Enter" && handleSubmit(e);
+                                    }}
+                                    />
                                     <button className="chatSubmitButton" onClick={handleSubmit}>
                                         Send
                                     </button>
