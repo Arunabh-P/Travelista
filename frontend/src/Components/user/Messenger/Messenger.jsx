@@ -14,12 +14,12 @@ function Messenger() {
     const [newMessage, setNewMessage] = useState("")
     const [arrivalMessage, setArrivalMessage] = useState(null)
     const [onlineUsers, setOnlineUsers] = useState(null)
-    const socket = useRef(io("http://localhost:4000"))
+    const socket = useRef(io("https://trvalista.online"))
     
     const scrollRef = useRef()
     const { user } = useSelector((state) => state.user);
     useEffect(() => {
-        socket.current = io("http://localhost:4000");
+        socket.current = io("https://travalista.online");
         
         socket.current.on("getMessage", (data) => {
             setArrivalMessage({

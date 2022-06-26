@@ -10,8 +10,9 @@ cloudinary.config({
     api_secret : process.env.CLOUDINARY_SECRET,
 })
 
-const server = require('http').Server(app);
-
+const server = app.listen(process.env.PORT,()=>{
+    console.log(`Server is running on port ${process.env.PORT}`);
+})
 
 // const io = require("socket.io")(server, {
     
@@ -80,9 +81,4 @@ io.on("connection", (socket) => {
         io.emit("getUsers",JSON.stringify(users))
 
     })
-})
-
-
-server.listen(process.env.PORT,()=>{
-    console.log(`Server is running on port ${process.env.PORT}`);
 })
