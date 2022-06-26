@@ -140,9 +140,14 @@ function Messenger() {
                                         onKeyPress={(e) => { e.key === "Enter" && handleSubmit(e);
                                     }}
                                     />
+                                   
+                     {newMessage.length < 1 ? (
+                        <button className="chatSubmitButton">Send</button>
+                        ) : (
                                     <button className="chatSubmitButton" onClick={handleSubmit}>
                                         Send
                                     </button>
+                                     )}
                                 </div>
                             </>
                             : (
