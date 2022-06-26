@@ -24,7 +24,7 @@ const server = app.listen(process.env.PORT,()=>{
 //     },
 // });
 
-
+//sample 5
 const io = require("socket.io")(server, {
     
     cors: {
@@ -33,9 +33,6 @@ const io = require("socket.io")(server, {
         
     },
 });
-
-
-
 
 let users = [];
 const addUser = (userId,socketId) => {
