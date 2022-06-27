@@ -175,9 +175,7 @@ function MyPost({
 
 
             <Dialog className="Dialogbox-scroll" open={buddyRequestToggle} onClose={() => setBuddyRequestToggle(!buddyRequestToggle)}>
-                <div className="DialogBox">
-                    <Typography variant="h4">Buddy Requests</Typography>
-                    <hr />
+                <div className="DialogBoxMyPost">
                     {buddy.map((buddy) => (
                         <>
                             <BuddyRequest
@@ -193,9 +191,7 @@ function MyPost({
                 </div>
             </Dialog>
             <Dialog className="Dialogbox-scroll" open={hostRequestToggle} onClose={() => setHostRequestToggle(!hostRequestToggle)}>
-                <div className="DialogBox">
-                    <Typography variant="h4">Host Requests</Typography>
-                    <hr />
+                <div className="DialogBoxMyPost">
                     {host.map((host) => (
                         <>
                             <HostRequest
@@ -212,8 +208,7 @@ function MyPost({
                 </div>
             </Dialog>
             <Dialog className="Dialogbox-scroll" open={likesUser} onClose={() => setLikesUser(!likesUser)}>
-                <div className="DialogBox">
-                    <Typography variant="h4">Liked By</Typography>
+                <div className="DialogBoxMyPost">
                     {likes.map((like) => (
                         <User
                             key={like._id}

@@ -35,3 +35,46 @@
     color: rgb(0, 0, 0);
     margin: 1vmax;
   }
+
+  
+@media only screen and (max-width: 319px){
+  .DialogBoxMyPost {
+    width: 180px;
+    height: 400px;
+    padding: 10px;
+  
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 479px){
+  .DialogBoxMyPost {
+    width: 256px;
+    height: 490px;
+    padding: 10px;
+  
+  }
+}
+@media only screen and (min-width: 479px) and (max-width: 767px){
+  .DialogBoxMyPost {
+    width: 266px;
+    height: 490px;
+    padding: 10px;
+  
+  }
+}
+@media only screen and (min-width: 767px) and (max-width: 979px){
+  .DialogBoxMyPost {
+    width: 286px;
+    height: 490px;
+    padding: 10px;
+  
+  }
+}
+@media only screen and (min-width: 979px){
+  .DialogBoxMyPost {
+    width: 356px;
+    height: 490px;
+    padding: 10px;
+  
+  }
+}

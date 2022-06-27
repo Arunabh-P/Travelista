@@ -166,24 +166,33 @@ function UserProfile() {
                                     <Post
                                         className="samplepost"
                                         key={post._id}
+                                        host={post.host}
+                                        buddy={post.buddy}
                                         postId={post._id}
                                         caption={post.caption}
                                         postImage={post.image.url}
+                                        tripDate={post.tripDate}
+                                        createdAt={post.createdAt}
                                         likes={post.likes}
                                         comments={post.comments}
                                         ownerImage={post.owner.avatar.url}
                                         ownerName={post.owner.name}
                                         ownerId={post.owner._id}
                                         width={'100%'}
-                                        isAccount={true}
-                                        isDelete={true}
                                     />
                                 </div>
                             ))
                         ) : (
-                            <Typography variant="h6">User has not made any post</Typography>
+                            <div className="no-post-profile bg-white col ">
+
+                                <p className='text-center '>User has not made any post.</p>
+                            </div>
                         )}
 
+                    </div>
+                    <div className="bg-white ">
+
+                        <p className='text-center p-2'>Copyright ©2022 travalista.online All Rights Reserved.</p>
                     </div>
                 </div>
             </Container>

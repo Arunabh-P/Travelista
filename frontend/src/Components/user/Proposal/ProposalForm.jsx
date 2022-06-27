@@ -104,8 +104,8 @@ function ProposalForm() {
     return (
         <>
 
-            <div className='update-password' >
-                <div className="container serch-container mb-4 ">
+            <div className='proposal-full-div' >
+                <div className="container bg-white serch-container mb-4  mt-2">
                     <div className="row update-row p-4 rounded mt-4">
                         <div className="col-lg-6 update-img p-5">
                             <img className="proposal-img" src={thinking} alt="" />

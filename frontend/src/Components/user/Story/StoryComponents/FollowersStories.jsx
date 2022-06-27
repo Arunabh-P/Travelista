@@ -64,13 +64,13 @@ function FollowersStories() {
                 )
             }
             <Dialog open={storyToggle} onClose={() => setStoryToggle(!storyToggle)}>
-                <div className="DialogBox">
+                <div className="DialogBoxStory">
                     {
                         Object.keys(singleStory).length > 0 ?
                             (<>
                                 <div
                                     style={{ backgroundImage: `url(${singleStory.image.url})` }}
-                                    className="single-story-img"
+                                    className="single-story-img "
                                 >
                                     <div className="avatar-img">
                                         <Avatar

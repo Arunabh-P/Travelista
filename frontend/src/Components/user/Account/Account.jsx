@@ -184,8 +184,7 @@ function Account() {
                 Delete My Profile
               </Button>
               <Dialog open={followersToggle} onClose={() => setFollowersToggle(!followersToggle)}>
-                <div className="DialogBox">
-                  <Typography variant="h4">Followers</Typography>
+                <div className="DialogBoxAccount">
                   {
                     user && user.followers.length > 0 ? user.followers.map((follower) => ((
                       <User
@@ -201,8 +200,7 @@ function Account() {
                 </div>
               </Dialog>
               <Dialog open={followingToggle} onClose={() => setFollowingToggle(!followingToggle)}>
-                <div className="DialogBox">
-                  <Typography variant="h4">Following</Typography>
+                <div className="DialogBoxAccount">
                   {
                     user && user.following.length > 0 ? user.following.map((follow) => ((
                       <User

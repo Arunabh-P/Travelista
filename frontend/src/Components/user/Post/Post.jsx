@@ -173,8 +173,7 @@ function Post({
 
             </div>
             <Dialog className="Dialogbox-scroll" open={likesUser} onClose={() => setLikesUser(!likesUser)}>
-                <div className="DialogBox">
-                    <Typography variant="h4">Liked By</Typography>
+                <div className="DialogBoxPost">
                     {likes.map((like) => (
                         <User
                             key={like._id}
