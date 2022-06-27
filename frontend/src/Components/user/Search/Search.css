@@ -47,3 +47,9 @@
   .image-search-up{
     max-width: 100px;
   }
+  .update-img {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }

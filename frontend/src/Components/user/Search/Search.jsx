@@ -27,7 +27,7 @@ function Search() {
                 <div className="container mb-4 bg-white ">
                     <div className="row update-row p-4 rounded">
                         <div className="col-md-6 update-img p-5">
-                            <img src={search} className="image-search-up" alt="" />
+                            <img src={search} className="text-center image-search-up" alt="" />
                             <form className="searchForm" onSubmit={submitHandler} >
                                 <input
                                     className='search-input'

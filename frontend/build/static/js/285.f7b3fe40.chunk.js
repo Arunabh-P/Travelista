@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfrontend=self.webpackChunkfrontend||[]).push([[285],{970:function(a,e,n){n.r(e),n.d(e,{default:function(){return t}});n(2791);var r=n.p+"static/media/loading.488823069db2698b7567.gif",s=n(184);var t=function(){return(0,s.jsx)("div",{className:"loader-wrapper",children:(0,s.jsx)("img",{className:"load-anim",src:r,alt:"",draggable:!1})})}}}]);
+//# sourceMappingURL=285.f7b3fe40.chunk.js.map
