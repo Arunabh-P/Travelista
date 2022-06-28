@@ -13,6 +13,7 @@ exports.register = async (req, res) => {
                 .status(400)
                 .json({ success: false, message: "User already exists" });
         }
+        
 
         const myCloud = await cloudinary.v2.uploader.upload(avatar, {
             folder: "avatars"
@@ -58,6 +59,13 @@ exports.login = async (req, res) => {
                 success: false,
                 message: "User does not exist"
             });
+        }
+        if (user.blockStatus) {
+            
+            return res.status(404).json({
+                success: false,
+                message: "User Blocked",
+            })
         }
         const isMatch = await user.matchPassword(password)
 
@@ -369,6 +377,8 @@ exports.getUserProfile = async (req, res) => {
                 message: "User not found",
             });
         }
+        
+        
 
         res.status(200).json({
             success: true,
