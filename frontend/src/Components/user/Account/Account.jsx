@@ -14,9 +14,11 @@ import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import { FormControl } from "react-bootstrap";
 import CropImage from "../../user/CoverPicCroper/CropImage"
 import SaveIcon from '@mui/icons-material/Save';
+import { Skeleton } from "@mui/material";
+
 const Swal = require('sweetalert2')
 
-function Account() {
+function Account({width}) {
 
   const deleteProfileHandler = async () => {
     Swal.fire({
@@ -39,7 +41,7 @@ function Account() {
   const alert = useAlert()
 
   const { user, loading: userLoading } = useSelector((state) => state.user);
-  const { loading, error, posts } = useSelector((state) => state.myPosts);
+  const { loading : postLoading, error, posts } = useSelector((state) => state.myPosts);
   const {
     error: likeError,
     message,
@@ -85,6 +87,26 @@ function Account() {
       <Container>
         <div className='CoverPage  '>
           <div className=' bg-white my-2 rounded'>
+          {userLoading && 
+      
+      <div>
+      <Skeleton
+       className='user-profile-page-top-section'
+        variant="rectangular"
+        sx={{ bgcolor: "#FFFFFF" }}
+        width={width}
+        height={"198px"}
+      />
+      <div className='latest-title' style={{width}}>
+        <Skeleton height={"35px"}/>
+        <Skeleton width={"80%"} height={"35px"}/>
+      </div>
+      <div className='latest-cat mt-2 mb-4'><Skeleton width={"50%"}/></div>
+      
+      <div className='latest-line'></div>
+    </div>
+    
+  }
             {user.coverImage ? <div className="text-end" style={{ backgroundImage: `url(${image ? image : user.coverImage.url})`, height: "15rem", width: "100%", borderRadius: "5px 5px 0px 0px", backgroundSize: "cover", backgroundRepeat: "no-repeat", marginBottom: "-4.5rem" }}>
               <FormControl
                 className="crop_image d-none"
@@ -160,20 +182,20 @@ function Account() {
             <div className='coverTopSec'>
               <img radius="xl" src={user.avatar.url} className='CoverPage_avatar' alt="coverImage" style={{ width: "130px", height: "130px", borderRadius: "20%" }} />
             </div>
-            <div className='d-md-flex justify-content-between'>
+            <div className='d-md-flex justify-content-between texts-group-acc'>
               <div>
                 <h2 className='cover-profile-name'>{user.name}
                 </h2>
                 <h4 className='cover-profile-cat'>{user.bio}</h4>
               </div>
               <div>
-                <Typography onClick={() => setFollowersToggle(!followersToggle)} className="account-texts" > <span className="acc-span"> {user.followers.length}</span> Followers</Typography>
+                <Typography onClick={() => setFollowersToggle(!followersToggle)} className="account-texts" > {user.followers.length} Followers</Typography>
               </div>
               <div>
-                <Typography onClick={() => setFollowingToggle(!followingToggle)} className="account-texts"><span className="acc-span">{user.following.length}</span> Following</Typography>
+                <Typography onClick={() => setFollowingToggle(!followingToggle)} className="account-texts">{user.following.length} Following</Typography>
               </div>
               <div>
-                <Typography className="account-texts"><span className="acc-span" >{user.posts.length}</span> Posts</Typography>
+                <Typography className="account-texts">{user.posts.length} Posts</Typography>
               </div>
               <Button
                 variant="text"
@@ -183,7 +205,7 @@ function Account() {
               >
                 Delete My Profile
               </Button>
-              <Dialog open={followersToggle} onClose={() => setFollowersToggle(!followersToggle)}>
+              <Dialog className='DialogBoxMain'  open={followersToggle} onClose={() => setFollowersToggle(!followersToggle)}>
                 <div className="DialogBoxAccount">
                   {
                     user && user.followers.length > 0 ? user.followers.map((follower) => ((
@@ -199,7 +221,7 @@ function Account() {
                     )}
                 </div>
               </Dialog>
-              <Dialog open={followingToggle} onClose={() => setFollowingToggle(!followingToggle)}>
+              <Dialog className='DialogBoxMain' open={followingToggle} onClose={() => setFollowingToggle(!followingToggle)}>
                 <div className="DialogBoxAccount">
                   {
                     user && user.following.length > 0 ? user.following.map((follow) => ((
@@ -218,6 +240,29 @@ function Account() {
             </div>
           </div>
           <div className='row'>
+          {postLoading && 
+      [...Array(5)].map(()=>{
+
+        return (
+          <div className='col-12 col-md-6' >
+          <Skeleton
+            variant="rectangular"
+            sx={{ bgcolor: "#FFFFFF" }}
+            width={width}
+            height={"198px"}
+          />
+          <div className='latest-title' style={{width}}>
+            <Skeleton height={"35px"}/>
+            <Skeleton width={"80%"} height={"35px"}/>
+          </div>
+          <div className='latest-cat mt-2 mb-4'><Skeleton width={"50%"}/></div>
+          
+          <div className='latest-line'></div>
+        </div>
+        )
+
+      })
+      }
             {posts && posts.length > 0 ? (
               posts.map((post) => (
                 <div className='col-12 col-md-6' >
@@ -228,7 +273,6 @@ function Account() {
                     buddy={post.buddy}
                     postId={post._id}
                     caption={post.caption}
-                    // tripDate={post.tripDate}
                     postImage={post.image.url}
                     likes={post.likes}
                     comments={post.comments}

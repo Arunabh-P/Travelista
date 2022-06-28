@@ -32,7 +32,6 @@ function MyPost({
     likes = [],
     comments = [],
     ownerImage,
-    // tripDate,
     ownerName,
     ownerId,
     isDelete = false,
@@ -41,7 +40,6 @@ function MyPost({
     host = [],
     buddy = [],
 }) {
-    console.log(buddy);
     const [liked, setLiked] = useState(false);
     const [likesUser, setLikesUser] = useState(false);
     const [commentValue, setCommentValue] = useState("");
@@ -106,7 +104,7 @@ function MyPost({
     }, [likes, user._id]);
 
     return (
-        <div className="post" style={{ width: width }}>
+        <div className="myPost" style={{ width: width }}>
             <img src={postImage} alt="Post " className="pt-3"/>
             <div className="my-postDetails-wrapper">
                 <Avatar src={ownerImage} alt="user"

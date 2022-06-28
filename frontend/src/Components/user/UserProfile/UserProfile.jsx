@@ -3,20 +3,20 @@ import { useDispatch, useSelector } from "react-redux"
 import { followAndUnFollowUser, getUserPosts, getUserProfile } from '../../../Actions/User';
 import Post from '../Post/Post';
 import User from "../User/User"
-import { Avatar } from '@mantine/core';
 import { Button, Dialog, Typography } from "@mui/material";
 import { useParams } from 'react-router-dom';
 import { Container } from "react-bootstrap"
 import cover from "../../../Images/cover.jpg"
 import { useAlert } from 'react-alert';
+import { Skeleton } from "@mui/material";
 import './UserProfile.css'
 
-function UserProfile() {
+function UserProfile({width}) {
     const dispatch = useDispatch()
     const alert = useAlert()
-    const { user, error: userError } = useSelector((state) => state.userProfile);
+    const { user, error: userError, loading: userLoading } = useSelector((state) => state.userProfile);
     const { user: me } = useSelector((state) => state.user)
-    const { error, posts } = useSelector((state) => state.userPosts);
+    const { error, posts, loading: postLoading } = useSelector((state) => state.userPosts);
     const {
         error: followError,
         message,
@@ -78,34 +78,45 @@ function UserProfile() {
             <Container>
                 <div className='user-profile-page-inside'>
                     <div className='user-profile-page-top-section'>
+                    {userLoading && 
+      
+          <div>
+          <Skeleton
+           className='user-profile-page-top-section'
+            variant="rectangular"
+            sx={{ bgcolor: "#FFFFFF" }}
+            width={width}
+            height={"198px"}
+          />
+          <div className='latest-title' style={{width}}>
+            <Skeleton height={"35px"}/>
+            <Skeleton width={"80%"} height={"35px"}/>
+          </div>
+          <div className='latest-cat mt-2 mb-4'><Skeleton width={"50%"}/></div>
+          
+          <div className='latest-line'></div>
+        </div>
+        
+      }
                         {user && (
                             <>
                                 <img src={cover} alt="*here cover image" />
                                 <div className='user-profile-pageTopSec'>
-                                    <Avatar radius="xl" src={user.avatar.url} className='user-page-top-avatar' style={{ width: "130px", height: "130px" }} />
+                                <img radius="xl" src={user.avatar.url} className='CoverPage_avatar' alt="coverImage" style={{ width: "130px", height: "130px", borderRadius: "20%" }} />
                                 </div>
-                                <div className='d-md-flex justify-content-between'>
+                                <div className='d-md-flex justify-content-between texts-group-acc'>
                                     <div>
                                         <h2 className='user-profile-page-profile-name'>{user.name}</h2>
                                         <h4 className='user-profile-page-profile-cat'>{user.bio}</h4>
                                     </div>
                                     <div  >
-                                        <Button onClick={() => setFollowersToggle(!followersToggle)}>
-                                            <Typography>Followers</Typography>
-                                        </Button>
-                                        <Typography className='text-center' >{user.followers.length}</Typography>
+                                            <Typography onClick={() => setFollowersToggle(!followersToggle)} className="account-texts" >{user.followers.length} Followers</Typography>
                                     </div>
                                     <div>
-                                        <Button onClick={() => setFollowingToggle(!followingToggle)}>
-                                            <Typography>Following</Typography>
-                                        </Button>
-                                        <Typography className='text-center'>{user.following.length}</Typography>
+                                            <Typography onClick={() => setFollowingToggle(!followingToggle)} className="account-texts" >{user.following.length} Following</Typography>
                                     </div>
                                     <div>
-                                        <Button>
-                                            <Typography>Posts</Typography>
-                                        </Button>
-                                        <Typography className='text-center'>{user.posts.length}</Typography>
+                                            <Typography className="account-texts">{user.posts.length} Posts</Typography>
                                     </div>
                                     {
                                         myProfile ? null : (
@@ -121,9 +132,8 @@ function UserProfile() {
                                             </Button>
                                         )
                                     }
-                                    <Dialog open={followersToggle} onClose={() => setFollowersToggle(!followersToggle)}>
-                                        <div className="DialogBox">
-                                            <Typography variant="h4">Followers</Typography>
+                                    <Dialog className="DialogBoxMain" open={followersToggle} onClose={() => setFollowersToggle(!followersToggle)}>
+                                        <div className="DialogBoxAccount">
                                             {
                                                 user && user.followers.length > 0 ? user.followers.map((follower) => ((
                                                     <User
@@ -138,9 +148,8 @@ function UserProfile() {
                                                 )}
                                         </div>
                                     </Dialog>
-                                    <Dialog open={followingToggle} onClose={() => setFollowingToggle(!followingToggle)}>
-                                        <div className="DialogBox">
-                                            <Typography variant="h4">Following</Typography>
+                                    <Dialog className="DialogBoxMain" open={followingToggle} onClose={() => setFollowingToggle(!followingToggle)}>
+                                        <div className="DialogBoxAccount">
                                             {
                                                 user && user.following.length > 0 ? user.following.map((follow) => ((
                                                     <User
@@ -160,6 +169,30 @@ function UserProfile() {
                         )}
                     </div>
                     <div className='row'>
+                    {postLoading && 
+      [...Array(5)].map(()=>{
+
+        return (
+          <div className='col-12 col-md-6' >
+          <Skeleton
+            variant="rectangular"
+            sx={{ bgcolor: "#FFFFFF" }}
+            width={width}
+            height={"198px"}
+            radius={"10px"}
+          />
+          <div className='latest-title' style={{width}}>
+            <Skeleton height={"35px"}/>
+            <Skeleton width={"80%"} height={"35px"}/>
+          </div>
+          <div className='latest-cat mt-2 mb-4'><Skeleton width={"50%"}/></div>
+          
+          <div className='latest-line'></div>
+        </div>
+        )
+
+      })
+      }
                         {posts && posts.length > 0 ? (
                             posts.map((post) => (
                                 <div className='col-12 col-md-6' >

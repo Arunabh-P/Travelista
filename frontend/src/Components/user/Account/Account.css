@@ -1,15 +1,14 @@
 .account-texts {
-  color: rgba(0, 0, 0, 0.767);
-  font-weight: bolder;
+  color: rgb(78, 78, 78);
+  font-weight: 600;
   text-decoration: none;
   padding: 10px;
   cursor: pointer;
+  font-family: inherit;
+  font-size: large;
 }
 
-.acc-span {
-  font-weight: bolder;
-  color: rgb(14, 0, 29);
-}
+
 
 .account {
   box-sizing: border-box;
@@ -62,7 +61,17 @@
   padding: 54px;
 }
 
-
+.DialogBoxMain::-webkit-scrollbar, body::-webkit-scrollbar{
+  display: none;
+}
+.DialogBoxAccount::-webkit-scrollbar, body::-webkit-scrollbar{
+  display: none;
+}
+.DialogBoxAccount{
+ 
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+ 
+}
 
 @media only screen and (max-width: 319px){
   .DialogBoxAccount {
@@ -70,6 +79,9 @@
     height: 400px;
     padding: 10px;
   
+  }
+  .texts-group-acc{
+    margin-left: 20px;
   }
 }
 
@@ -80,16 +92,22 @@
     padding: 10px;
   
   }
+  .texts-group-acc{
+    margin-left: 20px;
+  }
 }
-@media only screen and (min-width: 479px) and (max-width: 767px){
+@media only screen and (min-width: 479px) and (max-width: 773px){
   .DialogBoxAccount {
     width: 266px;
     height: 490px;
     padding: 10px;
   
   }
+  .texts-group-acc{
+    margin-left: 20px;
+  }
 }
-@media only screen and (min-width: 767px) and (max-width: 979px){
+@media only screen and (min-width: 773px) and (max-width: 979px){
   .DialogBoxAccount {
     width: 286px;
     height: 490px;

@@ -5,10 +5,11 @@ import { useDispatch, useSelector } from "react-redux"
 import { Dialog, Typography } from "@mui/material";
 import { getAllUsers, getFollowingStories } from '../../../../Actions/User';
 import emptyStory from "../../../../Images/emptyStory.gif"
+import { Skeleton } from "@mui/material";
 function FollowersStories() {
 
     const dispatch = useDispatch()
-    const { stories } = useSelector(
+    const { stories, loading } = useSelector(
         (state) => state.storyOfFollowing
     );
     const [storyToggle, setStoryToggle] = useState(false)
@@ -28,6 +29,19 @@ function FollowersStories() {
 
     return (
         <>
+            {loading &&
+                [...Array(5)].map(() => {
+                    return (
+                        <div className="story-list ">
+                            <Skeleton
+                                variant="rectangular"
+                                sx={{ bgcolor: "#FFFFFF" }}
+                                className="followers-all-stories"
+                            />
+                        </div>
+                    )
+                })
+            }
             {
                 stories && stories.length > 0 ? (
                     stories.map((story, index) => (
@@ -51,8 +65,8 @@ function FollowersStories() {
                     ))
                 ) : (
                     <>
-                    <div  className="story-list ">
-                            <div 
+                        <div className="story-list ">
+                            <div
                                 style={{ backgroundImage: `url(${emptyStory})` }}
                                 className="followers-all-stories"
                             >

@@ -1,3 +1,13 @@
+.myPost{
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 0 1vmax 2vmax;
+  margin-bottom: 10px;
+}
+.myPost > img {
+  width: 100%;
+  max-height: 40vmax;;
+}
 .buttonText2{
     font-weight: 500;
     text-transform: capitalize;

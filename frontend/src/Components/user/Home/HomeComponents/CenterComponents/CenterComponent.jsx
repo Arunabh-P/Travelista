@@ -6,11 +6,12 @@ import { getAllUsers, getFollowingPosts } from '../../../../../Actions/User'
 import Story from '../../../Story/Story'
 import nopostyet from "../../../../../Images/nopostyet.jpg"
 import "./CenterComponent.css"
-
-function CenterComponent() {
+import { Skeleton } from "@mui/material";
+import { Container, Row, Col } from "react-bootstrap";
+function CenterComponent({width}) {
 
   const dispatch = useDispatch();
-  const { posts } = useSelector(
+  const { posts,loading } = useSelector(
     (state) => state.postOfFollowing
   );
 
@@ -24,6 +25,29 @@ function CenterComponent() {
     <>
       <Story />
       <NewPost />
+      {loading && 
+      [...Array(5)].map(()=>{
+
+        return (
+          <div className='pointer'>
+          <Skeleton
+            variant="rectangular"
+            sx={{ bgcolor: "#FFFFFF" }}
+            width={width}
+            height={"198px"}
+          />
+          <div className='latest-title' style={{width}}>
+            <Skeleton height={"35px"}/>
+            <Skeleton width={"80%"} height={"35px"}/>
+          </div>
+          <div className='latest-cat mt-2 mb-4'><Skeleton width={"50%"}/></div>
+          
+          <div className='latest-line'></div>
+        </div>
+        )
+
+      })
+      }
       {
         posts && posts.length > 0 ? (
           posts.map((post) => (
