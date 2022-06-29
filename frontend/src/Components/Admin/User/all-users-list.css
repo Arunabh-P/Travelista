@@ -1,4 +1,4 @@
-  .users-home-list {
+  .users-home-list2 {
       display: flex;
       align-items: center;
       text-decoration: none;
@@ -7,13 +7,13 @@
       justify-content: space-between;
   }
 
-  .users-home-list>img {
+  .users-home-list2>img {
       height: 12vmax;
       width: 12vmax;
       
       border-radius: 10px 0px 0px 10px;
   }
-  .users-home-list> p {
+  .users-home-list2> p {
     
     font-weight: 700;
     font-size: larger;

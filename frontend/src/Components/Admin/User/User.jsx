@@ -47,7 +47,7 @@ e.preventDefault()
 
         
             <div className="row d-flex  ">
-                <div className="col-12 users-home-list">
+                <div className="col-12 users-home-list2">
                     
                         <img src={avatar} alt={name} />
                         <p>{name}</p>
