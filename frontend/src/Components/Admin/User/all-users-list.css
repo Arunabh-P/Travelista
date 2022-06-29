@@ -1,0 +1,30 @@
+  .users-home-list {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: rgba(0, 0, 0, 0.507);
+      transition: all 0.5s;
+      justify-content: space-between;
+  }
+
+  .users-home-list>img {
+      height: 12vmax;
+      width: 12vmax;
+      
+      border-radius: 10px 0px 0px 10px;
+  }
+  .users-home-list> p {
+    
+    font-weight: 700;
+    font-size: larger;
+    padding-left: 2vmax;
+}
+
+.admin-users{
+    height: 12vmax;
+    border-radius: 10px;
+}
+.block-button{
+    height: 12vmax;
+}
+ 

@@ -1,5 +1,7 @@
-const Admin = require("../models/Admin");
+ const Admin = require("../models/Admin");
 const User = require("../models/User")
+const crypto = require("crypto");
+
 exports.register = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -15,17 +17,17 @@ exports.register = async (req, res) => {
             password,
         });
 
-        const token = await admin.generateToken()
+        const Admintoken = await admin.generateToken()
 
         const options = {
             expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
             httpOnly: true,
         }
 
-        res.status(201).cookie("token", token, options).json({
+        res.status(201).cookie("Admintoken", Admintoken, options).json({
             success: true,
             admin,
-            token,
+            Admintoken,
         })
 
     } catch (error) {
@@ -40,8 +42,7 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
-        const admin = await Admin.findOne({ email })
-            .select("+password")
+        const admin = await Admin.findOne({ email }).select("+password")
 
 
         if (!admin) {
@@ -50,26 +51,26 @@ exports.login = async (req, res) => {
                 message: "Admin does not exist"
             });
         }
-        const isMatch = await admin.matchPassword(password)
+        const isMatchPassword = await admin.matchPassword(password)
 
-        if (!isMatch) {
+        if (!isMatchPassword) {
             return res.status(400).json({
                 success: false,
                 message: "Incorrect password"
             })
         }
 
-        const token = await admin.generateToken()
+        const Admintoken = await admin.generateToken()
 
         const options = {
             expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
             httpOnly: true,
         }
 
-        res.status(200).cookie("token", token, options).json({
+        res.status(200).cookie("Admintoken", Admintoken, options).json({
             success: true,
             admin,
-            token,
+            Admintoken,
         })
 
     } catch (error) {
@@ -85,7 +86,7 @@ exports.logout = async (req, res) => {
     try {
         res
             .status(200)
-            .cookie("token", null, { expires: new Date(Date.now()), httpOnly: true })
+            .cookie("Admintoken", null, { expires: new Date(Date.now()), httpOnly: true })
             .json({
                 success: true,
                 message: "Logged Out"
@@ -101,13 +102,13 @@ exports.logout = async (req, res) => {
 }
 exports.getUsers = async (req, res) => {
     try {
-        const users = await User.find({
+        const adminAllUsers = await User.find({
 
         });
 
         res.status(200).json({
             success: true,
-            users,
+            adminAllUsers,
         });
 
     } catch (error) {
@@ -171,3 +172,17 @@ exports.unblockUser = async (req, res) => {
     }
 }
 
+exports.adminProfile = async (req, res) => {
+    try {
+        const admin = await Admin.findById(req.admin._id);
+        res.status(200).json({
+            success: true,
+            admin,
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message,
+        });
+    }
+};

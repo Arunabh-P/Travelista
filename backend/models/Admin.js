@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const crypto = require("crypto")
 
 const adminSchema = new mongoose.Schema({
     email: {
       type: String,
-      required: [true],
+      required: [true,'please enter email'],
     },
 
     password: {
@@ -14,6 +15,8 @@ const adminSchema = new mongoose.Schema({
       minlength: [6, "Password must be at least 6 characters"],
       select: false,
     },
+    resetPasswordToken: String,
+  resetPasswordExpire: Date,
   });
   adminSchema.pre("save", async function (next) {
       if (this.isModified("password")) {
@@ -29,5 +32,17 @@ const adminSchema = new mongoose.Schema({
     adminSchema.methods.generateToken = function () {
       return jwt.sign({_id: this._id}, process.env.JWT_SECRET)
     }
+
+    adminSchema.methods.getResetPasswordToken = function () {
+      const resetToken = crypto.randomBytes(20).toString("hex");
+    
+      this.resetPasswordToken = crypto
+        .createHash("sha256")
+        .update(resetToken)
+        .digest("hex");
+      this.resetPasswordExpire = Date.now() + 10 * 60 * 1000;
+    
+      return resetToken;
+    };
 
   module.exports = mongoose.model("Admin", adminSchema);

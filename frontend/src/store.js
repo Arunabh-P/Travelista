@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { adminReducer, adminUsersReducer, blockUser } from "./Reducers/Admin";
 import { likeReducer, myPostsReducer, userPostsReducer } from "./Reducers/Post";
 import { addStoryReducer, storyOfFollowingReducer } from "./Reducers/Story";
 import { allUsersReducer, postOfFollowingReducer, userProfileReducer, userReducer } from "./Reducers/User"
@@ -14,6 +15,10 @@ const store = configureStore({
         userPosts: userPostsReducer,
         addStory: addStoryReducer,
         storyOfFollowing: storyOfFollowingReducer,
+        admin : adminReducer,
+        adminAllUsers : adminUsersReducer,
+        blockUser : blockUser
+
     }
 });
 

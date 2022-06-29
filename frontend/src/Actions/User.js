@@ -197,18 +197,8 @@ export const logoutUser = (email, password) => async (dispatch) => {
 
         await axios.get("/api/v1/logout");
 
-        // const {data} = await axios.post(
-        //     "/api/v1/login",
-        //     {email,password},
-        //     {
-        //     headers:{
-        //         "Content-Type":"application/json"
-        //     }
-        // })
-
         dispatch({
             type: "LogoutUserSuccess",
-            // payload:data.user,
         })
 
     } catch (error) {

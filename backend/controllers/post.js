@@ -2,13 +2,11 @@ const Post = require("../models/Post");
 const User = require("../models/User");
 const cloudinary = require("cloudinary")
 exports.createPost = async (req, res) => {
-    console.log("koooy1");
     try {
 
         const myCloud = await cloudinary.v2.uploader.upload(req.body.image, {
             folder: "posts",
         });
-console.log("hooy2");
 
         // tripdate=Date(req.body.tripDate).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) 
 
@@ -35,7 +33,6 @@ console.log("hooy2");
             success: true,
             message: "Post created",
         })
-        console.log("hooy33333333");
 
 
     } catch (error) {

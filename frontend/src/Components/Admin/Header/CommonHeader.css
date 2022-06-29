@@ -1,0 +1,21 @@
+.account-text-header{
+    color:rgba(0, 0, 0, 0.767);
+    text-decoration: none;
+  }
+  .home-md-icons{
+    font-size: larger;
+  }
+  .each-list-icons{
+    display: flex;
+    align-items: center;
+  padding: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .icon-in-header{
+    text-decoration: none;
+
+  }
+  

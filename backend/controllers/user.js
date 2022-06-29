@@ -54,14 +54,16 @@ exports.login = async (req, res) => {
             .select("+password")
             .populate("posts followers following");
 
+
         if (!user) {
             return res.status(400).json({
                 success: false,
                 message: "User does not exist"
             });
         }
+
         if (user.blockStatus) {
-            
+            console.log('here');
             return res.status(404).json({
                 success: false,
                 message: "User Blocked",
