@@ -4,6 +4,7 @@ import "./Search.css"
 import { getAllUsers } from '../../../Actions/User';
 import User from "../User/User"
 import search from "../../../../src/Images/search.png"
+import Header from "../Header/CommonHeader"
 
 function Search() {
 
@@ -20,6 +21,7 @@ function Search() {
 
     return (
         <>
+            <Header />
             <div className='search-user' >
                 <div className="update-profile-headline p-5">
                     <h3>Search</h3>

@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { useAlert } from "react-alert"
 import { updatePassword } from "../../../Actions/User";
 import password from "../../../../src/Images/password.png"
+import Header from "../Header/CommonHeader"
+
 function UpdatePassword() {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -33,6 +35,7 @@ function UpdatePassword() {
   return (
 
     <>
+      <Header />
       <div className='update-password' >
         <div className="update-profile-headline p-5">
           <h3>Update Password</h3>
@@ -77,7 +80,7 @@ function UpdatePassword() {
                       </div>
                     </div>
                     <div className="w-100">
-                        <button className='update-password-dataform-button w-100'  disabled={loading} type='submit'>Change Password</button>
+                      <button className='update-password-dataform-button w-100' disabled={loading} type='submit'>Change Password</button>
                     </div>
                   </div>
                 </form>

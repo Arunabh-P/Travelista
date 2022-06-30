@@ -3,10 +3,12 @@ import UsersList from './HomeComponents/RightSideComponents/UsersList'
 import CenterComponent from './HomeComponents/CenterComponents/CenterComponent'
 import UserCard from './HomeComponents/LeftSideComponents/UserCard'
 import "./Home.css"
+import Header from "../Header/CommonHeader"
 
 function Home() {
   return (
-
+<>
+<Header />
     <div className=" w-100 home-page fullBodyHome" >
       <div className="container">
         <div className="row">
@@ -22,7 +24,7 @@ function Home() {
         </div>
       </div>
     </div>
-
+    </>
   )
 }
 

@@ -10,6 +10,7 @@ import cover from "../../../Images/cover.jpg"
 import { useAlert } from 'react-alert';
 import { Skeleton } from "@mui/material";
 import './UserProfile.css'
+import Header from "../Header/CommonHeader"
 
 function UserProfile({width}) {
     const dispatch = useDispatch()
@@ -74,30 +75,13 @@ function UserProfile({width}) {
     }, [alert, error, message, followError, userError, dispatch]);
 
     return (
+        <>
+        <Header />
         <div className="user-profile-full-body">
             <Container>
                 <div className='user-profile-page-inside'>
                     <div className='user-profile-page-top-section'>
-                    {userLoading && 
-      
-          <div>
-          <Skeleton
-           className='user-profile-page-top-section'
-            variant="rectangular"
-            sx={{ bgcolor: "#FFFFFF" }}
-            width={width}
-            height={"198px"}
-          />
-          <div className='latest-title' style={{width}}>
-            <Skeleton height={"35px"}/>
-            <Skeleton width={"80%"} height={"35px"}/>
-          </div>
-          <div className='latest-cat mt-2 mb-4'><Skeleton width={"50%"}/></div>
-          
-          <div className='latest-line'></div>
-        </div>
-        
-      }
+                  
                         {user && (
                             <>
                                 <img src={cover} alt="*here cover image" />
@@ -230,6 +214,7 @@ function UserProfile({width}) {
                 </div>
             </Container>
         </div >
+        </>
     )
 }
 

@@ -6,6 +6,7 @@ import { useSelector } from "react-redux"
 import axios from "axios"
 import { io } from "socket.io-client"
 import "./Messenger.css"
+import Header from "../Header/CommonHeader"
 
 function Messenger() {
     const [converstions, setConverstions] = useState([])
@@ -106,6 +107,8 @@ function Messenger() {
 
 
     return (
+        <>
+        <Header />
         <div className="body-messager pt-2 ">
             <div className='messenger  container'>
                 <div className="chatMenu d-none d-sm-block col-2">
@@ -169,6 +172,7 @@ function Messenger() {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

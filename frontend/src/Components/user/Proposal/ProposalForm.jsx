@@ -15,6 +15,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import Header from "../Header/CommonHeader"
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -103,7 +104,7 @@ function ProposalForm() {
 
     return (
         <>
-
+            <Header />
             <div className='proposal-full-div' >
                 <div className="container bg-white serch-container mb-4  mt-2">
                     <div className="row update-row p-4 rounded mt-4">

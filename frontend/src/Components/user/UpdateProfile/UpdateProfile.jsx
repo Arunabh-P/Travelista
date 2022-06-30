@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { FormControl } from "react-bootstrap";
 import CropImage from "../../user/ProfilePicCropper/CropImage"
+import Header from "../Header/CommonHeader"
+
 import {
   loadUser,
   updateProfileUser
@@ -48,6 +50,9 @@ export default function UpdateProfile() {
   }, [dispatch, error, alert, updateError, message]);
 
   return (
+    <>
+      <Header />
+
     <div className='update' >
       <div className="update-profile-headline p-5">
         <h3>Update Profile</h3>
@@ -122,5 +127,6 @@ export default function UpdateProfile() {
         </form>
       </div >
     </div >
+    </>
   );
 }

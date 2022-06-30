@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from "react-redux"
-import wave from "../../../Images/wave.gif"
+import sideImg from "../../../Images/admin.gif"
 import "./Sidebar.css"
 
 function Sidebar() {
@@ -31,11 +31,12 @@ function Sidebar() {
     <div className='user-card-for-side '>
       <div className='user-card'>
         <div className='user-card-top'>
+          <h5 className='mt-5'>Hello admin</h5>
+        <h4>{date}!</h4>
         </div>
       </div>
       <div className='user-followers-list d-none d-md-block'>
-        <h4>{date}!</h4>
-        <img src={wave} className="pt-3  wave-card" alt="wave" />
+        <img src={sideImg} className="pt-3 widget-card" alt="widget" />
       </div>
     </div>
   )
