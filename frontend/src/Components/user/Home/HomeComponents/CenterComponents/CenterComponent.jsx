@@ -25,7 +25,7 @@ function CenterComponent({width}) {
     <>
       <Story />
       <NewPost />
-      {loading && 
+      {/* {loading && 
       [...Array(5)].map(()=>{
 
         return (
@@ -47,7 +47,7 @@ function CenterComponent({width}) {
         )
 
       })
-      }
+      } */}
       {
         posts && posts.length > 0 ? (
           posts.map((post) => (

@@ -92,7 +92,7 @@ function Account({ width }) {
         <Container>
           <div className='CoverPage  '>
             <div className=' bg-white my-2 rounded'>
-              {userLoading &&
+              {/* {userLoading &&
 
                 <div>
                   <Skeleton
@@ -111,7 +111,7 @@ function Account({ width }) {
                   <div className='latest-line'></div>
                 </div>
 
-              }
+              } */}
               {user.coverImage ? <div className="text-end" style={{ backgroundImage: `url(${image ? image : user.coverImage.url})`, height: "15rem", width: "100%", borderRadius: "5px 5px 0px 0px", backgroundSize: "cover", backgroundRepeat: "no-repeat", marginBottom: "-4.5rem" }}>
                 <FormControl
                   className="crop_image d-none"
@@ -245,7 +245,7 @@ function Account({ width }) {
               </div>
             </div>
             <div className='row'>
-              {postLoading &&
+              {/* {postLoading &&
                 [...Array(5)].map(() => {
 
                   return (
@@ -267,7 +267,7 @@ function Account({ width }) {
                   )
 
                 })
-              }
+              } */}
               {posts && posts.length > 0 ? (
                 posts.map((post) => (
                   <div className='col-12 col-md-6' >

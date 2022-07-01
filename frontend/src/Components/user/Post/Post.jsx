@@ -202,18 +202,7 @@ function Post({
 
 
 
-                    {/* <form className="commentForm" onSubmit={addCommentHandler}>
-                        <input
-                            type="text"
-                            value={commentValue}
-                            onChange={(e) => setCommentValue(e.target.value)}
-                            placeholder="Comment Here..."
-                            required
-                        />
-                        <Button className="add-button" type="submit" variant="contained"  >
-                            Add
-                        </Button>
-                    </form> */}
+                   
                     {comments.length > 0 ? (
                         comments.map((item) => (
                             <CommentCard
