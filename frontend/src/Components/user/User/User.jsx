@@ -10,7 +10,7 @@ function User({ userId, name, avatar }) {
                 <div className="col-8">
                     <Link to={`/user/${userId}`} className="users-home-list">
                         <img src={avatar} alt={name} />
-                        <Typography>{name}</Typography>
+                        <Typography className="user-name-text">{name}</Typography>
                     </Link>
                 </div>
             </div>

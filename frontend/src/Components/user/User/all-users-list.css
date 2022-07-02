@@ -17,3 +17,6 @@
   .users-home-list:hover {
       transform: translateY(-10px);
   }
+  .user-name-text{
+    text-transform: capitalize;
+  }

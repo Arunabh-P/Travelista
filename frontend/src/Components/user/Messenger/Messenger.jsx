@@ -7,6 +7,7 @@ import axios from "axios"
 import { io } from "socket.io-client"
 import "./Messenger.css"
 import Header from "../Header/CommonHeader"
+import send from "../../../Images/send.png"
 
 function Messenger() {
     const [converstions, setConverstions] = useState([])
@@ -145,10 +146,12 @@ function Messenger() {
                                     />
                                    
                      {newMessage.length < 1 ? (
-                        <button className="chatSubmitButton">Send</button>
+                        <button className="chatSubmitButton">
+                            <img src={send} alt="" />
+                        </button>
                         ) : (
                                     <button className="chatSubmitButton" onClick={handleSubmit}>
-                                        Send
+                                        <img src={send} alt="" />
                                     </button>
                                      )}
                                 </div>
