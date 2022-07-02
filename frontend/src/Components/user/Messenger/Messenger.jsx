@@ -147,11 +147,11 @@ function Messenger() {
                                    
                      {newMessage.length < 1 ? (
                         <button className="chatSubmitButton">
-                            <img src={send} alt="" />
+                            <img className="chatSubmitButtonImg" src={send} alt="" />
                         </button>
                         ) : (
                                     <button className="chatSubmitButton" onClick={handleSubmit}>
-                                        <img src={send} alt="" />
+                                        <img className="chatSubmitButtonImg" src={send} alt="" />
                                     </button>
                                      )}
                                 </div>
