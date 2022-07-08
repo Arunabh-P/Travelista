@@ -8,7 +8,9 @@
   font-size: large;
 }
 
-
+.post-margin{
+  margin-right: 65px;
+}
 
 .account {
   box-sizing: border-box;

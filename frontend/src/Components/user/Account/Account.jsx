@@ -21,22 +21,22 @@ const Swal = require('sweetalert2')
 
 function Account({ width }) {
 
-  const deleteProfileHandler = async () => {
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        dispatch(deleteMyProfile())
-        dispatch(logoutUser())
-      }
-    })
-  }
+  // const deleteProfileHandler = async () => {
+  //   Swal.fire({
+  //     title: 'Are you sure?',
+  //     text: "You won't be able to revert this!",
+  //     icon: 'warning',
+  //     showCancelButton: true,
+  //     confirmButtonColor: '#3085d6',
+  //     cancelButtonColor: '#d33',
+  //     confirmButtonText: 'Yes, delete it!'
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       dispatch(deleteMyProfile())
+  //       dispatch(logoutUser())
+  //     }
+  //   })
+  // }
 
   const dispatch = useDispatch()
   const alert = useAlert()
@@ -199,17 +199,17 @@ function Account({ width }) {
                 <div>
                   <Typography onClick={() => setFollowingToggle(!followingToggle)} className="account-texts">{user.following.length} Following</Typography>
                 </div>
-                <div>
+                <div className='post-margin'>
                   <Typography className="account-texts">{user.posts.length} Posts</Typography>
                 </div>
-                <Button
+                {/* <Button
                   variant="text"
                   style={{ color: "red", margin: "2vmax" }}
                   onClick={deleteProfileHandler}
                   disabled={deleteLoading}
                 >
                   Delete My Profile
-                </Button>
+                </Button> */}
                 <Dialog className='DialogBoxMain' open={followersToggle} onClose={() => setFollowersToggle(!followersToggle)}>
                   <div className="DialogBoxAccount">
                     {
@@ -244,7 +244,7 @@ function Account({ width }) {
                 </Dialog>
               </div>
             </div>
-            <div className='row'>
+            <div className='row '>
               {/* {postLoading &&
                 [...Array(5)].map(() => {
 
@@ -270,7 +270,7 @@ function Account({ width }) {
               } */}
               {posts && posts.length > 0 ? (
                 posts.map((post) => (
-                  <div className='col-12 col-md-6' >
+                  <div className='col-12 col-md-6 ' >
                     <MyPost
                       className="samplepost"
                       key={post._id}
